@@ -226,7 +226,7 @@ const PROJECTS = [
     year: "2026",
     blurb: "An AI-native personal-finance operating system. A pluggable LLM layer narrates a pure, tested finance engine — so the assistant can explain money but can never invent a number. Built around a multi-agent vision (CFO / CA / investment / spending-coach personas), an intent router, and grounded responses over a mock-data seam ready to swap for real providers.",
     stack: ["React Native", "Expo", "TypeScript", "Zustand", "AIModel abstraction", "Intent Router", "Grounded LLM", "Multi-agent design"],
-    links: [ { label: "case study →", href: "#" }, { label: "github →", href: "#" } ],
+    links: [ { label: "github →", href: "https://github.com/Adarsh-9182/Paisa" } ],
     featured: true
   },
   // ---- paste your other projects below (copy this block) ----
@@ -271,7 +271,7 @@ PROJECTS.forEach(p=>{
     </div>
     <p>${p.blurb}</p>
     <div class="stack">${(p.stack||[]).map(s=>`<span class="pill">${s}</span>`).join('')}</div>
-    ${p.links?`<div class="proj-links">${p.links.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div>`:''}`;
+    ${p.links?`<div class="proj-links">${p.links.map(l=>{const ext=/^https?:/.test(l.href);return `<a href="${l.href}"${ext?' target="_blank" rel="noopener"':''}>${l.label}</a>`;}).join('')}</div>`:''}`;
   projGrid.appendChild(c);
 });
 
