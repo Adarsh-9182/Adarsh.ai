@@ -1,43 +1,46 @@
 # adarsh.ai
 
-Personal portfolio of **Adarsh Bhardwaj** — Software & AI Engineer.
+Personal site of **Adarsh Bhardwaj** — AI engineer.
 
-A single-file, zero-dependency site: `index.html` holds the markup, design system and
-all interaction code. No build step, no framework, no tracking.
-
-## Structure
+One hand-written HTML file. No framework, no build step, no dependencies, no analytics.
+Set in [Newsreader](https://fonts.google.com/specimen/Newsreader) and
+[IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono).
 
 ```
-index.html                       # the entire site (HTML + CSS + JS)
-assets/Adarsh-Bhardwaj-Resume.pdf # résumé served from the site
-vercel.json                      # headers + clean URLs for Vercel
+index.html                        # markup, styles and behaviour
+assets/Adarsh-Bhardwaj-Resume.pdf # résumé, linked from the page
+vercel.json                       # headers + clean URLs
 ```
 
-## Run locally
+## Run it
 
 ```bash
-python3 -m http.server 8000   # then open http://localhost:8000
+python3 -m http.server 8000   # → http://localhost:8000
 ```
 
 ## Deploy
 
 **Vercel** — import the repo at [vercel.com/new](https://vercel.com/new).
-Framework preset: **Other**. Build command: *none*. Output directory: `./`.
-Every push to the default branch ships a new production deploy.
+Framework preset **Other**, no build command, output directory `./`.
+Pushes to the default branch ship to production.
 
-**GitHub Pages** — Settings → Pages → deploy from the default branch, root.
+**GitHub Pages** — Settings → Pages → default branch, root.
 
-## Editing content
+## How it's laid out
 
-Everything is static HTML, so content lives next to its markup:
+Everything hangs off one grid: a label rail, a 660px text column, and an empty
+counterweight column so the text sits optically on centre.
 
-| What            | Where in `index.html`            |
-| --------------- | -------------------------------- |
-| Design tokens   | `:root { --bg, --v, --m, --c … }`|
-| Hero + stats    | `<header class="hero">`          |
-| Experience      | `<section id="experience">`      |
-| Projects        | `<section id="work">`            |
-| Skills          | `<section id="stack">`           |
-| Focus/education | `<section id="focus">`           |
-| Rotating roles  | `const ROLES` in the script      |
-| Marquee words   | `const WORDS` in the script      |
+| Where                       | What                                              |
+| --------------------------- | ------------------------------------------------- |
+| `:root`                     | colour, type and layout tokens (light + dark)     |
+| `.grid` / `.block`          | the page grid and section rhythm                  |
+| `<header class="mast">`     | masthead — headline, lede, primary links          |
+| `#work`                     | selected projects                                 |
+| `#experience`               | roles                                             |
+| `#stack`                    | skills, as a definition list                      |
+| `#background`               | education, exams, coursework                      |
+| `#contact` + `<footer>`     | email, elsewhere links, colophon                  |
+
+Theme follows the system by default; an explicit choice is stored in `localStorage`
+and can be toggled with the button or the <kbd>T</kbd> key.
