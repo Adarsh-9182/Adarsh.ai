@@ -339,6 +339,45 @@
   var mx = 0, my = 0, mtx = 0, mty = 0;
   var rootEl = document.documentElement;
 
+  /* Keyframes, not a drift. Each stop is a shot the page actually wants at
+     that point in the reading, and the scroll cuts between them:
+
+       0.00  inside the routing layer, at eye level with the supervisor
+       0.26  down on the engine decks, where the work is being computed
+       0.52  pulled wide and high — the whole stack at once
+       0.78  back in among the specialists
+       1.00  above the intake, looking down the way a question arrives     */
+  var KEYS = [
+    { at: 0.00, rad:  5.4, high:  0.75, ty: -0.25, ang: 0.45, sh:  0.06 },
+    { at: 0.26, rad:  7.6, high: -1.35, ty: -2.55, ang: 1.85, sh:  0.02 },
+    { at: 0.52, rad: 16.4, high:  8.60, ty: -1.70, ang: 3.15, sh: -0.06 },
+    { at: 0.78, rad:  8.2, high:  1.30, ty: -0.70, ang: 4.55, sh: -0.04 },
+    { at: 1.00, rad:  6.6, high:  4.40, ty:  0.35, ang: 5.60, sh: -0.10 }
+  ];
+
+  var shot = { rad: 0, high: 0, ty: 0, ang: 0, sh: 0 };
+  function sample(p) {
+    var i = 0;
+    while (i < KEYS.length - 2 && p > KEYS[i + 1].at) i++;
+    var a = KEYS[i], b = KEYS[i + 1];
+    var span = Math.max(1e-4, b.at - a.at);
+    var t = Math.min(1, Math.max(0, (p - a.at) / span));
+    t = t * t * (3 - 2 * t);
+    shot.rad  = a.rad  + (b.rad  - a.rad)  * t;
+    shot.high = a.high + (b.high - a.high) * t;
+    shot.ty   = a.ty   + (b.ty   - a.ty)   * t;
+    shot.ang  = a.ang  + (b.ang  - a.ang)  * t;
+    shot.sh   = a.sh   + (b.sh   - a.sh)   * t;
+    return shot;
+  }
+
+  /* The page tells the model which specialist it is currently talking about,
+     so the card you are reading and the node it describes are the same thing. */
+  var focusIdx = -1;
+  window.sceneFocus = function (i) {
+    focusIdx = (typeof i === 'number' && i >= 0 && i < specialists.length) ? i : -1;
+  };
+
   function onScroll() {
     var h = Math.max(1, document.body.scrollHeight - innerHeight);
     scrollTarget = Math.min(1, Math.max(0, scrollY / h));
@@ -389,21 +428,21 @@
     mx += (mtx - mx) * Math.min(1, dt * 3);
     my += (mty - my) * Math.min(1, dt * 3);
 
-    var e = scrollP * scrollP * (3 - 2 * scrollP);                 // smoothstep
-    var ang  = 0.45 + e * 2.30 + now * 0.000045 + mx * 0.30;
-    var rad  = lerp(5.4, 16.2, e);
-    var high = lerp(0.75, 9.2, e) - my * 1.05;
+    var K = sample(scrollP);
+    var ang  = K.ang + now * 0.000045 + mx * 0.30;
+    var rad  = K.rad;
+    var high = K.high - my * 1.05;
     var roll = Math.sin(now * 0.00012) * 0.075 + mx * 0.055;
 
     lookAt(view,
       Math.cos(ang) * rad, high, Math.sin(ang) * rad,
-      0, lerp(-0.25, -1.9, e), 0,
+      0, K.ty, 0,
       Math.sin(roll), Math.cos(roll), 0);
     perspective(proj, 54 * Math.PI / 180, W / H, 0.1, 100);
 
     // Shift the projection centre rather than the camera, so the model sits
     // where the page has room for it without the perspective going flat.
-    proj[9] += lerp(0.06, -0.10, e);
+    proj[9] += K.sh;
 
     // cool the edges, then let this frame's traffic reheat them
     for (var q = 0; q < edges.length; q++) edges[q].hot = Math.max(0, edges[q].hot - dt * 1.6);
@@ -464,6 +503,12 @@
     }
 
     // nodes, with their arrival flash decaying and a slow idle breath
+    if (focusIdx >= 0) {
+      specialists[focusIdx].hot = Math.max(specialists[focusIdx].hot, 0.8);
+      edges[focusIdx].hot = Math.max(edges[focusIdx].hot, 0.7);
+      edges[6 + focusIdx].hot = Math.max(edges[6 + focusIdx].hot, 0.45);
+    }
+
     for (var b = 0; b < n; b++) {
       var nd = nodes[b];
       nd.hot = Math.max(0, nd.hot - dt * 1.9);

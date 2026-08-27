@@ -356,14 +356,87 @@ footer .in{
   border-radius:4px;padding:1px 5px;color:var(--muted);
 }
 
-.rise{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
-.rise.seen{opacity:1;transform:none}
+/* ── Reveal choreography ─────────────────────────────────────────────────
+   Sections do not fade as a block — their parts arrive in order, and the
+   command line above each one types itself in. The page behaves like a
+   console being driven, because that is the conceit.
+   ─────────────────────────────────────────────────────────────────────── */
+.ease{transition-timing-function:cubic-bezier(.22,1,.36,1)}
+.rise>*{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--i,0) * 80ms);
+}
+.rise.seen>*{opacity:1;transform:none}
+
+.grid>*{
+  opacity:0;transform:translateY(26px) scale(.99);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--i,0) * 110ms);
+}
+.rise.seen .grid>*{opacity:1;transform:none}
+
+/* the command types itself, then the caret catches up */
+.cmd{display:flex;align-items:center;gap:0}
+.typed{
+  display:inline-block;white-space:nowrap;overflow:hidden;
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path 1s steps(30,end);transition-delay:.2s;
+}
+.rise.seen .typed{clip-path:inset(0 0 0 0)}
+.cur{
+  display:inline-block;width:.55em;height:1.05em;background:var(--sig);
+  margin-left:.3em;opacity:0;transition:opacity .2s;transition-delay:1.15s;
+}
+.rise.seen .cur{opacity:1;animation:blink 1.15s steps(1) 1.2s infinite}
+
+/* ── Scroll readout ─────────────────────────────────────────────────────── */
+.prog{
+  font-size:11.5px;color:var(--subtle);letter-spacing:-.04em;
+  display:inline-flex;align-items:center;gap:7px;flex:none;
+}
+.prog b{color:var(--sig);font-weight:400;letter-spacing:0}
+@media (max-width:960px){ .prog{display:none} }
+
+/* ── Stats band ─────────────────────────────────────────────────────────── */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
+  gap:1px;margin-top:16px;
+  border:1px solid var(--border);border-radius:var(--r);
+  background:var(--border);overflow:hidden;
+}
+.stat{
+  background:color-mix(in srgb, var(--panel) 76%, transparent);
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  padding:20px 18px;
+}
+.stat b{
+  display:block;font-family:var(--sans);font-weight:600;
+  font-size:clamp(26px,3.6vw,38px);letter-spacing:-.03em;line-height:1;
+  color:var(--sig);font-variant-numeric:tabular-nums;
+}
+.stat span{display:block;margin-top:9px;font-size:11.5px;line-height:1.6;color:var(--subtle)}
+
+/* ── Ticker ─────────────────────────────────────────────────────────────── */
+.ticker{
+  overflow:hidden;margin-bottom:20px;
+  border-block:1px solid var(--border);padding-block:9px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+.ticker .row{display:flex;width:max-content;animation:marq 44s linear infinite}
+.ticker .row.rev{animation-duration:56s;animation-direction:reverse;margin-top:5px}
+.ticker i{font-style:normal;padding:0 16px;font-size:11.5px;color:var(--subtle);white-space:nowrap}
+.ticker i::after{content:"·";margin-left:16px;color:var(--border-2)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
-  .rise{opacity:1;transform:none}
-  .caret{animation:none}
+  .rise>*,.rise.seen>*,.grid>*,.rise.seen .grid>*{opacity:1;transform:none}
+  .typed{clip-path:none}
+  .cur,.caret{animation:none}
+  .ticker .row{animation:none}
 }
 
 @media print{
@@ -382,6 +455,7 @@ footer .in{
 <div class="bar" id="bar">
   <div class="in">
     <a class="who" href="#top"><span class="led" aria-hidden="true"></span>adarsh@bhardwaj<span class="dim">:~$</span></a>
+    <span class="prog" id="prog" aria-hidden="true"><b>[··········]</b> 0%</span>
     <nav id="nav">
       <a href="#work">work</a>
       <a href="#experience">experience</a>
@@ -434,12 +508,12 @@ footer .in{
 <main>
 
 <section class="block shell rise" id="work">
-  <p class="cmd"><span class="prompt">$</span> ls ./work <b>--sort=impact</b></p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">ls ./work <b>--sort=impact</b></span><span class="cur" aria-hidden="true"></span></p>
   <h2>Four systems, one rule.</h2>
 
   <div class="grid">
 
-    <article class="panel proj">
+    <article class="panel proj" data-node="0">
       <div class="panel-bar">
         <span class="path"><span class="prompt">~/</span>paisa</span>
         <span class="status live"><i></i>building</span>
@@ -460,7 +534,7 @@ footer .in{
       </div>
     </article>
 
-    <article class="panel proj">
+    <article class="panel proj" data-node="1">
       <div class="panel-bar">
         <span class="path"><span class="prompt">~/</span>nutriscan-ai</span>
         <span class="status live"><i></i>in production</span>
@@ -485,7 +559,7 @@ footer .in{
       </div>
     </article>
 
-    <article class="panel proj">
+    <article class="panel proj" data-node="2">
       <div class="panel-bar">
         <span class="path"><span class="prompt">~/</span>agent-framework</span>
         <span class="status">2025</span>
@@ -501,7 +575,7 @@ footer .in{
       </div>
     </article>
 
-    <article class="panel proj">
+    <article class="panel proj" data-node="3">
       <div class="panel-bar">
         <span class="path"><span class="prompt">~/</span>rag-financial-assistant</span>
         <span class="status">2025</span>
@@ -517,10 +591,17 @@ footer .in{
     </article>
 
   </div>
+
+  <div class="stats" id="stats">
+    <div class="stat"><b data-to="156">0</b><span>tests behind NutriScan</span></div>
+    <div class="stat"><b data-to="40">0</b><span>deterministic clinical rules</span></div>
+    <div class="stat"><b data-to="9">0</b><span>agents &amp; specialists shipped</span></div>
+    <div class="stat"><b data-to="0">0</b><span>numbers invented by a model</span></div>
+  </div>
 </section>
 
 <section class="block shell rise" id="experience">
-  <p class="cmd"><span class="prompt">$</span> git log --graph <b>--author=adarsh</b></p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">git log --graph <b>--author=adarsh</b></span><span class="cur" aria-hidden="true"></span></p>
   <h2>Experience</h2>
 
   <div class="panel">
@@ -582,8 +663,13 @@ footer .in{
 </section>
 
 <section class="block shell rise" id="stack">
-  <p class="cmd"><span class="prompt">$</span> cat ./stack.toml</p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">cat ./stack.toml</span><span class="cur" aria-hidden="true"></span></p>
   <h2>Stack</h2>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="row"><i>python</i><i>typescript</i><i>fastapi</i><i>next.js</i><i>langchain</i><i>anthropic</i><i>openai</i><i>mcp</i><i>pytorch</i><i>postgresql</i><i>redis</i><i>docker</i><i>kubernetes</i><i>aws</i><i>react native</i><i>vector search</i><i>python</i><i>typescript</i><i>fastapi</i><i>next.js</i><i>langchain</i><i>anthropic</i><i>openai</i><i>mcp</i><i>pytorch</i><i>postgresql</i><i>redis</i><i>docker</i><i>kubernetes</i><i>aws</i><i>react native</i><i>vector search</i></div>
+    <div class="row rev"><i>multi-agent orchestration</i><i>intent routing</i><i>tool calling</i><i>structured output</i><i>rag</i><i>embeddings</i><i>text-to-sql</i><i>grounded generation</i><i>fail-closed escalation</i><i>tabular ingestion</i><i>multi-agent orchestration</i><i>intent routing</i><i>tool calling</i><i>structured output</i><i>rag</i><i>embeddings</i><i>text-to-sql</i><i>grounded generation</i><i>fail-closed escalation</i><i>tabular ingestion</i></div>
+  </div>
 
   <div class="panel">
     <div class="panel-bar">
@@ -624,7 +710,7 @@ footer .in{
 </section>
 
 <section class="block shell rise" id="background">
-  <p class="cmd"><span class="prompt">$</span> cat ./background.txt</p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">cat ./background.txt</span><span class="cur" aria-hidden="true"></span></p>
   <h2>Background</h2>
 
   <div class="panel">
@@ -635,7 +721,8 @@ footer .in{
     <div class="panel-body">
   <dl class="kv">
     <dt>education</dt>
-    <dd><b>Bachelor of Arts, English Honours</b> — IGNOU, distance learning, 2024–2027.</dd>
+    <dd><b>B.Tech</b> — Lovely Professional University, Aug 2025 – April 2026. Dropped out.<br />
+      <b>Bachelor of Arts, English Honours</b> — IGNOU, distance learning, 2024–2027.</dd>
 
     <dt>exams</dt>
     <dd>Appeared in <b>JEE Advanced</b>.</dd>
@@ -655,7 +742,7 @@ footer .in{
 </section>
 
 <section class="block shell rise" id="contact">
-  <p class="cmd"><span class="prompt">$</span> ./contact --open-to=roles,contract</p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">./contact --open-to=roles,contract</span><span class="cur" aria-hidden="true"></span></p>
   <h2>Open to AI engineering roles and contract work.</h2>
 
   <div class="panel">
@@ -734,8 +821,17 @@ footer .in{
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav a[href^="#"]'));
   var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
 
+  var prog = document.getElementById('prog');
+  var CELLS = 10;
+
   function onScroll() {
     bar.classList.toggle('stuck', scrollY > 8);
+
+    var h = Math.max(1, document.body.scrollHeight - innerHeight);
+    var pc = Math.min(1, Math.max(0, scrollY / h));
+    var filled = Math.round(pc * CELLS);
+    prog.innerHTML = '<b>[' + '█'.repeat(filled) + '·'.repeat(CELLS - filled) + ']</b> ' +
+      Math.round(pc * 100) + '%';
     var best = -1, mid = innerHeight * 0.35;
     targets.forEach(function (el, i) {
       if (el && el.getBoundingClientRect().top <= mid) best = i;
@@ -748,16 +844,67 @@ footer .in{
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Sections settle in. */
+  /* Sections arrive in order: number every part so CSS can stagger it. */
+  document.querySelectorAll('.rise').forEach(function (sec) {
+    var i = 0;
+    Array.prototype.forEach.call(sec.children, function (kid) {
+      kid.style.setProperty('--i', i++);
+    });
+    var grid = sec.querySelector('.grid');
+    if (grid) {
+      var g = 0;
+      Array.prototype.forEach.call(grid.children, function (kid) {
+        kid.style.setProperty('--i', g++);
+      });
+    }
+  });
+
+  /* Count the stats up when they land — a number that arrives is read, a
+     number that is simply present is skipped. */
+  function countUp(el) {
+    var to = parseInt(el.dataset.to, 10) || 0;
+    if (to === 0) { el.textContent = '0'; return; }
+    var t0 = performance.now(), dur = 1100;
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / dur);
+      k = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(to * k);
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('seen'); io.unobserve(en.target); }
+        if (!en.isIntersecting) return;
+        en.target.classList.add('seen');
+        en.target.querySelectorAll('.stat b[data-to]').forEach(countUp);
+        io.unobserve(en.target);
       });
     }, { rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.rise').forEach(function (el) { io.observe(el); });
+
+    /* Hand the model the node the reader is currently looking at, so the card
+       and the specialist it describes light up together. */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      var ratios = {};
+      var fo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          ratios[en.target.dataset.node] = en.isIntersecting ? en.intersectionRatio : 0;
+        });
+        var best = -1, top = 0.34;
+        Object.keys(ratios).forEach(function (k) {
+          if (ratios[k] > top) { top = ratios[k]; best = parseInt(k, 10); }
+        });
+        if (window.sceneFocus) window.sceneFocus(best);
+      }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+      document.querySelectorAll('[data-node]').forEach(function (el) { fo.observe(el); });
+    }
   } else {
     document.querySelectorAll('.rise').forEach(function (el) { el.classList.add('seen'); });
+    document.querySelectorAll('.stat b[data-to]').forEach(function (el) {
+      el.textContent = el.dataset.to;
+    });
   }
 
   /* Copy the address without making anyone select it. */
