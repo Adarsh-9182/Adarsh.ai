@@ -1,458 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Adarsh Bhardwaj — AI Engineer</title>
-<meta name="description" content="Adarsh Bhardwaj is an AI engineer building Paisa, an AI CFO. He works on autonomous agents, retrieval systems and the infrastructure underneath them." />
-<meta name="author" content="Adarsh Bhardwaj" />
-<link rel="canonical" href="https://adarsh-9182.github.io/Adarsh.ai/" />
-<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#0f0f0e" media="(prefers-color-scheme: dark)" />
+<meta name="description" content="Adarsh Bhardwaj — AI engineer. Agent systems, retrieval and LLM infrastructure for finance and health. Founder of Paisa, builder of NutriScan AI." />
+<link rel="canonical" href="https://adarshbhardwaj.space/" />
 
-<meta property="og:type" content="profile" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://adarshbhardwaj.space/" />
 <meta property="og:title" content="Adarsh Bhardwaj — AI Engineer" />
-<meta property="og:description" content="Building Paisa, an AI CFO. Autonomous agents, retrieval systems, and the infrastructure underneath them." />
-<meta property="og:url" content="https://adarsh-9182.github.io/Adarsh.ai/" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@adarshdevs" />
+<meta property="og:description" content="Agent systems, retrieval and LLM infrastructure for finance and health." />
+<meta name="twitter:card" content="summary_large_image" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23fbfaf7'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' fill='%239c3b12' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23070910'/%3E%3Ccircle cx='32' cy='32' r='9' fill='none' stroke='%23ffa92e' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23ffa92e'/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-<script>
-  /* set theme before first paint — no flash */
-  (function(){
-    try{
-      var t = localStorage.getItem('theme');
-      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
-    }catch(e){}
-  })();
-</script>
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Adarsh Bhardwaj",
-"jobTitle":"AI Engineer","email":"mailto:adarshbhardwaj9182@gmail.com",
-"url":"https://adarsh-9182.github.io/Adarsh.ai/",
-"sameAs":["https://github.com/Adarsh-9182","https://www.linkedin.com/in/adarsh-bhardwaj-925b31263","https://x.com/adarshdevs"]}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
-/* ───────────────────────────────────────────────────────────
-   1. Tokens
+/* ═══════════════════════════════════════════════════════════
+   ADARSH BHARDWAJ — one hand-written file.
+
+   The page is built around a single idea: the work is agent
+   systems — routers, specialists, signals moving between them —
+   so the background is not decoration, it is a diagram of the
+   thing. Everything else stays quiet so that one element can be
+   loud.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Tokens ─────────────────────────────────────────────────
+   Dark is the intended world here; light is a real second
+   design, not an inversion. Every colour is defined on bare
+   :root first so the un-stamped (system) state always resolves.
    ─────────────────────────────────────────────────────────── */
 :root{
-  --paper:#fbfaf7;
-  --raise:#ffffff;
-  --ink:#171614;
-  --ink-2:#45423c;
-  --ink-3:#7d7970;
-  --rule:#e5e1d8;
-  --rule-2:#cfc9bc;
-  --tint:#f3f0e8;
-  --accent:#9c3b12;
-  --accent-soft:rgba(156,59,18,.10);
+  /* light */
+  --void:#f4f5f7;
+  --panel:#ffffff;
+  --panel-2:#eceef2;
+  --ink:#0d1016;
+  --ink-2:#414855;
+  --ink-3:#767e8d;
+  --rule:#dde0e6;
+  --rule-2:#c4c9d2;
+  --accent:#a35c00;
+  --accent-hot:#ff8a00;
+  --signal:#0d7f96;
 
-  --serif:'Newsreader',Iowan Old Style,Georgia,'Times New Roman',serif;
-  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* canvas reads these */
+  --node:#0d1016;
+  --edge:#0d1016;
+  --node-a:0.22;
+  --edge-a:0.09;
 
-  --measure:660px;
-  --rail:132px;
-  --gap:52px;
-  --shell:calc(var(--rail)*2 + var(--gap)*2 + var(--measure));
-  --pad:clamp(22px,5vw,40px);
+  --display:'Syne',ui-sans-serif,system-ui,sans-serif;
+  --sans:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 
-  color-scheme:light;
+  --shell:1140px;
+  --pad:clamp(20px,5vw,44px);
 }
+
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#0f0f0e;
-    --raise:#141412;
-    --ink:#ebe8e1;
-    --ink-2:#b7b3aa;
-    --ink-3:#7f7b72;
-    --rule:#272621;
-    --rule-2:#3b3933;
-    --tint:#1a1916;
-    --accent:#e0824f;
-    --accent-soft:rgba(224,130,79,.12);
-    color-scheme:dark;
+    --void:#070910;
+    --panel:#0d1017;
+    --panel-2:#141822;
+    --ink:#eef1f6;
+    --ink-2:#a3abbb;
+    --ink-3:#69718100;
+    --ink-3:#697181;
+    --rule:#1b202b;
+    --rule-2:#2a313f;
+    --accent:#ffa92e;
+    --accent-hot:#ffc061;
+    --signal:#3dd6f5;
+
+    --node:#ffa92e;
+    --edge:#8fa0bd;
+    --node-a:0.55;
+    --edge-a:0.13;
   }
 }
+
 :root[data-theme="dark"]{
-  --paper:#0f0f0e;
-  --raise:#141412;
-  --ink:#ebe8e1;
-  --ink-2:#b7b3aa;
-  --ink-3:#7f7b72;
-  --rule:#272621;
-  --rule-2:#3b3933;
-  --tint:#1a1916;
-  --accent:#e0824f;
-  --accent-soft:rgba(224,130,79,.12);
-  color-scheme:dark;
+  --void:#070910;
+  --panel:#0d1017;
+  --panel-2:#141822;
+  --ink:#eef1f6;
+  --ink-2:#a3abbb;
+  --ink-3:#697181;
+  --rule:#1b202b;
+  --rule-2:#2a313f;
+  --accent:#ffa92e;
+  --accent-hot:#ffc061;
+  --signal:#3dd6f5;
+
+  --node:#ffa92e;
+  --edge:#8fa0bd;
+  --node-a:0.55;
+  --edge-a:0.13;
 }
 
-/* ───────────────────────────────────────────────────────────
-   2. Base
-   ─────────────────────────────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
 body{
-  margin:0;
-  background:var(--paper);
+  background:var(--void);
   color:var(--ink);
-  font-family:var(--serif);
-  font-size:19px;
+  font-family:var(--sans);
+  font-size:17px;
   line-height:1.62;
-  font-optical-sizing:auto;
-  font-variant-numeric:tabular-nums;
   -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-h1,h2,h3,h4,p,ul,ol,figure{margin:0}
-ul{padding:0;list-style:none}
-a{color:inherit}
-::selection{background:var(--accent-soft)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-hr{border:0;border-top:1px solid var(--rule);margin:0}
-
-/* prose links: the only underlines on the page */
-.p a,p a{
-  text-decoration:underline;
-  text-decoration-thickness:1px;
-  text-underline-offset:3px;
-  text-decoration-color:var(--rule-2);
-  transition:text-decoration-color .18s,color .18s;
-}
-.p a:hover,p a:hover{color:var(--accent);text-decoration-color:var(--accent)}
-
-/* standalone links: mono, ruled */
-.lk{
-  font-family:var(--mono);
-  font-size:13px;
-  letter-spacing:.01em;
-  text-decoration:none;
-  color:var(--ink-2);
-  border-bottom:1px solid var(--rule-2);
-  padding-bottom:2px;
-  transition:color .18s,border-color .18s;
-  white-space:nowrap;
-}
-.lk:hover{color:var(--accent);border-color:var(--accent)}
-.lk .ar{display:inline-block;font-size:11px;transform:translateY(-1px);margin-left:3px}
-
-.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink-3)}
-.tag{
-  font-family:var(--mono);font-size:11px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--ink-3);
+  overflow-x:hidden;
 }
 
-/* ───────────────────────────────────────────────────────────
-   3. Shell + the hanging margin grid
+/* ── The diagram ────────────────────────────────────────────
+   Fixed behind everything, painted by canvas. Sits at z -2 so
+   the wash below it can lift text off the busiest regions.
    ─────────────────────────────────────────────────────────── */
+#net{
+  position:fixed;inset:0;z-index:-2;
+  width:100%;height:100%;
+  display:block;
+}
+/* Keeps long-form text readable wherever the graph gets dense. */
+.wash{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(120% 65% at 50% 0%, transparent 0%, var(--void) 78%),
+    linear-gradient(to bottom, transparent 0%, var(--void) 62%);
+}
+
 .shell{max-width:var(--shell);margin:0 auto;padding-inline:var(--pad)}
 
-/* One grid for the whole page: a hanging label rail, the text column, and an
-   empty counterweight so the text — not the layout — sits on centre. */
-.grid{
-  display:grid;
-  grid-template-columns:var(--rail) minmax(0,var(--measure)) var(--rail);
-  column-gap:var(--gap);
-}
-.grid > .rail{grid-column:1;text-align:right}
-.grid > .body{grid-column:2;min-width:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
-.block{
-  padding-block:clamp(48px,7vw,76px);
-  border-top:1px solid var(--rule);
-  scroll-margin-top:86px;
-}
-.block > .rail{position:sticky;top:84px;align-self:start;padding-top:6px}
-
-@media (max-width:960px){
-  .shell{max-width:var(--measure)}
-  .grid{grid-template-columns:minmax(0,1fr);row-gap:18px}
-  .grid > .rail,.grid > .body{grid-column:1}
-  .block > .rail{position:static;text-align:left;padding-top:0}
-}
-
-/* ───────────────────────────────────────────────────────────
-   4. Top bar
-   ─────────────────────────────────────────────────────────── */
+/* ── Bar ───────────────────────────────────────────────────── */
 .bar{
-  position:sticky;top:0;z-index:40;
-  background:var(--paper);
-  background:color-mix(in srgb,var(--paper) 86%,transparent);
-  backdrop-filter:saturate(180%) blur(8px);
-  -webkit-backdrop-filter:saturate(180%) blur(8px);
+  position:sticky;top:0;z-index:60;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid transparent;
-  transition:border-color .3s;
+  transition:border-color .25s, background .25s;
 }
-.bar.stuck{border-bottom-color:var(--rule)}
-.bar .in{max-width:var(--shell);margin:0 auto;padding:0 var(--pad)}
-.bar .body{
-  height:54px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+.bar.stuck{border-bottom-color:var(--rule);background:color-mix(in srgb, var(--void) 82%, transparent)}
+.bar .in{
+  max-width:var(--shell);margin:0 auto;padding-inline:var(--pad);
+  height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-.bar .home{
-  font-family:var(--mono);font-size:13px;text-decoration:none;color:var(--ink);
-  display:flex;align-items:baseline;gap:8px;
+.home{
+  font-family:var(--mono);font-size:13px;letter-spacing:.02em;
+  text-decoration:none;display:inline-flex;align-items:center;gap:9px;
 }
-.bar .home .mk{color:var(--accent)}
-.bar nav{display:flex;align-items:center;gap:4px}
+.home .led{
+  width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
+  animation:pulse 2.6s ease-out infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent)}
+  70%{box-shadow:0 0 0 9px transparent}
+  100%{box-shadow:0 0 0 0 transparent}
+}
+.bar nav{display:flex;align-items:center;gap:22px}
 .bar nav a{
   font-family:var(--mono);font-size:12.5px;color:var(--ink-3);
-  text-decoration:none;padding:6px 9px;border-radius:4px;
-  transition:color .18s,background .18s;
+  text-decoration:none;transition:color .18s;
 }
-.bar nav a:hover{color:var(--ink);background:var(--tint)}
-.bar nav a[aria-current="true"]{color:var(--ink)}
-.bar nav a[aria-current="true"]::before{content:"·\00a0";color:var(--accent)}
-@media (max-width:720px){.bar nav a:not(.keep){display:none}}
+.bar nav a:hover{color:var(--ink)}
+.bar nav a[aria-current]{color:var(--accent)}
+@media (max-width:720px){ .bar nav a:not(.keep){display:none} }
 
 .tt{
-  appearance:none;background:none;border:1px solid var(--rule);
-  width:30px;height:30px;border-radius:5px;cursor:pointer;
-  display:grid;place-items:center;color:var(--ink-2);margin-left:6px;
-  transition:border-color .18s,color .18s,background .18s;
+  appearance:none;background:none;border:1px solid var(--rule);border-radius:6px;
+  width:31px;height:31px;display:grid;place-items:center;cursor:pointer;
+  color:var(--ink-3);transition:.18s;
 }
-.tt:hover{color:var(--accent);border-color:var(--rule-2);background:var(--tint)}
-.tt svg{width:14px;height:14px;display:block}
-.tt .moon{display:none}
-:root[data-theme="dark"] .tt .sun{display:none}
-:root[data-theme="dark"] .tt .moon{display:block}
+.tt:hover{color:var(--accent);border-color:var(--rule-2)}
+.tt svg{width:15px;height:15px}
+:root[data-theme="dark"] .tt .moon,.tt .moon{display:none}
+:root[data-theme="dark"] .tt .sun,.tt .sun{display:block}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]) .tt .sun{display:none}
   :root:not([data-theme="light"]) .tt .moon{display:block}
 }
+:root[data-theme="dark"] .tt .sun{display:none}
+:root[data-theme="dark"] .tt .moon{display:block}
 
-/* ───────────────────────────────────────────────────────────
-   5. Masthead
-   ─────────────────────────────────────────────────────────── */
-.mast{padding-block:clamp(56px,10vw,104px) clamp(40px,6vw,64px)}
-.mast .kicker{display:flex;align-items:center;gap:10px;margin-bottom:26px}
-.mast .kicker .dot{
-  width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;
-}
-.mast h1{
-  font-weight:400;
-  font-size:clamp(36px,5.6vw,62px);
-  line-height:1.08;
-  letter-spacing:-.019em;
-  text-wrap:balance;
-}
-.mast h1 em{font-style:italic;font-weight:300}
-.mast .lede{
-  margin-top:24px;
-  font-size:clamp(19px,2.2vw,21.5px);
-  line-height:1.58;
-  color:var(--ink-2);
-  max-width:34em;
-  text-wrap:pretty;
-}
-.mast .lede strong{font-weight:600;color:var(--ink)}
-.mast .links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:32px}
-
-/* ───────────────────────────────────────────────────────────
-   6. Typography inside blocks
-   ─────────────────────────────────────────────────────────── */
-.body > * + *{margin-top:20px}
-.body p{color:var(--ink-2);text-wrap:pretty}
-.body p strong{font-weight:600;color:var(--ink)}
-.lead-note{font-size:20px;color:var(--ink)!important}
-
-.rail .tag{display:block;line-height:1.5}
-.rail .n{
-  display:block;font-family:var(--mono);font-size:11px;
-  color:var(--rule-2);margin-bottom:6px;letter-spacing:.1em;
-}
-
-/* ───────────────────────────────────────────────────────────
-   7. Work entries
-   ─────────────────────────────────────────────────────────── */
-.entry{
-  display:block;text-decoration:none;color:inherit;
-  padding:26px 0;border-top:1px solid var(--rule);
+/* ── Masthead ──────────────────────────────────────────────── */
+.mast{
+  padding-block:clamp(72px,15vh,150px) clamp(64px,11vh,120px);
   position:relative;
 }
-.entry:first-child{border-top:0;padding-top:4px}
-.entry .head{
-  display:flex;align-items:baseline;justify-content:space-between;
-  gap:16px;margin-bottom:4px;
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);display:flex;align-items:center;gap:12px;margin-bottom:26px;
 }
+.eyebrow::after{content:"";height:1px;flex:1;max-width:190px;background:var(--rule)}
+
+h1{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(40px,8.2vw,92px);
+  line-height:.98;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+  max-width:16ch;
+}
+h1 .lit{
+  color:var(--accent);
+  position:relative;
+  white-space:nowrap;
+}
+
+.lede{
+  margin-top:30px;max-width:60ch;
+  font-size:clamp(17px,2vw,20px);
+  color:var(--ink-2);line-height:1.62;
+}
+.lede strong{color:var(--ink);font-weight:600}
+
+.links{display:flex;flex-wrap:wrap;gap:11px;margin-top:36px}
+.lk{
+  font-family:var(--mono);font-size:12.5px;
+  text-decoration:none;color:var(--ink-2);
+  border:1px solid var(--rule);border-radius:7px;
+  padding:8px 13px;
+  display:inline-flex;align-items:center;gap:7px;
+  background:color-mix(in srgb, var(--panel) 55%, transparent);
+  transition:color .18s,border-color .18s,transform .18s,background .18s;
+}
+.lk:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+.lk .ar{opacity:.55;font-size:10px}
+
+/* ── Sections ──────────────────────────────────────────────── */
+.block{padding-block:clamp(56px,9vw,96px);border-top:1px solid var(--rule)}
+.label{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:32px;display:flex;align-items:center;gap:12px;
+}
+.label::before{content:"";width:22px;height:1px;background:var(--accent)}
+
+h2{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(26px,4vw,40px);letter-spacing:-.025em;line-height:1.06;
+  margin-bottom:34px;text-wrap:balance;max-width:22ch;
+}
+
+/* ── Work ──────────────────────────────────────────────────── */
+.entries{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.entry{
+  background:color-mix(in srgb, var(--panel) 72%, transparent);
+  padding:clamp(22px,3.4vw,34px);
+  transition:background .22s;
+  position:relative;
+}
+.entry:hover{background:var(--panel)}
+.entry::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--accent);transform:scaleY(0);transform-origin:top;
+  transition:transform .3s ease;
+}
+.entry:hover::before{transform:scaleY(1)}
+
+.entry .top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .entry h3{
-  font-size:25px;font-weight:500;letter-spacing:-.012em;line-height:1.2;
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(21px,2.9vw,29px);letter-spacing:-.022em;line-height:1.1;
 }
-.entry .yr{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);flex:none}
+.entry .yr{font-family:var(--mono);font-size:12px;color:var(--ink-3);flex:none}
 .entry .sub{
-  font-family:var(--mono);font-size:12.5px;color:var(--accent);
-  margin-bottom:12px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.03em;
+  color:var(--accent);margin-top:9px;
 }
-.entry p{color:var(--ink-2);font-size:18px;line-height:1.6}
+.entry p.body{margin-top:15px;color:var(--ink-2);max-width:70ch;font-size:16.5px}
 .entry .made{
-  font-family:var(--mono);font-size:12.5px;color:var(--ink-2);
-  margin-top:14px;line-height:1.8;
-}
-.entry .made b{
-  font-weight:400;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  margin-top:17px;font-family:var(--mono);font-size:11.5px;line-height:1.85;
   color:var(--ink-3);
 }
-.entry .out{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:16px}
-
-/* ───────────────────────────────────────────────────────────
-   8. Experience
-   ─────────────────────────────────────────────────────────── */
-.role{padding:24px 0;border-top:1px solid var(--rule)}
-.role:first-child{border-top:0;padding-top:4px}
-.role .head{
-  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+.entry .made b{
+  font-weight:400;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--ink-3);opacity:.72;margin-right:6px;
 }
-.role h3{font-size:21px;font-weight:500;letter-spacing:-.008em}
+.entry .out{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+
+/* ── Experience ────────────────────────────────────────────── */
+.roles{display:grid}
+.role{
+  padding:22px 0;border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px;align-items:baseline;
+}
+.role:first-child{border-top:0;padding-top:0}
+.role h3{font-family:var(--display);font-weight:600;font-size:19.5px;letter-spacing:-.015em}
 .role h3 .org{color:var(--ink-3);font-weight:400}
 .role h3 a{text-decoration:none;border-bottom:1px solid var(--rule-2);transition:.18s}
 .role h3 a:hover{color:var(--accent);border-color:var(--accent)}
-.role .yr{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);flex:none}
-.role p{margin-top:10px;color:var(--ink-2);font-size:18px}
-.role .made{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);margin-top:12px}
+.role .yr{font-family:var(--mono);font-size:12px;color:var(--ink-3);text-align:right}
+.role p{grid-column:1/-1;margin-top:6px;color:var(--ink-2);font-size:16.5px;max-width:70ch}
+.role .made{grid-column:1/-1;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:10px}
+@media (max-width:560px){
+  .role{grid-template-columns:minmax(0,1fr)}
+  .role .yr{text-align:left}
+}
 
-/* ───────────────────────────────────────────────────────────
-   9. Stack — a definition list, not a chip cloud
-   ─────────────────────────────────────────────────────────── */
-.dl{display:grid;grid-template-columns:120px minmax(0,1fr);gap:0}
+/* ── Stack ─────────────────────────────────────────────────── */
+.dl{display:grid;grid-template-columns:132px minmax(0,1fr)}
 .dl dt{
-  font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink-3);padding:13px 16px 13px 0;border-top:1px solid var(--rule);
-  line-height:1.7;
+  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);padding:14px 18px 14px 0;border-top:1px solid var(--rule);line-height:1.75;
 }
 .dl dd{
-  margin:0;padding:13px 0;border-top:1px solid var(--rule);
-  color:var(--ink-2);font-size:17.5px;line-height:1.62;
+  margin:0;padding:14px 0;border-top:1px solid var(--rule);
+  color:var(--ink-2);font-size:16.5px;line-height:1.65;
 }
 .dl dt:first-of-type,.dl dd:first-of-type{border-top:0}
-@media (max-width:560px){
+@media (max-width:600px){
   .dl{grid-template-columns:minmax(0,1fr)}
-  .dl dt{padding:16px 0 2px;border-top:1px solid var(--rule)}
+  .dl dt{padding:16px 0 3px}
   .dl dd{padding:0 0 16px;border-top:0}
   .dl dd:first-of-type{border-top:0}
 }
 
-/* ───────────────────────────────────────────────────────────
-   10. Background list
-   ─────────────────────────────────────────────────────────── */
-.facts{display:grid;gap:0}
+/* ── Background ────────────────────────────────────────────── */
+.facts{display:grid;list-style:none}
 .facts li{
-  display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;
-  padding:14px 0;border-top:1px solid var(--rule);
-  color:var(--ink-2);font-size:17.5px;line-height:1.6;
+  display:grid;grid-template-columns:132px minmax(0,1fr);gap:18px;
+  padding:15px 0;border-top:1px solid var(--rule);
+  color:var(--ink-2);font-size:16.5px;line-height:1.62;
 }
 .facts li:first-child{border-top:0}
 .facts li .k{
-  font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink-3);padding-top:5px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);padding-top:5px;
 }
 .facts li b{font-weight:600;color:var(--ink)}
+.facts a{color:var(--ink);text-decoration-color:var(--rule-2);text-underline-offset:3px}
+.facts a:hover{color:var(--accent)}
 @media (max-width:560px){
-  .facts li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .facts li{grid-template-columns:minmax(0,1fr);gap:3px}
   .facts li .k{padding-top:0}
 }
 
-/* ───────────────────────────────────────────────────────────
-   11. Contact + footer
-   ─────────────────────────────────────────────────────────── */
-.mailrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
+/* ── Contact ───────────────────────────────────────────────── */
+.note{color:var(--ink-2);max-width:62ch;font-size:16.5px}
+.mailrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
 .mailto{
-  font-size:clamp(23px,3.6vw,32px);font-weight:400;letter-spacing:-.015em;
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(21px,4vw,38px);letter-spacing:-.03em;
   text-decoration:none;color:var(--ink);
-  border-bottom:1px solid var(--rule-2);padding-bottom:3px;
+  border-bottom:2px solid var(--rule-2);padding-bottom:2px;
   transition:color .18s,border-color .18s;
+  word-break:break-all;
 }
 .mailto:hover{color:var(--accent);border-color:var(--accent)}
 .copy{
-  appearance:none;background:none;border:1px solid var(--rule);border-radius:5px;
-  font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);padding:6px 10px;cursor:pointer;
-  transition:.18s;
+  appearance:none;background:none;border:1px solid var(--rule);border-radius:6px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);padding:7px 11px;cursor:pointer;transition:.18s;flex:none;
 }
-.copy:hover{color:var(--accent);border-color:var(--rule-2);background:var(--tint)}
+.copy:hover{color:var(--accent);border-color:var(--rule-2)}
 .copy.ok{color:var(--accent);border-color:var(--accent)}
 
-.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:34px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:30px;margin-top:42px}
 .cols h4{
-  font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:400;margin-bottom:12px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:400;margin-bottom:13px;
 }
-.cols ul{display:grid;gap:9px}
+.cols ul{display:grid;gap:9px;list-style:none}
 
-footer{border-top:1px solid var(--rule);padding-block:26px 44px;margin-top:8px}
-footer .in{max-width:var(--shell);margin:0 auto;padding-inline:var(--pad)}
-footer .body{
-  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;
+/* ── Footer ────────────────────────────────────────────────── */
+footer{border-top:1px solid var(--rule);padding-block:30px 52px}
+footer .in{
+  max-width:var(--shell);margin:0 auto;padding-inline:var(--pad);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:22px;flex-wrap:wrap;
 }
-.colophon{
-  font-family:var(--mono);font-size:11.5px;line-height:1.85;color:var(--ink-3);
-  max-width:46ch;
+.colophon{font-family:var(--mono);font-size:11.5px;line-height:1.9;color:var(--ink-3);max-width:52ch}
+.colophon a{color:var(--ink-3);text-underline-offset:3px}
+.colophon a:hover{color:var(--accent)}
+.colophon kbd{
+  font-family:var(--mono);font-size:10.5px;border:1px solid var(--rule-2);border-radius:4px;
+  padding:1px 5px;color:var(--ink-2);
 }
-.colophon a{color:var(--ink-3);text-decoration-color:var(--rule-2)}
-.top{
-  font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-decoration:none;
-  transition:color .18s;
-}
-.top:hover{color:var(--accent)}
+.top-link{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-decoration:none;transition:.18s}
+.top-link:hover{color:var(--accent)}
 
-/* ───────────────────────────────────────────────────────────
-   12. Motion — measured, and skippable
-   ─────────────────────────────────────────────────────────── */
-html{scroll-behavior:smooth}
-.rise{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}
+/* ── Motion ────────────────────────────────────────────────── */
+.rise{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .rise.seen{opacity:1;transform:none}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
   .rise{opacity:1;transform:none}
 }
 
 @media print{
-  .bar,.tt,.top,.copy{display:none}
+  #net,.wash,.bar,.tt,.copy,.top-link{display:none}
   body{background:#fff;color:#000;font-size:11pt}
-  .block{page-break-inside:avoid}
+  .block{page-break-inside:avoid;border-top:1px solid #ccc}
 }
 </style>
 </head>
 <body id="top">
 
+<canvas id="net" aria-hidden="true"></canvas>
+<div class="wash" aria-hidden="true"></div>
+
 <div class="bar" id="bar">
-  <div class="in grid">
-   <div class="body">
-    <a class="home" href="#top"><span class="mk">✳</span> Adarsh Bhardwaj</a>
+  <div class="in">
+    <a class="home" href="#top"><span class="led" aria-hidden="true"></span>Adarsh Bhardwaj</a>
     <nav id="nav">
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
       <a href="#stack">Stack</a>
       <a href="#contact" class="keep">Contact</a>
       <button class="tt" id="tt" type="button" aria-label="Switch theme" title="Switch theme — press T">
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.2 8.2 0 1 0 20 14.5Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.2 8.2 0 1 0 20 14.5Z"/></svg>
       </button>
     </nav>
-   </div>
   </div>
 </div>
 
-<!-- ── Masthead ─────────────────────────────────────────── -->
-<header class="mast shell grid">
- <div class="body">
-  <p class="kicker"><span class="dot"></span><span class="tag">Adarsh Bhardwaj — AI Engineer — India</span></p>
+<header class="mast shell">
+  <p class="eyebrow">AI Engineer — India</p>
 
-  <h1>Building AI for the two places a wrong answer actually costs you: <em>money</em> and <em>health</em>.</h1>
+  <h1>Building AI for the two places a wrong answer costs you: <span class="lit">money</span> and <span class="lit">health</span>.</h1>
 
-  <p class="lede">I'm founding <strong>Paisa</strong>, an AI CFO and financial operating
-    system, and I built the vision and diet system behind <strong>NutriScan&nbsp;AI</strong>.
-    Before that I worked on MCP-based agent tooling at MCPfy.ai. I care about the boring
+  <p class="lede">I'm founding <strong>Paisa</strong>, an AI CFO and financial operating system,
+    and I built <strong>NutriScan&nbsp;AI</strong>, a health agent with a clinical safety layer
+    under it. Before that I worked on MCP-based agent tooling at MCPfy.ai. I care about the boring
     part — making the model's answer <em>correct</em>, then making it fast.</p>
 
   <p class="links">
@@ -462,100 +442,101 @@ html{scroll-behavior:smooth}
     <a class="lk" href="https://x.com/adarshdevs" target="_blank" rel="noopener">X<span class="ar">↗</span></a>
     <a class="lk" href="assets/Adarsh-Bhardwaj-Resume.pdf" target="_blank" rel="noopener">Résumé, PDF<span class="ar">↗</span></a>
   </p>
- </div>
 </header>
 
-<!-- ── Work ─────────────────────────────────────────────── -->
-<main class="shell">
+<main>
 
-<section class="block grid rise" id="work">
-  <div class="rail"><span class="n">01</span><span class="tag">Selected work</span></div>
-  <div class="body">
+<section class="block shell rise" id="work">
+  <p class="label">Selected work</p>
+  <h2>Four systems, one rule: the model explains, it does not decide the number.</h2>
+
+  <div class="entries">
 
     <article class="entry">
-      <div class="head">
+      <div class="top">
         <h3>Paisa</h3>
         <span class="yr">2026 — present</span>
       </div>
       <p class="sub">AI CFO &amp; financial operating system</p>
-      <p>Most finance assistants will happily invent a number. Paisa can't — the language
-        model never touches arithmetic. A tested engine computes every figure (expenses, UPI,
-        SIPs, loans, investments, tax) and the model's only job is to explain what the engine
+      <p class="body">Most finance assistants will happily invent a number. Paisa can't — the
+        language model never touches arithmetic. A tested engine computes every figure (expenses,
+        UPI, SIPs, loans, investments, tax) and the model's only job is to explain what the engine
         returned. Above that sit four agents with separate remits — accounting, tax, investing,
         planning — and a router that decides which one should answer. Bank accounts connect
         through secure connectors, so the numbers being explained are real ones.</p>
-      <p class="made"><b>Built with</b> &nbsp;Python · FastAPI · React Native · TypeScript · AWS · Docker · Kubernetes</p>
+      <p class="made"><b>Built with</b>Python · FastAPI · React Native · TypeScript · AWS · Docker · Kubernetes</p>
       <p class="out">
         <a class="lk" href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Repository<span class="ar">↗</span></a>
       </p>
     </article>
 
     <article class="entry">
-      <div class="head">
+      <div class="top">
         <h3>NutriScan AI</h3>
         <span class="yr">2026</span>
       </div>
-      <p class="sub">AI nutrition &amp; health platform — in production</p>
-      <p>Photograph a meal or a label and get the macro and micro breakdown back as structured
-        data you can track against. A vision model reads the plate, an LLM flattens the mess of
-        label formats into one schema, and the meal planner works off that rather than off a
-        guess. Built end to end — models, API, database, mobile app and web client.</p>
-      <p class="made"><b>Built with</b> &nbsp;Python · FastAPI · PyTorch · OpenAI API · LangChain · PostgreSQL · React · React Native · Docker</p>
+      <p class="sub">AI health agent — in production</p>
+      <p class="body">A health assistant, not a diet tracker. Five specialists — doctor,
+        nutrition, fitness, labs and coach — sit behind a supervisor that routes each question to
+        whichever one should own it, and each specialist only sees the slice of the patient record
+        it needs. Underneath the chat is the part that matters: a deterministic triage engine of
+        forty clinical rules that runs <em>before</em> the model reasons, fails closed on error,
+        and can end the turn outright. A model may raise suspicion; nothing can lower a
+        rule-derived verdict. Insights carry their own certainty, derived from sample size rather
+        than asserted, and the nutrition engine computes macros in tested code so the model never
+        invents a number. 156 tests.</p>
+      <p class="made"><b>Built with</b>TypeScript · Next.js · Anthropic &amp; OpenAI APIs · Python · FastAPI · PyTorch · PostgreSQL · React Native · Docker</p>
       <p class="out">
         <a class="lk" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">↗</span></a>
-        <a class="lk" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">App repository<span class="ar">↗</span></a>
-        <a class="lk" href="https://github.com/Adarsh-9182/NutritionScan.in" target="_blank" rel="noopener">Web repository<span class="ar">↗</span></a>
+        <a class="lk" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">Repository<span class="ar">↗</span></a>
       </p>
     </article>
 
     <article class="entry">
-      <div class="head">
+      <div class="top">
         <h3>Agent framework</h3>
         <span class="yr">2025</span>
       </div>
       <p class="sub">Multi-agent orchestration, pulled out of Paisa</p>
-      <p>The scaffolding underneath Paisa's agents, extracted to stand on its own: role-scoped
-        agents, tool calling, an intent router that maps a question to the agent that should own
-        it, and outputs strict enough that the rest of the system can depend on them instead of
-        re-parsing prose.</p>
-      <p class="made"><b>Built with</b> &nbsp;Python · LangChain · tool calling · JSON schema</p>
+      <p class="body">The scaffolding underneath Paisa's agents, extracted to stand on its own:
+        role-scoped agents, tool calling, an intent router that maps a question to the agent that
+        should own it, and outputs strict enough that the rest of the system can depend on them
+        instead of re-parsing prose.</p>
+      <p class="made"><b>Built with</b>Python · LangChain · tool calling · JSON schema</p>
     </article>
 
     <article class="entry">
-      <div class="head">
+      <div class="top">
         <h3>RAG financial assistant</h3>
         <span class="yr">2025</span>
       </div>
-      <p>Question answering over statements and filings. Ingestion and chunking tuned for tables
-        rather than paragraphs, embeddings into a vector store, and answers that cite the row they
-        came from. The citation is the whole point — an unsourced number is worse than no answer.</p>
-      <p class="made"><b>Built with</b> &nbsp;Python · embeddings · vector search · LangChain · PostgreSQL</p>
+      <p class="sub">Question answering over statements and filings</p>
+      <p class="body">Ingestion and chunking tuned for tables rather than paragraphs, embeddings
+        into a vector store, and answers that cite the row they came from. The citation is the
+        whole point — an unsourced number is worse than no answer.</p>
+      <p class="made"><b>Built with</b>Python · embeddings · vector search · LangChain · PostgreSQL</p>
     </article>
 
   </div>
 </section>
 
-<!-- ── Experience ───────────────────────────────────────── -->
-<section class="block grid rise" id="experience">
-  <div class="rail"><span class="n">02</span><span class="tag">Experience</span></div>
-  <div class="body">
+<section class="block shell rise" id="experience">
+  <p class="label">Experience</p>
+
+  <div class="roles">
 
     <div class="role">
-      <div class="head">
-        <h3>Founder &amp; AI Engineer, <a href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Paisa</a></h3>
-        <span class="yr">2026 —</span>
-      </div>
-      <p>Building the product and the company. Agent architecture, secure bank integrations,
-        the financial modules, the backend and the deploy pipeline — and presenting the whole
-        thing to mentors and investors.</p>
+      <h3>Founder &amp; AI Engineer, <a href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Paisa</a></h3>
+      <span class="yr">2026 —</span>
+      <p>Building the product and the company. Agent architecture, secure bank integrations, the
+        financial modules, the backend and the deploy pipeline — and presenting the whole thing to
+        mentors and investors.</p>
       <p class="made">Python · FastAPI · JavaScript · AWS · Docker · Kubernetes</p>
     </div>
 
     <div class="role">
-      <div class="head">
-        <h3>AI Engineer, <span class="org">MCPfy.ai</span></h3>
-        <span class="yr">Internship</span>
-      </div>
+      <h3>AI Engineer, <span class="org">MCPfy.ai</span></h3>
+      <span class="yr">Internship</span>
       <p>MCP-based developer tooling. Built and integrated the APIs that agent workflows ran on,
         chased down reliability bugs, and tested the integrations other people's agents depended
         on.</p>
@@ -563,20 +544,17 @@ html{scroll-behavior:smooth}
     </div>
 
     <div class="role">
-      <div class="head">
-        <h3>AI Engineer, <a href="https://www.nutritiscan.com" target="_blank" rel="noopener">NutriScan AI</a></h3>
-        <span class="yr">Health</span>
-      </div>
-      <p>Owned the nutrition system: food-image analysis returning calories, protein and macros,
-        and personalised meal and diet planning built on top of it.</p>
-      <p class="made">Python · FastAPI · PyTorch · OpenAI API · LangChain · PostgreSQL · React</p>
+      <h3>AI Engineer, <a href="https://www.nutritiscan.com" target="_blank" rel="noopener">NutriScan AI</a></h3>
+      <span class="yr">Health</span>
+      <p>Built the health agent end to end: the specialist roster and the supervisor that routes
+        between them, the clinical safety layer — deterministic triage, structured clinical state,
+        fail-closed escalation — and the food-image and nutrition analysis it reasons over.</p>
+      <p class="made">TypeScript · Next.js · Anthropic API · Python · FastAPI · PyTorch · PostgreSQL · React</p>
     </div>
 
     <div class="role">
-      <div class="head">
-        <h3>Open source contributor</h3>
-        <span class="yr">Ongoing</span>
-      </div>
+      <h3>Open source contributor</h3>
+      <span class="yr">Ongoing</span>
       <p>Features, bug fixes, documentation and performance work across AI/ML and developer
         tooling — mostly Python, JavaScript and agent frameworks.</p>
       <p class="made">GitHub · Hugging Face · LangChain</p>
@@ -585,91 +563,86 @@ html{scroll-behavior:smooth}
   </div>
 </section>
 
-<!-- ── Stack ────────────────────────────────────────────── -->
-<section class="block grid rise" id="stack">
-  <div class="rail"><span class="n">03</span><span class="tag">Stack</span></div>
-  <div class="body">
-    <dl class="dl">
-      <dt>Languages</dt>
-      <dd>Python, TypeScript, JavaScript, Java, C++, SQL</dd>
+<section class="block shell rise" id="stack">
+  <p class="label">Stack</p>
 
-      <dt>AI &amp; LLM</dt>
-      <dd>LangChain, OpenAI API, Anthropic, MCP, prompt design, tool calling, structured output</dd>
+  <dl class="dl">
+    <dt>Languages</dt>
+    <dd>Python, TypeScript, JavaScript, Java, C++, SQL</dd>
 
-      <dt>Agents &amp; RAG</dt>
-      <dd>Multi-agent orchestration, retrieval pipelines, vector search, embeddings, intent routing, text-to-SQL, grounded generation</dd>
+    <dt>AI &amp; LLM</dt>
+    <dd>LangChain, OpenAI API, Anthropic, MCP, prompt design, tool calling, structured output</dd>
 
-      <dt>ML</dt>
-      <dd>PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, Streamlit</dd>
+    <dt>Agents &amp; RAG</dt>
+    <dd>Multi-agent orchestration, retrieval pipelines, vector search, embeddings, intent routing, text-to-SQL, grounded generation</dd>
 
-      <dt>Backend</dt>
-      <dd>FastAPI, Django, Node.js, Express, REST, GraphQL, WebSockets</dd>
+    <dt>ML</dt>
+    <dd>PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, Streamlit</dd>
 
-      <dt>Frontend</dt>
-      <dd>React, Next.js, React Native, Expo</dd>
+    <dt>Backend</dt>
+    <dd>FastAPI, Django, Node.js, Express, REST, GraphQL, WebSockets</dd>
 
-      <dt>Data</dt>
-      <dd>PostgreSQL, MongoDB, Redis, DynamoDB, vector databases</dd>
+    <dt>Frontend</dt>
+    <dd>React, Next.js, React Native, Expo</dd>
 
-      <dt>Infra</dt>
-      <dd>AWS, GCP, Lambda, Docker, Kubernetes, GitHub Actions, Jenkins, CI/CD</dd>
+    <dt>Data</dt>
+    <dd>PostgreSQL, MongoDB, Redis, DynamoDB, vector databases</dd>
 
-      <dt>Practice</dt>
-      <dd>Git, testing, monitoring, code review, Agile, Jira</dd>
-    </dl>
-  </div>
+    <dt>Infra</dt>
+    <dd>AWS, GCP, Lambda, Docker, Kubernetes, GitHub Actions, Jenkins, CI/CD</dd>
+
+    <dt>Practice</dt>
+    <dd>Git, testing, monitoring, code review, Agile, Jira</dd>
+  </dl>
 </section>
 
-<!-- ── Background ───────────────────────────────────────── -->
-<section class="block grid rise" id="background">
-  <div class="rail"><span class="n">04</span><span class="tag">Background</span></div>
-  <div class="body">
-    <ul class="facts">
-      <li><span class="k">Education</span>
-        <span><b>Bachelor of Arts, English Honours</b> — IGNOU, distance learning, 2024–2027.
-          I taught myself the engineering; the degree is the other half of the day.</span></li>
-      <li><span class="k">Exams</span>
-        <span>Appeared in <b>JEE Advanced</b>.</span></li>
-      <li><span class="k">Study</span>
-        <span>Coursework in <b>solutions architecture</b>, <b>AI/ML</b> and <b>agentic AI</b>.</span></li>
-      <li><span class="k">Talks</span>
-        <span>Presented <b>Paisa</b> to mentors, investors and peers.</span></li>
-      <li><span class="k">Elsewhere</span>
-        <span>Contributing on <a href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub</a>,
-          Hugging Face and to LangChain-adjacent agent tooling.</span></li>
-    </ul>
-  </div>
+<section class="block shell rise" id="background">
+  <p class="label">Background</p>
+
+  <ul class="facts">
+    <li><span class="k">Education</span>
+      <span><b>Bachelor of Arts, English Honours</b> — IGNOU, distance learning, 2024–2027.
+        I taught myself the engineering; the degree is the other half of the day.</span></li>
+    <li><span class="k">Exams</span>
+      <span>Appeared in <b>JEE Advanced</b>.</span></li>
+    <li><span class="k">Study</span>
+      <span>Coursework in <b>solutions architecture</b>, <b>AI/ML</b> and <b>agentic AI</b>.</span></li>
+    <li><span class="k">Talks</span>
+      <span>Presented <b>Paisa</b> to mentors, investors and peers.</span></li>
+    <li><span class="k">Elsewhere</span>
+      <span>Contributing on <a href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub</a>,
+        Hugging Face and to LangChain-adjacent agent tooling.</span></li>
+  </ul>
 </section>
 
-<!-- ── Contact ──────────────────────────────────────────── -->
-<section class="block grid rise" id="contact">
-  <div class="rail"><span class="n">05</span><span class="tag">Contact</span></div>
-  <div class="body">
-    <p class="lead-note">Email is the fastest way to reach me. I'm open to AI engineering
-      roles, contract work, and conversations about agents or retrieval that aren't a pitch.</p>
+<section class="block shell rise" id="contact">
+  <p class="label">Contact</p>
+  <h2>Open to AI engineering roles and contract work.</h2>
 
-    <p class="mailrow">
-      <a class="mailto" href="mailto:adarshbhardwaj9182@gmail.com">adarshbhardwaj9182@gmail.com</a>
-      <button class="copy" id="copy" type="button" data-mail="adarshbhardwaj9182@gmail.com">Copy</button>
-    </p>
+  <p class="note">Email is the fastest way to reach me. Happy to talk about agents or retrieval
+    even when it isn't a pitch.</p>
 
-    <div class="cols">
-      <div>
-        <h4>Elsewhere</h4>
-        <ul>
-          <li><a class="lk" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub<span class="ar">↗</span></a></li>
-          <li><a class="lk" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">LinkedIn<span class="ar">↗</span></a></li>
-          <li><a class="lk" href="https://x.com/adarshdevs" target="_blank" rel="noopener">X / Twitter<span class="ar">↗</span></a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Files &amp; products</h4>
-        <ul>
-          <li><a class="lk" href="assets/Adarsh-Bhardwaj-Resume.pdf" target="_blank" rel="noopener">Résumé, PDF<span class="ar">↗</span></a></li>
-          <li><a class="lk" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">↗</span></a></li>
-          <li><a class="lk" href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Paisa repository<span class="ar">↗</span></a></li>
-        </ul>
-      </div>
+  <p class="mailrow">
+    <a class="mailto" href="mailto:adarshbhardwaj9182@gmail.com">adarshbhardwaj9182@gmail.com</a>
+    <button class="copy" id="copy" type="button" data-mail="adarshbhardwaj9182@gmail.com">Copy</button>
+  </p>
+
+  <div class="cols">
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a class="lk" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub<span class="ar">↗</span></a></li>
+        <li><a class="lk" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">LinkedIn<span class="ar">↗</span></a></li>
+        <li><a class="lk" href="https://x.com/adarshdevs" target="_blank" rel="noopener">X / Twitter<span class="ar">↗</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Files &amp; products</h4>
+      <ul>
+        <li><a class="lk" href="assets/Adarsh-Bhardwaj-Resume.pdf" target="_blank" rel="noopener">Résumé, PDF<span class="ar">↗</span></a></li>
+        <li><a class="lk" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">↗</span></a></li>
+        <li><a class="lk" href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Paisa repository<span class="ar">↗</span></a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -677,16 +650,14 @@ html{scroll-behavior:smooth}
 </main>
 
 <footer>
-  <div class="in grid">
-   <div class="body">
+  <div class="in">
     <p class="colophon">
-      Set in Newsreader and IBM Plex Mono. One hand-written HTML file — no framework, no build
-      step, no analytics. <a href="https://github.com/Adarsh-9182/Adarsh.ai" target="_blank" rel="noopener">Source</a>.
-      Press <b>T</b> to change the theme.<br />
+      Set in Syne, Instrument Sans and JetBrains Mono. One hand-written HTML file — no framework,
+      no build step, no analytics. <a href="https://github.com/Adarsh-9182/Adarsh.ai" target="_blank" rel="noopener">Source</a>.
+      Press <kbd>T</kbd> to change the theme.<br />
       © <span id="yr">2026</span> Adarsh Bhardwaj.
     </p>
-    <a class="top" href="#top">Back to top ↑</a>
-   </div>
+    <a class="top-link" href="#top">Back to top ↑</a>
   </div>
 </footer>
 
@@ -694,8 +665,10 @@ html{scroll-behavior:smooth}
 (function () {
   "use strict";
   var root = document.documentElement;
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* Theme — system by default, an explicit choice wins and is remembered. */
+  /* ── Theme ───────────────────────────────────────────────
+     System by default; an explicit choice wins and is kept. */
   function current() {
     return root.dataset.theme ||
       (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -703,7 +676,13 @@ html{scroll-behavior:smooth}
   function setTheme(next) {
     root.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch (e) {}
+    readPalette();
   }
+  try {
+    var saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+  } catch (e) {}
+
   document.getElementById('tt').addEventListener('click', function () {
     setTheme(current() === 'dark' ? 'light' : 'dark');
   });
@@ -711,13 +690,212 @@ html{scroll-behavior:smooth}
     if (e.key !== 't' && e.key !== 'T') return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     var el = document.activeElement;
-    if (el && /input|textarea|select/i.test(el.tagName)) return;
+    if (el && /input|textarea|select|button/i.test(el.tagName)) return;
     setTheme(current() === 'dark' ? 'light' : 'dark');
   });
 
-  /* Hairline under the bar, only once the page has moved. */
+  /* ── The diagram ─────────────────────────────────────────
+     A routing graph: nodes hold, edges carry, pulses travel
+     one hop at a time and pick their next edge at the node —
+     which is what the router in Paisa actually does. The
+     drawing is cheap on purpose: no shadows, no gradients per
+     frame, and it stops entirely when the tab is hidden.
+     ──────────────────────────────────────────────────────── */
+  var canvas = document.getElementById('net');
+  var ctx = canvas.getContext('2d', { alpha: true });
+
+  var nodes = [], edges = [], pulses = [];
+  var W = 0, H = 0, dpr = 1;
+  var pointer = { x: -9e9, y: -9e9 };
+  var palette = { node: '#000', edge: '#000', nodeA: 0.3, edgeA: 0.1, accent: '#f90' };
+
+  /* Colours live in CSS so the two themes stay in one place. */
+  function readPalette() {
+    var s = getComputedStyle(root);
+    palette.node = s.getPropertyValue('--node').trim() || '#000';
+    palette.edge = s.getPropertyValue('--edge').trim() || '#000';
+    palette.accent = s.getPropertyValue('--accent').trim() || '#f90';
+    palette.nodeA = parseFloat(s.getPropertyValue('--node-a')) || 0.3;
+    palette.edgeA = parseFloat(s.getPropertyValue('--edge-a')) || 0.1;
+  }
+
+  function build() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    /* Jittered grid — even coverage without the regularity reading
+       as wallpaper. Density drops on small screens so phones stay
+       smooth and the text stays the loudest thing on the page. */
+    var step = W < 640 ? 132 : W < 1100 ? 116 : 104;
+    var cols = Math.ceil(W / step) + 1;
+    var rows = Math.ceil(H / step) + 1;
+
+    nodes = [];
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        nodes.push({
+          hx: c * step + (Math.random() - 0.5) * step * 0.62,
+          hy: r * step + (Math.random() - 0.5) * step * 0.62,
+          x: 0, y: 0,
+          r: Math.random() < 0.13 ? 2.4 : 1.25,   /* a few hubs read larger */
+          ph: Math.random() * Math.PI * 2,
+          sp: 0.28 + Math.random() * 0.5,
+          links: []
+        });
+      }
+    }
+    nodes.forEach(function (n) { n.x = n.hx; n.y = n.hy; });
+
+    /* Connect near neighbours only; long edges make it look like
+       noise rather than a network. */
+    var reach = step * 1.32;
+    edges = [];
+    for (var i = 0; i < nodes.length; i++) {
+      for (var j = i + 1; j < nodes.length; j++) {
+        var dx = nodes[i].hx - nodes[j].hx, dy = nodes[i].hy - nodes[j].hy;
+        if (dx * dx + dy * dy < reach * reach) {
+          var e = { a: i, b: j };
+          edges.push(e);
+          nodes[i].links.push(edges.length - 1);
+          nodes[j].links.push(edges.length - 1);
+        }
+      }
+    }
+
+    pulses = [];
+    var want = Math.min(16, Math.round(edges.length / 26));
+    for (var k = 0; k < want; k++) spawn();
+  }
+
+  function spawn() {
+    if (!edges.length) return;
+    var ei = (Math.random() * edges.length) | 0;
+    pulses.push({
+      e: ei,
+      fwd: Math.random() < 0.5,
+      t: Math.random(),
+      v: 0.0016 + Math.random() * 0.0026,
+      hot: Math.random() < 0.22          /* a minority carry the accent */
+    });
+  }
+
+  /* At the end of an edge a pulse chooses its next hop — the
+     router decision, drawn. Dead ends respawn elsewhere. */
+  function hop(p) {
+    var e = edges[p.e];
+    var at = p.fwd ? e.b : e.a;
+    var opts = nodes[at].links;
+    if (opts.length < 2) { p.e = (Math.random() * edges.length) | 0; p.fwd = Math.random() < 0.5; p.t = 0; return; }
+    var next = p.e;
+    for (var guard = 0; guard < 6 && next === p.e; guard++) {
+      next = opts[(Math.random() * opts.length) | 0];
+    }
+    p.e = next;
+    p.fwd = edges[next].a === at;
+    p.t = 0;
+  }
+
+  function hexA(hex, a) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    var n = parseInt(hex, 16);
+    return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
+  }
+
+  var t0 = 0;
+  function draw(ts) {
+    if (document.hidden) { raf = requestAnimationFrame(draw); return; }
+    var dt = Math.min(ts - t0, 48) || 16; t0 = ts;
+    ctx.clearRect(0, 0, W, H);
+
+    /* Nodes drift around their home and lean toward the pointer —
+       enough to feel alive, never enough to become a toy. */
+    var still = reduced.matches;
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      if (still) { n.x = n.hx; n.y = n.hy; continue; }
+      n.ph += dt * 0.00035 * n.sp;
+      n.x = n.hx + Math.cos(n.ph) * 7;
+      n.y = n.hy + Math.sin(n.ph * 1.28) * 7;
+      var dx = pointer.x - n.x, dy = pointer.y - n.y;
+      var d2 = dx * dx + dy * dy;
+      if (d2 < 46000) {
+        var f = (1 - d2 / 46000) * 15;
+        var d = Math.sqrt(d2) || 1;
+        n.x += (dx / d) * f; n.y += (dy / d) * f;
+      }
+    }
+
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = hexA(palette.edge, palette.edgeA);
+    ctx.beginPath();
+    for (var k = 0; k < edges.length; k++) {
+      var a = nodes[edges[k].a], b = nodes[edges[k].b];
+      ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+    }
+    ctx.stroke();
+
+    ctx.fillStyle = hexA(palette.node, palette.nodeA);
+    for (var m = 0; m < nodes.length; m++) {
+      var nd = nodes[m];
+      ctx.beginPath();
+      ctx.arc(nd.x, nd.y, nd.r, 0, 6.284);
+      ctx.fill();
+    }
+
+    for (var q = 0; q < pulses.length; q++) {
+      var p = pulses[q];
+      if (!still) {
+        p.t += p.v * dt;
+        if (p.t >= 1) hop(p);
+      }
+      var ed = edges[p.e];
+      var from = p.fwd ? nodes[ed.a] : nodes[ed.b];
+      var to = p.fwd ? nodes[ed.b] : nodes[ed.a];
+      var x = from.x + (to.x - from.x) * p.t;
+      var y = from.y + (to.y - from.y) * p.t;
+      var col = p.hot ? palette.accent : palette.node;
+
+      ctx.strokeStyle = hexA(col, 0.34);
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(from.x + (to.x - from.x) * Math.max(0, p.t - 0.16),
+                 from.y + (to.y - from.y) * Math.max(0, p.t - 0.16));
+      ctx.lineTo(x, y);
+      ctx.stroke();
+
+      ctx.fillStyle = hexA(col, 0.95);
+      ctx.beginPath();
+      ctx.arc(x, y, p.hot ? 2.3 : 1.8, 0, 6.284);
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  var raf = 0, rebuild;
+  addEventListener('resize', function () {
+    clearTimeout(rebuild);
+    rebuild = setTimeout(build, 180);
+  }, { passive: true });
+
+  addEventListener('pointermove', function (e) {
+    pointer.x = e.clientX; pointer.y = e.clientY;
+  }, { passive: true });
+  addEventListener('pointerleave', function () { pointer.x = pointer.y = -9e9; }, { passive: true });
+
+  readPalette();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readPalette);
+  build();
+  raf = requestAnimationFrame(draw);
+
+  /* ── Bar state and current section ───────────────────────── */
   var bar = document.getElementById('bar');
-  /* Current section, marked in the bar. */
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav a[href^="#"]'));
   var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
   var pending = false;
@@ -726,7 +904,7 @@ html{scroll-behavior:smooth}
     bar.classList.toggle('stuck', scrollY > 8);
     var here = -1;
     targets.forEach(function (el, i) {
-      if (el && el.getBoundingClientRect().top <= 120) here = i;
+      if (el && el.getBoundingClientRect().top <= 130) here = i;
     });
     links.forEach(function (a, i) {
       if (i === here) a.setAttribute('aria-current', 'true');
@@ -739,7 +917,7 @@ html{scroll-behavior:smooth}
   }, { passive: true });
   frame();
 
-  /* Sections settle in as they arrive. */
+  /* ── Sections settle in ──────────────────────────────────── */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -753,7 +931,7 @@ html{scroll-behavior:smooth}
     document.querySelectorAll('.rise').forEach(function (el) { el.classList.add('seen'); });
   }
 
-  /* Copy the address without opening a mail client. */
+  /* ── Copy the address without opening a mail client ──────── */
   var copy = document.getElementById('copy');
   copy.addEventListener('click', function () {
     var done = function () {
