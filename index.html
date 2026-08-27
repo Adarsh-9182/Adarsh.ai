@@ -13,412 +13,437 @@
 <meta property="og:description" content="Agent systems, retrieval and LLM infrastructure for finance and health." />
 <meta name="twitter:card" content="summary_large_image" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23070910'/%3E%3Ccircle cx='32' cy='32' r='9' fill='none' stroke='%23ffa92e' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23ffa92e'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309090b'/%3E%3Cg fill='none' stroke='%234ade80' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 24l10 8-10 8'/%3E%3Cpath d='M34 40h12'/%3E%3C/g%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
-/* ═══════════════════════════════════════════════════════════
-   ADARSH BHARDWAJ — one hand-written file.
+/* ═══════════════════════════════════════════════════════════════════════
+   ADARSH BHARDWAJ — a console, not a brochure.
 
-   The page is built around a single idea: the work is agent
-   systems — routers, specialists, signals moving between them —
-   so the background is not decoration, it is a diagram of the
-   thing. Everything else stays quiet so that one element can be
-   loud.
-   ═══════════════════════════════════════════════════════════ */
+   The page speaks the way the work does: a prompt, a command, its output.
+   Sections are commands. The roles are a `git log --graph`. The projects
+   are panels with a status line. Everything is frosted rather than solid,
+   because the 3D model of the architecture is running behind all of it and
+   should stay visible through the glass.
 
-/* ── Tokens ─────────────────────────────────────────────────
-   Dark is the intended world here; light is a real second
-   design, not an inversion. Every colour is defined on bare
-   :root first so the un-stamped (system) state always resolves.
-   ─────────────────────────────────────────────────────────── */
+   Palette and furniture follow mcpfy: zinc, hairline borders, mono voice.
+   ═══════════════════════════════════════════════════════════════════════ */
+
 :root{
   /* light */
-  --void:#f4f5f7;
+  --bg:#fdfcfc;
   --panel:#ffffff;
-  --panel-2:#eceef2;
-  --ink:#0d1016;
-  --ink-2:#414855;
-  --ink-3:#767e8d;
-  --rule:#dde0e6;
-  --rule-2:#c4c9d2;
-  --accent:#a35c00;
-  --accent-hot:#ff8a00;
-  --signal:#0d7f96;
+  --card:#f7f7f8;
+  --fg:#09090b;
+  --muted:#71717a;
+  --subtle:#a1a1aa;
+  --border:#dbdbdd;
+  --border-2:#c9c9cc;
+  --sig:#15803d;
+  --sig-dim:#15803d29;
+  --warn:#b45309;
 
   /* the 3D model reads these */
-  --gl-line:#0d1016;
-  --gl-node:#0d1016;
-  --gl-accent:#a35c00;
-  --gl-master:0.62;
+  --gl-line:#09090b;
+  --gl-node:#09090b;
+  --gl-accent:#15803d;
+  --gl-master:0.55;
+  --gl-additive:0;
 
-  --display:'Archivo','Instrument Sans',ui-sans-serif,system-ui,sans-serif;
-  --sans:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;
-  --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:'Outfit',ui-sans-serif,system-ui,-apple-system,sans-serif;
 
-  --shell:1140px;
-  --pad:clamp(20px,5vw,44px);
+  --shell:1120px;
+  --pad:clamp(18px,4.5vw,40px);
+  --r:12px;
+
+  color-scheme:light;
 }
 
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --void:#070910;
-    --panel:#0d1017;
-    --panel-2:#141822;
-    --ink:#eef1f6;
-    --ink-2:#a3abbb;
-    --ink-3:#69718100;
-    --ink-3:#697181;
-    --rule:#1b202b;
-    --rule-2:#2a313f;
-    --accent:#ffa92e;
-    --accent-hot:#ffc061;
-    --signal:#3dd6f5;
+    --bg:#09090b;
+    --panel:#131316;
+    --card:#18181b;
+    --fg:#fafafa;
+    --muted:#a1a1aa;
+    --subtle:#71717a;
+    --border:#ffffff1a;
+    --border-2:#ffffff2e;
+    --sig:#4ade80;
+    --sig-dim:#4ade8024;
+    --warn:#fbbf24;
 
-    --gl-line:#8fa0bd;
-    --gl-node:#cfd8e6;
-    --gl-accent:#ffa92e;
-    --gl-master:1;
+    --gl-line:#8b8b95;
+    --gl-node:#e4e4e7;
+    --gl-accent:#4ade80;
+    --gl-master:0.9;
+    --gl-additive:1;
+
+    color-scheme:dark;
   }
 }
-
 :root[data-theme="dark"]{
-  --void:#070910;
-  --panel:#0d1017;
-  --panel-2:#141822;
-  --ink:#eef1f6;
-  --ink-2:#a3abbb;
-  --ink-3:#697181;
-  --rule:#1b202b;
-  --rule-2:#2a313f;
-  --accent:#ffa92e;
-  --accent-hot:#ffc061;
-  --signal:#3dd6f5;
+  --bg:#09090b;
+  --panel:#131316;
+  --card:#18181b;
+  --fg:#fafafa;
+  --muted:#a1a1aa;
+  --subtle:#71717a;
+  --border:#ffffff1a;
+  --border-2:#ffffff2e;
+  --sig:#4ade80;
+  --sig-dim:#4ade8024;
+  --warn:#fbbf24;
 
-  --gl-line:#8fa0bd;
-  --gl-node:#cfd8e6;
-  --gl-accent:#ffa92e;
-  --gl-master:1;
+  --gl-line:#8b8b95;
+  --gl-node:#e4e4e7;
+  --gl-accent:#4ade80;
+  --gl-master:0.9;
+  --gl-additive:1;
+
+  color-scheme:dark;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 
 body{
-  background:var(--void);
-  color:var(--ink);
-  font-family:var(--sans);
-  font-size:17px;
-  line-height:1.62;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--mono);
+  font-size:14px;
+  line-height:1.72;
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
 }
 
-/* ── The diagram ────────────────────────────────────────────
-   Fixed behind everything, painted by canvas. Sits at z -2 so
-   the wash below it can lift text off the busiest regions.
-   ─────────────────────────────────────────────────────────── */
-#scene{
-  position:fixed;inset:0;z-index:-2;
-  width:100%;height:100%;
-  display:block;
-}
-/* Lifts the reading off the model — but only once there is reading to do.
-   --wash is driven by scroll from the scene, so the hero stays clear. */
+::selection{background:var(--sig-dim);color:var(--fg)}
+
+/* ── The model, and the scrim that keeps prose off it ─────────────────── */
+#scene{position:fixed;inset:0;z-index:-2;width:100%;height:100%;display:block}
 .wash{
   position:fixed;inset:0;z-index:-1;pointer-events:none;
-  opacity:var(--wash,0.44);
+  opacity:var(--wash,0.16);
   background:
-    radial-gradient(130% 70% at 50% 0%, transparent 0%, var(--void) 82%),
-    linear-gradient(to bottom, transparent 0%, var(--void) 58%);
+    radial-gradient(135% 72% at 50% 0%, transparent 0%, var(--bg) 84%),
+    linear-gradient(to bottom, transparent 0%, var(--bg) 62%);
 }
 
 .shell{max-width:var(--shell);margin:0 auto;padding-inline:var(--pad)}
 
-a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--sig);outline-offset:3px;border-radius:4px}
 
-/* ── Bar ───────────────────────────────────────────────────── */
+/* Dotted underlines that solidify — mcpfy's link idiom. */
+.u{text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;
+   text-decoration-color:var(--border-2);transition:color .15s,text-decoration-color .15s}
+.u:hover{color:var(--sig);text-decoration-style:solid;text-decoration-color:var(--sig)}
+
+.prompt{color:var(--sig);user-select:none}
+.dim{color:var(--subtle)}
+.comment{color:var(--subtle)}
+
+/* ── Status bar ───────────────────────────────────────────────────────── */
 .bar{
   position:sticky;top:0;z-index:60;
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;
-  transition:border-color .25s, background .25s;
+  background:color-mix(in srgb, var(--bg) 58%, transparent);
+  border-bottom:1px solid transparent;transition:border-color .25s;
 }
-.bar.stuck{border-bottom-color:var(--rule);background:color-mix(in srgb, var(--void) 82%, transparent)}
+.bar.stuck{border-bottom-color:var(--border)}
 .bar .in{
   max-width:var(--shell);margin:0 auto;padding-inline:var(--pad);
-  height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  height:52px;display:flex;align-items:center;justify-content:space-between;gap:18px;
 }
-.home{
-  font-family:var(--mono);font-size:13px;letter-spacing:.02em;
-  text-decoration:none;display:inline-flex;align-items:center;gap:9px;
+.who{display:inline-flex;align-items:center;gap:9px;font-size:12.5px}
+.led{
+  width:7px;height:7px;border-radius:50%;background:var(--sig);flex:none;
+  box-shadow:0 0 0 0 var(--sig-dim);animation:ping 2.4s ease-out infinite;
 }
-.home .led{
-  width:7px;height:7px;border-radius:50%;background:var(--accent);
-  box-shadow:0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
-  animation:pulse 2.6s ease-out infinite;
-}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent)}
-  70%{box-shadow:0 0 0 9px transparent}
+@keyframes ping{
+  0%{box-shadow:0 0 0 0 var(--sig-dim)}
+  70%{box-shadow:0 0 0 8px transparent}
   100%{box-shadow:0 0 0 0 transparent}
 }
-.bar nav{display:flex;align-items:center;gap:22px}
+.bar nav{display:flex;align-items:center;gap:6px}
 .bar nav a{
-  font-family:var(--mono);font-size:12.5px;color:var(--ink-3);
-  text-decoration:none;transition:color .18s;
+  font-size:12.5px;color:var(--muted);padding:5px 9px;border-radius:7px;
+  transition:color .15s,background .15s;
 }
-.bar nav a:hover{color:var(--ink)}
-.bar nav a[aria-current]{color:var(--accent)}
-@media (max-width:720px){ .bar nav a:not(.keep){display:none} }
+.bar nav a:hover{color:var(--fg);background:var(--card)}
+.bar nav a[aria-current]{color:var(--sig)}
+@media (max-width:760px){ .bar nav a:not(.keep){display:none} }
 
 .tt{
-  appearance:none;background:none;border:1px solid var(--rule);border-radius:6px;
-  width:31px;height:31px;display:grid;place-items:center;cursor:pointer;
-  color:var(--ink-3);transition:.18s;
+  appearance:none;background:none;border:1px solid var(--border);border-radius:7px;
+  height:28px;padding:0 10px;cursor:pointer;
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);transition:.15s;
 }
-.tt:hover{color:var(--accent);border-color:var(--rule-2)}
-.tt svg{width:15px;height:15px}
-:root[data-theme="dark"] .tt .moon,.tt .moon{display:none}
-:root[data-theme="dark"] .tt .sun,.tt .sun{display:block}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .tt .sun{display:none}
-  :root:not([data-theme="light"]) .tt .moon{display:block}
-}
-:root[data-theme="dark"] .tt .sun{display:none}
-:root[data-theme="dark"] .tt .moon{display:block}
+.tt:hover{color:var(--sig);border-color:var(--border-2)}
 
-/* ── Masthead ──────────────────────────────────────────────── */
-.mast{
-  padding-block:clamp(72px,15vh,150px) clamp(64px,11vh,120px);
-  position:relative;
+/* ── Panels ───────────────────────────────────────────────────────────────
+   Frosted, never solid: the model has to stay readable through them.
+   ───────────────────────────────────────────────────────────────────── */
+.panel{
+  border:1px solid var(--border);border-radius:var(--r);
+  background:color-mix(in srgb, var(--panel) 42%, transparent);
+  backdrop-filter:blur(5px) saturate(1.25);-webkit-backdrop-filter:blur(5px) saturate(1.25);
+  overflow:hidden;
 }
-.eyebrow{
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-3);display:flex;align-items:center;gap:12px;margin-bottom:26px;
+.panel-bar{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 14px;border-bottom:1px solid var(--border);
+  background:color-mix(in srgb, var(--card) 38%, transparent);
+  font-size:11.5px;color:var(--subtle);
 }
-.eyebrow::after{content:"";height:1px;flex:1;max-width:190px;background:var(--rule)}
+.lights{display:flex;gap:5px;flex:none}
+.lights i{width:9px;height:9px;border-radius:50%;background:var(--border-2);display:block}
+.panel-body{padding:clamp(20px,3.4vw,32px)}
+
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+.hero{padding-block:clamp(30px,7vh,64px) clamp(40px,8vh,80px)}
+.hero .panel{max-width:830px;margin:0 auto}
+
+.line{font-size:13px;color:var(--muted)}
+.line+.line{margin-top:2px}
 
 h1{
-  font-family:var(--display);
-  font-weight:800;
-  font-size:clamp(40px,8.2vw,92px);
-  line-height:.98;
-  letter-spacing:-.035em;
-  text-wrap:balance;
-  max-width:16ch;
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(34px,7vw,68px);line-height:1.02;letter-spacing:-.035em;
+  margin:12px 0 0;color:var(--fg);
 }
-h1 .lit{
-  color:var(--accent);
-  position:relative;
-  white-space:nowrap;
-}
+h1 .sig{color:var(--sig)}
 
-.lede,.caption{position:relative}
-.lede::before,.caption::before{
-  content:"";position:absolute;z-index:-1;inset:-22px -34px;
-  background:radial-gradient(66% 74% at 38% 50%,
-    var(--void) 0%, var(--void) 52%, transparent 86%);
+.caret{
+  display:inline-block;width:.58em;height:1.05em;vertical-align:-.16em;
+  background:var(--sig);margin-left:.14em;animation:blink 1.15s steps(1) infinite;
 }
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
-.lede{
-  margin-top:30px;max-width:60ch;
-  font-size:clamp(17px,2vw,20px);
-  color:var(--ink-2);line-height:1.62;
-}
-.lede strong{color:var(--ink);font-weight:600}
+.tagline{margin-top:16px;font-size:14px;color:var(--muted);max-width:62ch}
+.tagline b{color:var(--fg);font-weight:500}
 
-.links{display:flex;flex-wrap:wrap;gap:11px;margin-top:36px}
-.lk{
-  font-family:var(--mono);font-size:12.5px;
-  text-decoration:none;color:var(--ink-2);
-  border:1px solid var(--rule);border-radius:7px;
-  padding:8px 13px;
+.out{margin-top:26px;font-size:14px;color:var(--muted);max-width:74ch;line-height:1.85}
+.out b{color:var(--fg);font-weight:500}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{
   display:inline-flex;align-items:center;gap:7px;
-  background:color-mix(in srgb, var(--panel) 55%, transparent);
-  transition:color .18s,border-color .18s,transform .18s,background .18s;
+  font-size:12.5px;color:var(--muted);
+  border:1px solid var(--border);border-radius:8px;padding:6px 11px;
+  background:color-mix(in srgb, var(--card) 46%, transparent);
+  transition:color .15s,border-color .15s,background .15s;
 }
-.lk:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
-.lk .ar{opacity:.55;font-size:10px}
+.chip:hover{color:var(--sig);border-color:var(--sig);background:var(--sig-dim)}
+.chip .ar{color:var(--subtle);font-size:10px}
+.chip:hover .ar{color:var(--sig)}
 
-/* The caption that makes the model a diagram rather than a backdrop. */
-.caption{
-  margin-top:44px;max-width:60ch;
-  font-family:var(--mono);font-size:11.5px;line-height:1.95;color:var(--ink-3);
-  border-top:1px solid var(--rule);padding-top:15px;
+.note{
+  margin-top:30px;padding-left:14px;border-left:2px solid var(--border);
+  font-size:12px;line-height:1.95;color:var(--subtle);max-width:76ch;
 }
-.caption b{color:var(--ink-2);font-weight:400}
-.no-gl .caption{display:none}
+.no-gl .note{display:none}
 
-/* ── Sections ──────────────────────────────────────────────── */
-.block{padding-block:clamp(56px,9vw,96px);border-top:1px solid var(--rule)}
-.label{
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-3);margin-bottom:32px;display:flex;align-items:center;gap:12px;
+/* ── Sections ─────────────────────────────────────────────────────────── */
+.block{padding-block:clamp(44px,7vw,78px)}
+.cmd{
+  font-size:13.5px;color:var(--muted);margin-bottom:8px;
 }
-.label::before{content:"";width:22px;height:1px;background:var(--accent)}
-
+.cmd b{color:var(--fg);font-weight:500}
 h2{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(26px,4vw,40px);letter-spacing:-.025em;line-height:1.06;
-  margin-bottom:34px;text-wrap:balance;max-width:22ch;
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(22px,3.2vw,32px);letter-spacing:-.025em;line-height:1.15;
+  margin-bottom:28px;color:var(--fg);
 }
 
-/* ── Work ──────────────────────────────────────────────────── */
-.entries{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
-.entry{
-  background:color-mix(in srgb, var(--panel) 94%, transparent);
-  padding:clamp(22px,3.4vw,34px);
-  transition:background .22s;
-  position:relative;
+/* ── Work ─────────────────────────────────────────────────────────────── */
+.grid{display:grid;gap:14px}
+.proj .panel-bar{justify-content:space-between}
+.proj .path{display:inline-flex;align-items:center;gap:8px}
+.status{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid var(--border);border-radius:999px;padding:2px 8px;color:var(--subtle);
 }
-.entry:hover{background:var(--panel)}
-.entry::before{
-  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
-  background:var(--accent);transform:scaleY(0);transform-origin:top;
-  transition:transform .3s ease;
-}
-.entry:hover::before{transform:scaleY(1)}
+.status.live{color:var(--sig);border-color:var(--sig);background:var(--sig-dim)}
+.status i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block}
 
-.entry .top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.entry h3{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(21px,2.9vw,29px);letter-spacing:-.022em;line-height:1.1;
+.proj h3{
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(19px,2.6vw,25px);letter-spacing:-.022em;line-height:1.2;
 }
-.entry .yr{font-family:var(--mono);font-size:12px;color:var(--ink-3);flex:none}
-.entry .sub{
-  font-family:var(--mono);font-size:12px;letter-spacing:.03em;
-  color:var(--accent);margin-top:9px;
-}
-.entry p.body{margin-top:15px;color:var(--ink-2);max-width:70ch;font-size:16.5px}
-.entry .made{
-  margin-top:17px;font-family:var(--mono);font-size:11.5px;line-height:1.85;
-  color:var(--ink-3);
-}
-.entry .made b{
-  font-weight:400;text-transform:uppercase;letter-spacing:.12em;
-  color:var(--ink-3);opacity:.72;margin-right:6px;
-}
-.entry .out{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.proj .what{margin-top:7px;font-size:12.5px;color:var(--sig)}
+.proj p.text{margin-top:14px;font-size:13.5px;line-height:1.85;color:var(--muted);max-width:78ch}
+.proj p.text em{color:var(--fg);font-style:normal;font-weight:500}
 
-/* ── Experience ────────────────────────────────────────────── */
-.roles{display:grid}
-.role{
-  padding:22px 0;border-top:1px solid var(--rule);
-  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px;align-items:baseline;
+.deps{
+  margin-top:16px;padding-top:13px;border-top:1px dashed var(--border);
+  font-size:11.5px;line-height:1.95;color:var(--subtle);
 }
-.role:first-child{border-top:0;padding-top:0}
-.role h3{font-family:var(--display);font-weight:600;font-size:19.5px;letter-spacing:-.015em}
-.role h3 .org{color:var(--ink-3);font-weight:400}
-.role h3 a{text-decoration:none;border-bottom:1px solid var(--rule-2);transition:.18s}
-.role h3 a:hover{color:var(--accent);border-color:var(--accent)}
-.role .yr{font-family:var(--mono);font-size:12px;color:var(--ink-3);text-align:right}
-.role p{grid-column:1/-1;margin-top:6px;color:var(--ink-2);font-size:16.5px;max-width:70ch}
-.role .made{grid-column:1/-1;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:10px}
-@media (max-width:560px){
-  .role{grid-template-columns:minmax(0,1fr)}
-  .role .yr{text-align:left}
-}
+.deps b{color:var(--muted);font-weight:400;margin-right:8px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 
-/* ── Stack ─────────────────────────────────────────────────── */
-.dl{display:grid;grid-template-columns:132px minmax(0,1fr)}
-.dl dt{
-  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--accent);padding:14px 18px 14px 0;border-top:1px solid var(--rule);line-height:1.75;
+/* ── Experience, as a graph ───────────────────────────────────────────────
+   git log --graph, because that is what a work history is.
+   ───────────────────────────────────────────────────────────────────── */
+.log{position:relative;padding-left:26px}
+.log::before{
+  content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--border);
 }
-.dl dd{
-  margin:0;padding:14px 0;border-top:1px solid var(--rule);
-  color:var(--ink-2);font-size:16.5px;line-height:1.65;
+.commit{position:relative;padding-block:16px}
+.commit::before{
+  content:"";position:absolute;left:-26px;top:23px;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:1.5px solid var(--border-2);
 }
-.dl dt:first-of-type,.dl dd:first-of-type{border-top:0}
-@media (max-width:600px){
-  .dl{grid-template-columns:minmax(0,1fr)}
-  .dl dt{padding:16px 0 3px}
-  .dl dd{padding:0 0 16px;border-top:0}
-  .dl dd:first-of-type{border-top:0}
+.commit.head::before{border-color:var(--sig);background:var(--sig)}
+.commit .top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.commit h3{font-family:var(--sans);font-weight:600;font-size:16.5px;letter-spacing:-.015em}
+.commit h3 .at{color:var(--subtle);font-weight:400}
+.commit .when{font-size:11.5px;color:var(--subtle);flex:none}
+.commit p{margin-top:8px;font-size:13.5px;line-height:1.85;color:var(--muted);max-width:76ch}
+.commit .deps{margin-top:11px;padding-top:0;border-top:0}
+
+/* ── Key/value output ─────────────────────────────────────────────────── */
+.kv{display:grid;grid-template-columns:132px minmax(0,1fr);column-gap:20px}
+.kv dt,.kv .k{
+  font-size:12px;color:var(--sig);padding:11px 0;border-top:1px solid var(--border);
+}
+.kv dd,.kv .v{
+  margin:0;padding:11px 0;border-top:1px solid var(--border);
+  font-size:13.5px;line-height:1.8;color:var(--muted);
+}
+.kv dt:first-of-type,.kv dd:first-of-type{border-top:0;padding-top:0}
+.kv b{color:var(--fg);font-weight:500}
+@media (max-width:620px){
+  .kv{grid-template-columns:minmax(0,1fr)}
+  .kv dt,.kv .k{padding:13px 0 1px}
+  .kv dd,.kv .v{padding:0 0 13px;border-top:0}
+  .kv dd:first-of-type{padding-top:0}
 }
 
-/* ── Background ────────────────────────────────────────────── */
-.facts{display:grid;list-style:none}
-.facts li{
-  display:grid;grid-template-columns:132px minmax(0,1fr);gap:18px;
-  padding:15px 0;border-top:1px solid var(--rule);
-  color:var(--ink-2);font-size:16.5px;line-height:1.62;
-}
-.facts li:first-child{border-top:0}
-.facts li .k{
-  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--accent);padding-top:5px;
-}
-.facts li b{font-weight:600;color:var(--ink)}
-.facts a{color:var(--ink);text-decoration-color:var(--rule-2);text-underline-offset:3px}
-.facts a:hover{color:var(--accent)}
-@media (max-width:560px){
-  .facts li{grid-template-columns:minmax(0,1fr);gap:3px}
-  .facts li .k{padding-top:0}
-}
-
-/* ── Contact ───────────────────────────────────────────────── */
-.note{color:var(--ink-2);max-width:62ch;font-size:16.5px}
-.mailrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+/* ── Contact ──────────────────────────────────────────────────────────── */
+.mailrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
 .mailto{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(21px,4vw,38px);letter-spacing:-.03em;
-  text-decoration:none;color:var(--ink);
-  border-bottom:2px solid var(--rule-2);padding-bottom:2px;
-  transition:color .18s,border-color .18s;
-  word-break:break-all;
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(18px,3.2vw,28px);letter-spacing:-.028em;
+  border-bottom:1px dashed var(--border-2);padding-bottom:2px;word-break:break-all;
+  transition:color .15s,border-color .15s;
 }
-.mailto:hover{color:var(--accent);border-color:var(--accent)}
+.mailto:hover{color:var(--sig);border-color:var(--sig);border-bottom-style:solid}
 .copy{
-  appearance:none;background:none;border:1px solid var(--rule);border-radius:6px;
-  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink-3);padding:7px 11px;cursor:pointer;transition:.18s;flex:none;
+  appearance:none;background:none;cursor:pointer;flex:none;
+  border:1px solid var(--border);border-radius:7px;padding:6px 11px;
+  font-family:var(--mono);font-size:11px;color:var(--muted);transition:.15s;
 }
-.copy:hover{color:var(--accent);border-color:var(--rule-2)}
-.copy.ok{color:var(--accent);border-color:var(--accent)}
+.copy:hover{color:var(--sig);border-color:var(--sig)}
+.copy.ok{color:var(--sig);border-color:var(--sig);background:var(--sig-dim)}
 
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:30px;margin-top:42px}
-.cols h4{
-  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:400;margin-bottom:13px;
-}
-.cols ul{display:grid;gap:9px;list-style:none}
-
-/* ── Footer ────────────────────────────────────────────────── */
-footer{border-top:1px solid var(--rule);padding-block:30px 52px}
+/* ── Footer ───────────────────────────────────────────────────────────── */
+footer{border-top:1px solid var(--border);padding-block:26px 46px;margin-top:20px}
 footer .in{
   max-width:var(--shell);margin:0 auto;padding-inline:var(--pad);
-  display:flex;justify-content:space-between;align-items:flex-start;gap:22px;flex-wrap:wrap;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;
 }
-.colophon{font-family:var(--mono);font-size:11.5px;line-height:1.9;color:var(--ink-3);max-width:52ch}
-.colophon a{color:var(--ink-3);text-underline-offset:3px}
-.colophon a:hover{color:var(--accent)}
+.colophon{font-size:11.5px;line-height:2;color:var(--subtle);max-width:64ch}
 .colophon kbd{
-  font-family:var(--mono);font-size:10.5px;border:1px solid var(--rule-2);border-radius:4px;
-  padding:1px 5px;color:var(--ink-2);
+  font-family:var(--mono);font-size:10.5px;border:1px solid var(--border-2);
+  border-radius:4px;padding:1px 5px;color:var(--muted);
 }
-.top-link{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-decoration:none;transition:.18s}
-.top-link:hover{color:var(--accent)}
 
-/* ── Motion ────────────────────────────────────────────────── */
-.rise{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.rise.seen{opacity:1;transform:none}
+/* ── Reveal choreography ─────────────────────────────────────────────────
+   Sections do not fade as a block — their parts arrive in order, and the
+   command line above each one types itself in. The page behaves like a
+   console being driven, because that is the conceit.
+   ─────────────────────────────────────────────────────────────────────── */
+.ease{transition-timing-function:cubic-bezier(.22,1,.36,1)}
+.rise>*{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--i,0) * 80ms);
+}
+.rise.seen>*{opacity:1;transform:none}
+
+.grid>*{
+  opacity:0;transform:translateY(26px) scale(.99);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--i,0) * 110ms);
+}
+.rise.seen .grid>*{opacity:1;transform:none}
+
+/* the command types itself, then the caret catches up */
+.cmd{display:flex;align-items:center;gap:0}
+.typed{
+  display:inline-block;white-space:nowrap;overflow:hidden;
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path 1s steps(30,end);transition-delay:.2s;
+}
+.rise.seen .typed{clip-path:inset(0 0 0 0)}
+.cur{
+  display:inline-block;width:.55em;height:1.05em;background:var(--sig);
+  margin-left:.3em;opacity:0;transition:opacity .2s;transition-delay:1.15s;
+}
+.rise.seen .cur{opacity:1;animation:blink 1.15s steps(1) 1.2s infinite}
+
+/* ── Scroll readout ─────────────────────────────────────────────────────── */
+.prog{
+  font-size:11.5px;color:var(--subtle);letter-spacing:-.04em;
+  display:inline-flex;align-items:center;gap:7px;flex:none;
+}
+.prog b{color:var(--sig);font-weight:400;letter-spacing:0}
+@media (max-width:960px){ .prog{display:none} }
+
+/* ── Stats band ─────────────────────────────────────────────────────────── */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
+  gap:1px;margin-top:16px;
+  border:1px solid var(--border);border-radius:var(--r);
+  background:var(--border);overflow:hidden;
+}
+.stat{
+  background:color-mix(in srgb, var(--panel) 52%, transparent);
+  backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  padding:20px 18px;
+}
+.stat b{
+  display:block;font-family:var(--sans);font-weight:600;
+  font-size:clamp(26px,3.6vw,38px);letter-spacing:-.03em;line-height:1;
+  color:var(--sig);font-variant-numeric:tabular-nums;
+}
+.stat span{display:block;margin-top:9px;font-size:11.5px;line-height:1.6;color:var(--subtle)}
+
+/* ── Ticker ─────────────────────────────────────────────────────────────── */
+.ticker{
+  overflow:hidden;margin-bottom:20px;
+  border-block:1px solid var(--border);padding-block:9px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+.ticker .row{display:flex;width:max-content;animation:marq 44s linear infinite}
+.ticker .row.rev{animation-duration:56s;animation-direction:reverse;margin-top:5px}
+.ticker i{font-style:normal;padding:0 16px;font-size:11.5px;color:var(--subtle);white-space:nowrap}
+.ticker i::after{content:"·";margin-left:16px;color:var(--border-2)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
-  .rise{opacity:1;transform:none}
+  .rise>*,.rise.seen>*,.grid>*,.rise.seen .grid>*{opacity:1;transform:none}
+  .typed{clip-path:none}
+  .cur,.caret{animation:none}
+  .ticker .row{animation:none}
 }
 
 @media print{
-  #net,.wash,.bar,.tt,.copy,.top-link{display:none}
-  body{background:#fff;color:#000;font-size:11pt}
-  .block{page-break-inside:avoid;border-top:1px solid #ccc}
+  #scene,.wash,.bar,.tt,.copy,.note,.lights{display:none}
+  body{background:#fff;color:#000;font-size:10.5pt}
+  .panel{border:1px solid #ccc;background:#fff;backdrop-filter:none}
+  .block{page-break-inside:avoid}
 }
 </style>
 </head>
@@ -429,246 +454,316 @@ footer .in{
 
 <div class="bar" id="bar">
   <div class="in">
-    <a class="home" href="#top"><span class="led" aria-hidden="true"></span>Adarsh Bhardwaj</a>
+    <a class="who" href="#top"><span class="led" aria-hidden="true"></span>adarsh@bhardwaj<span class="dim">:~$</span></a>
+    <span class="prog" id="prog" aria-hidden="true"><b>[··········]</b> 0%</span>
     <nav id="nav">
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#stack">Stack</a>
-      <a href="#contact" class="keep">Contact</a>
-      <button class="tt" id="tt" type="button" aria-label="Switch theme" title="Switch theme — press T">
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.2 8.2 0 1 0 20 14.5Z"/></svg>
-      </button>
+      <a href="#work">work</a>
+      <a href="#experience">experience</a>
+      <a href="#stack">stack</a>
+      <a href="#contact" class="keep">contact</a>
+      <button class="tt" id="tt" type="button" aria-label="Switch theme" title="Switch theme — or press T">theme</button>
     </nav>
   </div>
 </div>
 
-<header class="mast shell">
-  <p class="eyebrow">AI Engineer — India</p>
+<header class="hero shell">
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>adarsh@bhardwaj — ~/portfolio — zsh</span>
+    </div>
+    <div class="panel-body">
 
-  <h1>Building AI for the two places a wrong answer costs you: <span class="lit">money</span> and <span class="lit">health</span>.</h1>
+      <p class="line"><span class="prompt">$</span> whoami</p>
+      <h1>Adarsh <span class="sig">Bhardwaj</span><span class="caret" aria-hidden="true"></span></h1>
+      <p class="tagline">AI engineer. I build <b>agent systems</b> for the two places a wrong
+        answer costs you money and health.</p>
 
-  <p class="lede">I'm founding <strong>Paisa</strong>, an AI CFO and financial operating system,
-    and I built <strong>NutriScan&nbsp;AI</strong>, a health agent with a clinical safety layer
-    under it. Before that I worked on MCP-based agent tooling at MCPfy.ai. I care about the boring
-    part — making the model's answer <em>correct</em>, then making it fast.</p>
+      <p class="line" style="margin-top:30px"><span class="prompt">$</span> cat ./about.txt</p>
+      <p class="out">I'm founding <b>Paisa</b>, an AI CFO and financial operating system, and I
+        built <b>NutriScan AI</b>, an AI health agent with a clinical safety layer under it.
+        Before that, at <b>MCPfy.ai</b> — I designed their website, and built the MCP developer tooling behind it. The pattern in all of it is the
+        same: the model explains, tested code decides the number.</p>
 
-  <p class="links">
-    <a class="lk" href="mailto:adarshbhardwaj9182@gmail.com">Email</a>
-    <a class="lk" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub<span class="ar">↗</span></a>
-    <a class="lk" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">LinkedIn<span class="ar">↗</span></a>
-    <a class="lk" href="https://x.com/adarshdevs" target="_blank" rel="noopener">X<span class="ar">↗</span></a>
-    <a class="lk" href="assets/Adarsh-Bhardwaj-Resume.pdf" target="_blank" rel="noopener">Résumé, PDF<span class="ar">↗</span></a>
-  </p>
+      <p class="line" style="margin-top:30px"><span class="prompt">$</span> ls ./links</p>
+      <p class="chips">
+        <a class="chip" href="mailto:adarshbhardwaj9182@gmail.com">email</a>
+        <a class="chip" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">github<span class="ar">↗</span></a>
+        <a class="chip" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">linkedin<span class="ar">↗</span></a>
+        <a class="chip" href="https://x.com/adarshdevs" target="_blank" rel="noopener">x<span class="ar">↗</span></a>
+        <a class="chip" href="assets/Adarsh-Bhardwaj-Resume.pdf" target="_blank" rel="noopener">resume.pdf<span class="ar">↗</span></a>
+      </p>
 
-  <p class="caption">
-    <b>What's behind this page.</b> The shape Paisa and NutriScan both have, running live in 3D.
-    A question arrives at the top, a supervisor hands it to whichever specialist owns it, and the
-    work drops into the engine below — where the lines are straight because that layer is
-    deterministic and the model has no vote in it. Move the pointer, or scroll.
-  </p>
+      <p class="note comment"><span class="prompt">#</span> the thing moving behind this window
+        is not a wallpaper — it is the architecture Paisa and NutriScan both have, running live.
+        a question enters at the top, a supervisor routes it to whichever specialist owns it, and
+        the work drops into the engine below, where the lines are straight because that layer is
+        deterministic and the model gets no vote. move the pointer, or scroll.
+      </p>
+
+    </div>
+  </div>
 </header>
 
 <main>
 
 <section class="block shell rise" id="work">
-  <p class="label">Selected work</p>
-  <h2>Four systems, one rule: the model explains, it does not decide the number.</h2>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">ls ./work <b>--sort=impact</b></span><span class="cur" aria-hidden="true"></span></p>
+  <h2>Four systems, one rule.</h2>
 
-  <div class="entries">
+  <div class="grid">
 
-    <article class="entry">
-      <div class="top">
+    <article class="panel proj" data-node="0">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>paisa</span>
+        <span class="status live"><i></i>still building</span>
+      </div>
+      <div class="panel-body">
         <h3>Paisa</h3>
-        <span class="yr">July 2026 — present</span>
+        <p class="what">AI CFO &amp; financial operating system · July 2026 — present</p>
+        <p class="text">The language model never touches arithmetic. A tested engine computes
+          every figure — expenses, UPI, SIPs, loans, investments, tax — and the model's only job
+          is to explain what the engine returned. Above it sit four agents with separate remits
+          for accounting, tax, investing and planning, and a router that decides which one should
+          answer. Bank accounts connect through secure connectors, so the numbers being explained
+          are <em>real ones</em>.</p>
+        <p class="deps"><b>built with</b>python · fastapi · react native · typescript · aws · docker · kubernetes</p>
+        <p class="links">
+          <a class="chip" href="https://www.askpaisaai.com" target="_blank" rel="noopener">askpaisaai.com<span class="ar">↗</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">repository<span class="ar">↗</span></a>
+        </p>
       </div>
-      <p class="sub">AI CFO &amp; financial operating system</p>
-      <p class="body">Most finance assistants will happily invent a number. Paisa can't — the
-        language model never touches arithmetic. A tested engine computes every figure (expenses,
-        UPI, SIPs, loans, investments, tax) and the model's only job is to explain what the engine
-        returned. Above that sit four agents with separate remits — accounting, tax, investing,
-        planning — and a router that decides which one should answer. Bank accounts connect
-        through secure connectors, so the numbers being explained are real ones.</p>
-      <p class="made"><b>Built with</b>Python · FastAPI · React Native · TypeScript · AWS · Docker · Kubernetes</p>
-      <p class="out">
-        <a class="lk" href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Repository<span class="ar">↗</span></a>
-      </p>
     </article>
 
-    <article class="entry">
-      <div class="top">
+    <article class="panel proj" data-node="1">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>nutriscan-ai</span>
+        <span class="status live"><i></i>still building</span>
+      </div>
+      <div class="panel-body">
         <h3>NutriScan AI</h3>
-        <span class="yr">2026</span>
+        <p class="what">AI health agent — clinical reasoning · 2026</p>
+        <p class="text">An AI health agent that reasons over symptoms, lab results and clinical
+          history. Five specialists — doctor, labs, fitness, nutrition and coach — sit behind a
+          supervisor that routes each question to whichever one should own it, and each specialist
+          only sees the slice of the patient record it needs. Underneath the chat is the part that
+          matters: a deterministic triage engine of forty clinical rules that runs <em>before</em>
+          the model reasons, fails closed on error, and can end the turn outright. A model may
+          raise suspicion; nothing can lower a rule-derived verdict. Insights carry their own
+          certainty, derived from sample size rather than asserted, and any number the agent
+          quotes is computed in tested code. <em>156 tests.</em></p>
+        <p class="deps"><b>built with</b>typescript · next.js · anthropic &amp; openai apis · python · fastapi · pytorch · postgresql · react native · docker</p>
+        <p class="links">
+          <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">↗</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">repository<span class="ar">↗</span></a>
+        </p>
       </div>
-      <p class="sub">AI health agent — clinical reasoning, in production</p>
-      <p class="body">An AI health agent that reasons over symptoms, lab results and clinical
-        history. Five specialists — doctor, labs, fitness, nutrition and coach — sit behind a
-        supervisor that routes each question to whichever one should own it, and each specialist only sees the slice of the patient record
-        it needs. Underneath the chat is the part that matters: a deterministic triage engine of
-        forty clinical rules that runs <em>before</em> the model reasons, fails closed on error,
-        and can end the turn outright. A model may raise suspicion; nothing can lower a
-        rule-derived verdict. Insights carry their own certainty, derived from sample size rather
-        than asserted, and any number the agent quotes is computed in tested code rather than
-        produced by the model. 156 tests.</p>
-      <p class="made"><b>Built with</b>TypeScript · Next.js · Anthropic &amp; OpenAI APIs · Python · FastAPI · PyTorch · PostgreSQL · React Native · Docker</p>
-      <p class="out">
-        <a class="lk" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">↗</span></a>
-        <a class="lk" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">Repository<span class="ar">↗</span></a>
-      </p>
     </article>
 
-    <article class="entry">
-      <div class="top">
+    <article class="panel proj" data-node="2">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>agent-framework</span>
+        <span class="status">2025</span>
+      </div>
+      <div class="panel-body">
         <h3>Agent framework</h3>
-        <span class="yr">2025</span>
+        <p class="what">Multi-agent orchestration, pulled out of Paisa</p>
+        <p class="text">The scaffolding underneath Paisa's agents, extracted to stand on its own:
+          role-scoped agents, tool calling, an intent router that maps a question to the agent that
+          should own it, and outputs strict enough that the rest of the system can depend on them
+          instead of re-parsing prose.</p>
+        <p class="deps"><b>built with</b>python · langchain · tool calling · json schema</p>
       </div>
-      <p class="sub">Multi-agent orchestration, pulled out of Paisa</p>
-      <p class="body">The scaffolding underneath Paisa's agents, extracted to stand on its own:
-        role-scoped agents, tool calling, an intent router that maps a question to the agent that
-        should own it, and outputs strict enough that the rest of the system can depend on them
-        instead of re-parsing prose.</p>
-      <p class="made"><b>Built with</b>Python · LangChain · tool calling · JSON schema</p>
     </article>
 
-    <article class="entry">
-      <div class="top">
+    <article class="panel proj" data-node="3">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>rag-financial-assistant</span>
+        <span class="status">2025</span>
+      </div>
+      <div class="panel-body">
         <h3>RAG financial assistant</h3>
-        <span class="yr">2025</span>
+        <p class="what">Question answering over statements and filings</p>
+        <p class="text">Ingestion and chunking tuned for tables rather than paragraphs, embeddings
+          into a vector store, and answers that cite the row they came from. The citation is the
+          whole point — <em>an unsourced number is worse than no answer</em>.</p>
+        <p class="deps"><b>built with</b>python · embeddings · vector search · langchain · postgresql</p>
       </div>
-      <p class="sub">Question answering over statements and filings</p>
-      <p class="body">Ingestion and chunking tuned for tables rather than paragraphs, embeddings
-        into a vector store, and answers that cite the row they came from. The citation is the
-        whole point — an unsourced number is worse than no answer.</p>
-      <p class="made"><b>Built with</b>Python · embeddings · vector search · LangChain · PostgreSQL</p>
     </article>
 
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat"><b data-to="156">0</b><span>tests behind NutriScan</span></div>
+    <div class="stat"><b data-to="40">0</b><span>deterministic clinical rules</span></div>
+    <div class="stat"><b data-to="9">0</b><span>agents &amp; specialists shipped</span></div>
+    <div class="stat"><b data-to="0">0</b><span>numbers invented by a model</span></div>
   </div>
 </section>
 
 <section class="block shell rise" id="experience">
-  <p class="label">Experience</p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">git log --graph <b>--author=adarsh</b></span><span class="cur" aria-hidden="true"></span></p>
+  <h2>Experience</h2>
 
-  <div class="roles">
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>adarsh@bhardwaj — git log --graph</span>
+    </div>
+    <div class="panel-body">
+  <div class="log">
 
-    <div class="role">
-      <h3>Founder &amp; AI Engineer, <a href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Paisa</a></h3>
-      <span class="yr">July 2026 —</span>
+    <div class="commit head">
+      <div class="top">
+        <h3>Founder &amp; AI Engineer <span class="at">@ Paisa</span></h3>
+        <span class="when">July 2026 — present</span>
+      </div>
       <p>Building the product and the company. Agent architecture, secure bank integrations, the
         financial modules, the backend and the deploy pipeline — and presenting the whole thing to
         mentors and investors.</p>
-      <p class="made">Python · FastAPI · JavaScript · AWS · Docker · Kubernetes</p>
+      <p class="deps">python · fastapi · javascript · aws · docker · kubernetes</p>
     </div>
 
-    <div class="role">
-      <h3>AI Engineer, <span class="org">MCPfy.ai</span></h3>
-      <span class="yr">Internship · Aug 2026</span>
-      <p>MCP-based developer tooling. Built and integrated the APIs that agent workflows ran on,
-        chased down reliability bugs, and tested the integrations other people's agents depended
-        on.</p>
-      <p class="made">Python · TypeScript · MCP · REST APIs · Git</p>
+    <div class="commit">
+      <div class="top">
+        <h3>AI Engineer <span class="at">@ MCPfy.ai</span></h3>
+        <span class="when">Internship · Aug 2026</span>
+      </div>
+      <p>Designed the company's website — the visual design of the marketing site and the
+        front-end that ships it. Alongside that, MCP-based developer tooling: built and integrated
+        the APIs that agent workflows ran on, chased down reliability bugs, and tested the
+        integrations other people's agents depended on.</p>
+      <p class="deps">web design · next.js · tailwind · typescript · python · mcp · rest apis · git</p>
     </div>
 
-    <div class="role">
-      <h3>AI Engineer, <a href="https://www.nutritiscan.com" target="_blank" rel="noopener">NutriScan AI</a></h3>
-      <span class="yr">2026</span>
-      <p>Built the AI health agent end to end: the specialist roster and the supervisor that
-        routes between them, and the clinical safety layer underneath — deterministic triage,
-        structured clinical state, fail-closed escalation. Food-image and nutrition analysis is
-        one of the signals it reasons over, not the product.</p>
-      <p class="made">TypeScript · Next.js · Anthropic API · Python · FastAPI · PyTorch · PostgreSQL · React</p>
+    <div class="commit">
+      <div class="top">
+        <h3>AI Engineer <span class="at">@ NutriScan AI</span></h3>
+        <span class="when">2026</span>
+      </div>
+      <p>Built the AI health agent end to end: the specialist roster and the supervisor that routes
+        between them, and the clinical safety layer underneath — deterministic triage, structured
+        clinical state, fail-closed escalation. Food-image and nutrition analysis is one of the
+        signals it reasons over, not the product.</p>
+      <p class="deps">typescript · next.js · anthropic api · python · fastapi · pytorch · postgresql · react</p>
     </div>
 
-    <div class="role">
-      <h3>Open source contributor</h3>
-      <span class="yr">Ongoing</span>
+    <div class="commit">
+      <div class="top">
+        <h3>Open source contributor</h3>
+        <span class="when">ongoing</span>
+      </div>
       <p>Features, bug fixes, documentation and performance work across AI/ML and developer
         tooling — mostly Python, JavaScript and agent frameworks.</p>
-      <p class="made">GitHub · Hugging Face · LangChain</p>
+      <p class="deps">github · hugging face · langchain</p>
     </div>
 
+  </div>
+    </div>
   </div>
 </section>
 
 <section class="block shell rise" id="stack">
-  <p class="label">Stack</p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">cat ./stack.toml</span><span class="cur" aria-hidden="true"></span></p>
+  <h2>Stack</h2>
 
-  <dl class="dl">
-    <dt>Languages</dt>
+  <div class="ticker" aria-hidden="true">
+    <div class="row"><i>python</i><i>typescript</i><i>fastapi</i><i>next.js</i><i>langchain</i><i>anthropic</i><i>openai</i><i>mcp</i><i>pytorch</i><i>postgresql</i><i>redis</i><i>docker</i><i>kubernetes</i><i>aws</i><i>react native</i><i>vector search</i><i>python</i><i>typescript</i><i>fastapi</i><i>next.js</i><i>langchain</i><i>anthropic</i><i>openai</i><i>mcp</i><i>pytorch</i><i>postgresql</i><i>redis</i><i>docker</i><i>kubernetes</i><i>aws</i><i>react native</i><i>vector search</i></div>
+    <div class="row rev"><i>multi-agent orchestration</i><i>intent routing</i><i>tool calling</i><i>structured output</i><i>rag</i><i>embeddings</i><i>text-to-sql</i><i>grounded generation</i><i>fail-closed escalation</i><i>tabular ingestion</i><i>multi-agent orchestration</i><i>intent routing</i><i>tool calling</i><i>structured output</i><i>rag</i><i>embeddings</i><i>text-to-sql</i><i>grounded generation</i><i>fail-closed escalation</i><i>tabular ingestion</i></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>~/stack.toml</span>
+    </div>
+    <div class="panel-body">
+  <dl class="kv">
+    <dt>languages</dt>
     <dd>Python, TypeScript, JavaScript, Java, C++, SQL</dd>
 
-    <dt>AI &amp; LLM</dt>
+    <dt>ai &amp; llm</dt>
     <dd>LangChain, OpenAI API, Anthropic, MCP, prompt design, tool calling, structured output</dd>
 
-    <dt>Agents &amp; RAG</dt>
+    <dt>agents &amp; rag</dt>
     <dd>Multi-agent orchestration, retrieval pipelines, vector search, embeddings, intent routing, text-to-SQL, grounded generation</dd>
 
-    <dt>ML</dt>
+    <dt>ml</dt>
     <dd>PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, Streamlit</dd>
 
-    <dt>Backend</dt>
+    <dt>backend</dt>
     <dd>FastAPI, Django, Node.js, Express, REST, GraphQL, WebSockets</dd>
 
-    <dt>Frontend</dt>
+    <dt>frontend</dt>
     <dd>React, Next.js, React Native, Expo</dd>
 
-    <dt>Data</dt>
+    <dt>data</dt>
     <dd>PostgreSQL, MongoDB, Redis, DynamoDB, vector databases</dd>
 
-    <dt>Infra</dt>
+    <dt>infra</dt>
     <dd>AWS, GCP, Lambda, Docker, Kubernetes, GitHub Actions, Jenkins, CI/CD</dd>
 
-    <dt>Practice</dt>
+    <dt>practice</dt>
     <dd>Git, testing, monitoring, code review, Agile, Jira</dd>
   </dl>
+    </div>
+  </div>
 </section>
 
 <section class="block shell rise" id="background">
-  <p class="label">Background</p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">cat ./background.txt</span><span class="cur" aria-hidden="true"></span></p>
+  <h2>Background</h2>
 
-  <ul class="facts">
-    <li><span class="k">Education</span>
-      <span><b>Bachelor of Arts, English Honours</b> — IGNOU, distance learning, 2024–2027.
-        I taught myself the engineering; the degree is the other half of the day.</span></li>
-    <li><span class="k">Exams</span>
-      <span>Appeared in <b>JEE Advanced</b>.</span></li>
-    <li><span class="k">Study</span>
-      <span>Coursework in <b>solutions architecture</b>, <b>AI/ML</b> and <b>agentic AI</b>.</span></li>
-    <li><span class="k">Talks</span>
-      <span>Presented <b>Paisa</b> to mentors, investors and peers.</span></li>
-    <li><span class="k">Elsewhere</span>
-      <span>Contributing on <a href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub</a>,
-        Hugging Face and to LangChain-adjacent agent tooling.</span></li>
-  </ul>
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>~/background.txt</span>
+    </div>
+    <div class="panel-body">
+  <dl class="kv">
+    <dt>education</dt>
+    <dd><b>B.Tech</b> — Lovely Professional University, Aug 2025 – April 2026. Dropped out.<br />
+      <b>Bachelor of Arts, English Honours</b> — IGNOU, distance learning, 2024–2027.</dd>
+
+    <dt>exams</dt>
+    <dd>Appeared in <b>JEE Advanced</b>.</dd>
+
+    <dt>study</dt>
+    <dd>Coursework in <b>solutions architecture</b>, <b>AI/ML</b> and <b>agentic AI</b>.</dd>
+
+    <dt>talks</dt>
+    <dd>Presented <b>Paisa</b> to mentors, investors and peers.</dd>
+
+    <dt>elsewhere</dt>
+    <dd>Contributing on <a class="u" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub</a>,
+      Hugging Face and to LangChain-adjacent agent tooling.</dd>
+  </dl>
+    </div>
+  </div>
 </section>
 
 <section class="block shell rise" id="contact">
-  <p class="label">Contact</p>
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">./contact --open-to=roles,contract</span><span class="cur" aria-hidden="true"></span></p>
   <h2>Open to AI engineering roles and contract work.</h2>
 
-  <p class="note">Email is the fastest way to reach me. Happy to talk about agents or retrieval
-    even when it isn't a pitch.</p>
-
-  <p class="mailrow">
-    <a class="mailto" href="mailto:adarshbhardwaj9182@gmail.com">adarshbhardwaj9182@gmail.com</a>
-    <button class="copy" id="copy" type="button" data-mail="adarshbhardwaj9182@gmail.com">Copy</button>
-  </p>
-
-  <div class="cols">
-    <div>
-      <h4>Elsewhere</h4>
-      <ul>
-        <li><a class="lk" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">GitHub<span class="ar">↗</span></a></li>
-        <li><a class="lk" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">LinkedIn<span class="ar">↗</span></a></li>
-        <li><a class="lk" href="https://x.com/adarshdevs" target="_blank" rel="noopener">X / Twitter<span class="ar">↗</span></a></li>
-      </ul>
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>mail</span>
     </div>
-    <div>
-      <h4>Files &amp; products</h4>
-      <ul>
-        <li><a class="lk" href="assets/Adarsh-Bhardwaj-Resume.pdf" target="_blank" rel="noopener">Résumé, PDF<span class="ar">↗</span></a></li>
-        <li><a class="lk" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">↗</span></a></li>
-        <li><a class="lk" href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">Paisa repository<span class="ar">↗</span></a></li>
-      </ul>
+    <div class="panel-body">
+      <p class="out" style="margin-top:0">Email is the fastest way to reach me. Happy to talk
+        about agents or retrieval even when it isn't a pitch.</p>
+      <p class="mailrow">
+        <a class="mailto" href="mailto:adarshbhardwaj9182@gmail.com">adarshbhardwaj9182@gmail.com</a>
+        <button class="copy" id="copy" type="button" data-mail="adarshbhardwaj9182@gmail.com">copy</button>
+      </p>
+      <p class="chips">
+        <a class="chip" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">github<span class="ar">↗</span></a>
+        <a class="chip" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">linkedin<span class="ar">↗</span></a>
+        <a class="chip" href="https://x.com/adarshdevs" target="_blank" rel="noopener">x<span class="ar">↗</span></a>
+        <a class="chip" href="assets/Adarsh-Bhardwaj-Resume.pdf" target="_blank" rel="noopener">resume.pdf<span class="ar">↗</span></a>
+      </p>
     </div>
   </div>
 </section>
@@ -678,12 +773,13 @@ footer .in{
 <footer>
   <div class="in">
     <p class="colophon">
-      Set in Archivo, Instrument Sans and Geist Mono. The model is hand-written WebGL — no
-      Three.js, no framework, no build step, no analytics. <a href="https://github.com/Adarsh-9182/Adarsh.ai" target="_blank" rel="noopener">Source</a>.
-      Press <kbd>T</kbd> to change the theme.<br />
-      © <span id="yr">2026</span> Adarsh Bhardwaj.
+      <span class="prompt">#</span> set in Geist Mono and Outfit. the model is hand-written WebGL —
+      no three.js, no framework, no build step, no analytics, no dependencies.
+      <a class="u" href="https://github.com/Adarsh-9182/Adarsh.ai" target="_blank" rel="noopener">source</a>.
+      press <kbd>T</kbd> for the theme.<br />
+      <span class="prompt">#</span> © <span id="yr">2026</span> Adarsh Bhardwaj.
     </p>
-    <a class="top-link" href="#top">Back to top ↑</a>
+    <a class="u" href="#top" style="font-size:11.5px;color:var(--subtle)">back to top ↑</a>
   </div>
 </footer>
 
@@ -691,10 +787,8 @@ footer .in{
 (function () {
   "use strict";
   var root = document.documentElement;
-  var reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ── Theme ───────────────────────────────────────────────
-     System by default; an explicit choice wins and is kept. */
+  /* Theme: follows the system until a choice is made, then keeps it. */
   function current() {
     return root.dataset.theme ||
       (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -719,68 +813,123 @@ footer .in{
     if (el && /input|textarea|select|button/i.test(el.tagName)) return;
     setTheme(current() === 'dark' ? 'light' : 'dark');
   });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+    if (window.sceneReadPalette) window.sceneReadPalette();
+  });
 
-  /* ── Bar state and current section ───────────────────────── */
+  /* Status bar: hairline once you leave the top, and the current section. */
   var bar = document.getElementById('bar');
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav a[href^="#"]'));
   var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-  var pending = false;
 
-  function frame() {
+  var prog = document.getElementById('prog');
+  var CELLS = 10;
+
+  function onScroll() {
     bar.classList.toggle('stuck', scrollY > 8);
-    var here = -1;
+
+    var h = Math.max(1, document.body.scrollHeight - innerHeight);
+    var pc = Math.min(1, Math.max(0, scrollY / h));
+    var filled = Math.round(pc * CELLS);
+    prog.innerHTML = '<b>[' + '█'.repeat(filled) + '·'.repeat(CELLS - filled) + ']</b> ' +
+      Math.round(pc * 100) + '%';
+    var best = -1, mid = innerHeight * 0.35;
     targets.forEach(function (el, i) {
-      if (el && el.getBoundingClientRect().top <= 130) here = i;
+      if (el && el.getBoundingClientRect().top <= mid) best = i;
     });
     links.forEach(function (a, i) {
-      if (i === here) a.setAttribute('aria-current', 'true');
+      if (i === best) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
-    pending = false;
   }
-  addEventListener('scroll', function () {
-    if (!pending) { pending = true; requestAnimationFrame(frame); }
-  }, { passive: true });
-  frame();
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  /* ── Sections settle in ──────────────────────────────────── */
+  /* Sections arrive in order: number every part so CSS can stagger it. */
+  document.querySelectorAll('.rise').forEach(function (sec) {
+    var i = 0;
+    Array.prototype.forEach.call(sec.children, function (kid) {
+      kid.style.setProperty('--i', i++);
+    });
+    var grid = sec.querySelector('.grid');
+    if (grid) {
+      var g = 0;
+      Array.prototype.forEach.call(grid.children, function (kid) {
+        kid.style.setProperty('--i', g++);
+      });
+    }
+  });
+
+  /* Count the stats up when they land — a number that arrives is read, a
+     number that is simply present is skipped. */
+  function countUp(el) {
+    var to = parseInt(el.dataset.to, 10) || 0;
+    if (to === 0) { el.textContent = '0'; return; }
+    var t0 = performance.now(), dur = 1100;
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / dur);
+      k = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(to * k);
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        e.target.classList.add('seen');
-        io.unobserve(e.target);
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('seen');
+        en.target.querySelectorAll('.stat b[data-to]').forEach(countUp);
+        io.unobserve(en.target);
       });
-    }, { rootMargin: '0px 0px -12%' });
+    }, { rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.rise').forEach(function (el) { io.observe(el); });
+
+    /* Hand the model the node the reader is currently looking at, so the card
+       and the specialist it describes light up together. */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      var ratios = {};
+      var fo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          ratios[en.target.dataset.node] = en.isIntersecting ? en.intersectionRatio : 0;
+        });
+        var best = -1, top = 0.34;
+        Object.keys(ratios).forEach(function (k) {
+          if (ratios[k] > top) { top = ratios[k]; best = parseInt(k, 10); }
+        });
+        if (window.sceneFocus) window.sceneFocus(best);
+      }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+      document.querySelectorAll('[data-node]').forEach(function (el) { fo.observe(el); });
+    }
   } else {
     document.querySelectorAll('.rise').forEach(function (el) { el.classList.add('seen'); });
+    document.querySelectorAll('.stat b[data-to]').forEach(function (el) {
+      el.textContent = el.dataset.to;
+    });
   }
 
-  /* ── Copy the address without opening a mail client ──────── */
+  /* Copy the address without making anyone select it. */
   var copy = document.getElementById('copy');
   copy.addEventListener('click', function () {
-    var done = function () {
-      copy.textContent = 'Copied';
-      copy.classList.add('ok');
-      setTimeout(function () { copy.textContent = 'Copy'; copy.classList.remove('ok'); }, 1800);
-    };
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(copy.dataset.mail).then(done, function () {});
+    var mail = copy.dataset.mail;
+    function done() {
+      copy.textContent = 'copied'; copy.classList.add('ok');
+      setTimeout(function () { copy.textContent = 'copy'; copy.classList.remove('ok'); }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(mail).then(done, function () {});
     } else {
-      var f = document.createElement('textarea');
-      f.value = copy.dataset.mail; document.body.appendChild(f); f.select();
+      var ta = document.createElement('textarea');
+      ta.value = mail; document.body.appendChild(ta); ta.select();
       try { document.execCommand('copy'); done(); } catch (e) {}
-      document.body.removeChild(f);
+      document.body.removeChild(ta);
     }
   });
 
   document.getElementById('yr').textContent = new Date().getFullYear();
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
-    if (window.sceneReadPalette) window.sceneReadPalette();
-  });
 })();
 </script>
 <script src="assets/scene.js" defer></script>
+
 </body>
 </html>
