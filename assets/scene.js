@@ -383,7 +383,7 @@
     scrollTarget = Math.min(1, Math.max(0, scrollY / h));
     // The panels are frosted rather than solid, so the model stays visible
     // through them the whole way down — the wash only takes the edge off.
-    var w = 0.26 + 0.52 * Math.min(1, Math.max(0, scrollY / (innerHeight * 0.7)));
+    var w = 0.16 + 0.44 * Math.min(1, Math.max(0, scrollY / (innerHeight * 0.7)));
     rootEl.style.setProperty('--wash', w.toFixed(3));
   }
   addEventListener('scroll', onScroll, { passive: true });

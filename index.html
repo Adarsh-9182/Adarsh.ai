@@ -128,7 +128,7 @@ body{
 #scene{position:fixed;inset:0;z-index:-2;width:100%;height:100%;display:block}
 .wash{
   position:fixed;inset:0;z-index:-1;pointer-events:none;
-  opacity:var(--wash,0.3);
+  opacity:var(--wash,0.16);
   background:
     radial-gradient(135% 72% at 50% 0%, transparent 0%, var(--bg) 84%),
     linear-gradient(to bottom, transparent 0%, var(--bg) 62%);
@@ -152,7 +152,7 @@ a{color:inherit;text-decoration:none}
 .bar{
   position:sticky;top:0;z-index:60;
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  background:color-mix(in srgb, var(--bg) 72%, transparent);
+  background:color-mix(in srgb, var(--bg) 58%, transparent);
   border-bottom:1px solid transparent;transition:border-color .25s;
 }
 .bar.stuck{border-bottom-color:var(--border)}
@@ -191,14 +191,14 @@ a{color:inherit;text-decoration:none}
    ───────────────────────────────────────────────────────────────────── */
 .panel{
   border:1px solid var(--border);border-radius:var(--r);
-  background:color-mix(in srgb, var(--panel) 60%, transparent);
-  backdrop-filter:blur(7px) saturate(1.15);-webkit-backdrop-filter:blur(7px) saturate(1.15);
+  background:color-mix(in srgb, var(--panel) 42%, transparent);
+  backdrop-filter:blur(5px) saturate(1.25);-webkit-backdrop-filter:blur(5px) saturate(1.25);
   overflow:hidden;
 }
 .panel-bar{
   display:flex;align-items:center;gap:9px;
   padding:9px 14px;border-bottom:1px solid var(--border);
-  background:color-mix(in srgb, var(--card) 52%, transparent);
+  background:color-mix(in srgb, var(--card) 38%, transparent);
   font-size:11.5px;color:var(--subtle);
 }
 .lights{display:flex;gap:5px;flex:none}
@@ -406,8 +406,8 @@ footer .in{
   background:var(--border);overflow:hidden;
 }
 .stat{
-  background:color-mix(in srgb, var(--panel) 76%, transparent);
-  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  background:color-mix(in srgb, var(--panel) 52%, transparent);
+  backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
   padding:20px 18px;
 }
 .stat b{
