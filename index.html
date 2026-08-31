@@ -212,6 +212,11 @@ a{color:inherit;text-decoration:none}
 .line{font-size:13px;color:var(--muted)}
 .line+.line{margin-top:2px}
 
+/* uptime — the seconds tick, so tabular figures keep the line from shifting */
+.uptime{font-size:13px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+.uptime b{color:var(--fg);font-weight:500}
+.uptime .tick{color:var(--sig)}
+
 h1{
   font-family:var(--sans);font-weight:700;
   font-size:clamp(34px,7vw,68px);line-height:1.02;letter-spacing:-.035em;
@@ -474,7 +479,10 @@ footer .in{
     </div>
     <div class="panel-body">
 
-      <p class="line"><span class="prompt">$</span> whoami</p>
+      <p class="line"><span class="prompt">$</span> uptime</p>
+      <p class="uptime" id="uptime" aria-label="Age since birth"><span class="dim">…</span></p>
+
+      <p class="line" style="margin-top:26px"><span class="prompt">$</span> whoami</p>
       <h1>Adarsh <span class="sig">Bhardwaj</span><span class="caret" aria-hidden="true"></span></h1>
       <p class="tagline">Fullstack + AI engineer. I build <b>agent systems</b> for the two places a wrong
         answer costs you money and health.</p>
@@ -939,6 +947,38 @@ footer .in{
   });
 
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* uptime — real elapsed time since 10 Sep 2007, 12:30 IST.
+     Years and days are counted off the calendar anniversary rather than a
+     365.25-day average, so the year rolls over on the birthday itself. */
+  (function () {
+    var el = document.getElementById('uptime');
+    if (!el) return;
+    var born = new Date('2007-09-10T12:30:00+05:30');
+    var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
+
+    function tick() {
+      var now = new Date();
+      var years = now.getFullYear() - born.getFullYear();
+      var ann = new Date(born.getTime());
+      ann.setFullYear(born.getFullYear() + years);
+      if (ann > now) { years -= 1; ann.setFullYear(born.getFullYear() + years); }
+
+      var ms = now - ann;
+      var days = Math.floor(ms / 864e5); ms -= days * 864e5;
+      var h = Math.floor(ms / 36e5);     ms -= h * 36e5;
+      var m = Math.floor(ms / 6e4);      ms -= m * 6e4;
+      var s = Math.floor(ms / 1e3);
+
+      el.innerHTML =
+        'up <b>' + years + '</b> years, <b>' + days + '</b> days, ' +
+        '<span class="tick">' + pad(h) + ':' + pad(m) + ':' + pad(s) + '</span>' +
+        ' <span class="dim">— since 10 Sep 2007, 12:30 IST</span>';
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
 })();
 </script>
 <script src="assets/scene.js" defer></script>
