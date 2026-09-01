@@ -517,53 +517,53 @@ footer .in{
 
 <section class="block shell rise" id="work">
   <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">ls ./work <b>--sort=impact</b></span><span class="cur" aria-hidden="true"></span></p>
-  <h2>Four systems, one rule.</h2>
+  <h2>Five systems, one rule.</h2>
 
   <div class="grid">
 
     <article class="panel proj" data-node="0">
       <div class="panel-bar">
-        <span class="path"><span class="prompt">~/</span>paisa</span>
-        <span class="status live"><i></i>still building</span>
+        <span class="path"><span class="prompt">~/</span>paisa-core</span>
+        <span class="status live"><i></i>live</span>
       </div>
       <div class="panel-body">
         <h3>Paisa</h3>
-        <p class="what">AI CFO &amp; financial operating system · July 2026 — present</p>
-        <p class="text">The language model never touches arithmetic. A tested engine computes
-          every figure — expenses, UPI, SIPs, loans, investments, tax — and the model's only job
-          is to explain what the engine returned. Above it sit four agents with separate remits
-          for accounting, tax, investing and planning, and a router that decides which one should
-          answer. Bank accounts connect through secure connectors, so the numbers being explained
-          are <em>real ones</em>.</p>
-        <p class="deps"><b>built with</b>python · fastapi · react native · typescript · aws · docker · kubernetes</p>
+        <p class="what">AI CFO and AI-native ERP &middot; July 2026 &mdash; present</p>
+        <p class="text">A double-entry accounting engine with an AI CFO on top, and a hard rule
+          between them: <em>the model never computes a number</em>. Balances are projections over
+          an append-only journal, and the assistant&rsquo;s only job is to call the right tool and
+          explain what came back. A verifier then checks every figure in the answer against the
+          tool outputs from that turn &mdash; anything untraceable is rejected and rewritten, or
+          not sent at all. On top of the ledger sit ASC&nbsp;606 revenue recognition, a close that
+          runs executable checks rather than tickable boxes, multi-entity consolidation, Indian GST
+          and filing deadlines, and a Stripe connector that refuses non-INR charges rather than
+          converting them at a rate nobody supplied. <em>237 tests.</em></p>
+        <p class="deps"><b>built with</b>typescript &middot; node &middot; anthropic api &middot; postgres &middot; vitest &middot; vercel</p>
         <p class="links">
-          <a class="chip" href="https://www.askpaisaai.com" target="_blank" rel="noopener">askpaisaai.com<span class="ar">↗</span></a>
-          <a class="chip" href="https://github.com/Adarsh-9182/Paisa" target="_blank" rel="noopener">repository<span class="ar">↗</span></a>
+          <a class="chip" href="https://www.askpaisaai.com" target="_blank" rel="noopener">askpaisaai.com<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/paisa-core" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
         </p>
       </div>
     </article>
 
     <article class="panel proj" data-node="1">
       <div class="panel-bar">
-        <span class="path"><span class="prompt">~/</span>nutriscan-ai</span>
+        <span class="path"><span class="prompt">~/</span>nutritiscan-ai</span>
         <span class="status live"><i></i>still building</span>
       </div>
       <div class="panel-body">
         <h3>NutriScan AI</h3>
-        <p class="what">AI health agent — clinical reasoning · 2026</p>
-        <p class="text">An AI health agent that reasons over symptoms, lab results and clinical
-          history. Five specialists — doctor, labs, fitness, nutrition and coach — sit behind a
-          supervisor that routes each question to whichever one should own it, and each specialist
-          only sees the slice of the patient record it needs. Underneath the chat is the part that
-          matters: a deterministic triage engine of forty clinical rules that runs <em>before</em>
-          the model reasons, fails closed on error, and can end the turn outright. A model may
-          raise suspicion; nothing can lower a rule-derived verdict. Insights carry their own
-          certainty, derived from sample size rather than asserted, and any number the agent
-          quotes is computed in tested code. <em>156 tests.</em></p>
-        <p class="deps"><b>built with</b>typescript · next.js · anthropic &amp; openai apis · python · fastapi · pytorch · postgresql · react native · docker</p>
+        <p class="what">AI health agent with a clinical safety layer &middot; 2026</p>
+        <p class="text">An AI health agent that reasons over symptoms, history and diet. Specialist
+          agents sit behind a supervisor that routes each question to whichever one owns it, and
+          each specialist sees only the slice of the record it needs. Underneath the chat is the
+          part that matters: deterministic triage that runs <em>before</em> the model reasons,
+          fails closed on error, and can end the turn outright. A model may raise suspicion;
+          nothing it says can lower a rule-derived verdict.</p>
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; anthropic api &middot; tailwind &middot; vitest</p>
         <p class="links">
-          <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">↗</span></a>
-          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">repository<span class="ar">↗</span></a>
+          <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
         </p>
       </div>
     </article>
@@ -571,40 +571,75 @@ footer .in{
     <article class="panel proj" data-node="2">
       <div class="panel-bar">
         <span class="path"><span class="prompt">~/</span>agent-framework</span>
-        <span class="status">2025</span>
+        <span class="status">2026</span>
       </div>
       <div class="panel-body">
-        <h3>Agent framework</h3>
-        <p class="what">Multi-agent orchestration, pulled out of Paisa</p>
-        <p class="text">The scaffolding underneath Paisa's agents, extracted to stand on its own:
-          role-scoped agents, tool calling, an intent router that maps a question to the agent that
-          should own it, and outputs strict enough that the rest of the system can depend on them
-          instead of re-parsing prose.</p>
-        <p class="deps"><b>built with</b>python · langchain · tool calling · json schema</p>
+        <h3>agent-framework</h3>
+        <p class="what">Agents that cannot invent a fact &mdash; extracted from Paisa</p>
+        <p class="text">The grounding machinery from Paisa, generalised into a library: a tool
+          registry that keeps each function beside the schema the model reads, an orchestrator that
+          routes every call through itself so each invocation is recorded, and a verifier that
+          rejects any answer stating a figure no tool returned. Writing it standalone paid for
+          itself immediately &mdash; the first test found that the original searched tool output as
+          one string, so <code>&#8377;26</code> counted as grounded by a balance of
+          <code>&#8377;32,42,600</code>. A wrong number verified as correct. The fix went back into
+          Paisa. <em>22 tests.</em></p>
+        <p class="deps"><b>built with</b>typescript &middot; anthropic api &middot; vitest</p>
+        <p class="links">
+          <a class="chip" href="https://github.com/Adarsh-9182/agent-framework" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
       </div>
     </article>
 
     <article class="panel proj" data-node="3">
       <div class="panel-bar">
         <span class="path"><span class="prompt">~/</span>rag-financial-assistant</span>
-        <span class="status">2025</span>
+        <span class="status">2026</span>
       </div>
       <div class="panel-body">
-        <h3>RAG financial assistant</h3>
-        <p class="what">Question answering over statements and filings</p>
-        <p class="text">Ingestion and chunking tuned for tables rather than paragraphs, embeddings
-          into a vector store, and answers that cite the row they came from. The citation is the
-          whole point — <em>an unsourced number is worse than no answer</em>.</p>
-        <p class="deps"><b>built with</b>python · embeddings · vector search · langchain · postgresql</p>
+        <h3>cited-retrieval</h3>
+        <p class="what">Retrieval you can cite, and that answers the same way twice</p>
+        <p class="text">Retrieval for corpora where being wrong is expensive and being
+          unreproducible is unacceptable &mdash; tax provisions, filings, contract terms. Every
+          passage carries its source and the date it was last verified, because a correct answer
+          drawn from a stale document is still wrong. Field-weighted scoring with BM25 breaking
+          ties. <em>Deliberately not embeddings:</em> for a curated corpus of hundreds of passages,
+          the same question returning the same passages &mdash; inspectable when a result looks
+          wrong, pinnable in CI &mdash; is worth more than the recall. Embeddings earn their cost
+          when keyword overlap stops working; below that they buy variance. <em>12 tests.</em></p>
+        <p class="deps"><b>built with</b>typescript &middot; bm25 &middot; vitest &middot; zero dependencies</p>
+        <p class="links">
+          <a class="chip" href="https://github.com/Adarsh-9182/rag-financial-assistant" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
+
+    <article class="panel proj" data-node="4">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>mcpfy-inspector</span>
+        <span class="status live"><i></i>live</span>
+      </div>
+      <div class="panel-body">
+        <h3>MCPfy Inspector</h3>
+        <p class="what">MCP server debugging, shipped during the MCPfy.ai internship &middot; 2026</p>
+        <p class="text">A tool for developers building on the Model Context Protocol: connect to a
+          running MCP server, see the tools it actually exposes, call them, and read what comes
+          back. Most MCP bugs are not in the model &mdash; they are a schema that does not match the
+          handler, or a tool that silently returns nothing. This makes that visible instead of
+          leaving it to be inferred from an agent behaving oddly.</p>
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; model context protocol &middot; vercel</p>
+        <p class="links">
+          <a class="chip" href="https://mcpfy-inspector.vercel.app" target="_blank" rel="noopener">mcpfy-inspector.vercel.app<span class="ar">&#8599;</span></a>
+        </p>
       </div>
     </article>
 
   </div>
 
   <div class="stats" id="stats">
-    <div class="stat"><b data-to="156">0</b><span>tests behind NutriScan</span></div>
-    <div class="stat"><b data-to="40">0</b><span>deterministic clinical rules</span></div>
-    <div class="stat"><b data-to="9">0</b><span>agents &amp; specialists shipped</span></div>
+    <div class="stat"><b data-to="237">0</b><span>tests behind Paisa</span></div>
+    <div class="stat"><b data-to="34">0</b><span>tests behind the extracted libraries</span></div>
+    <div class="stat"><b data-to="5">0</b><span>systems shipped</span></div>
     <div class="stat"><b data-to="0">0</b><span>numbers invented by a model</span></div>
   </div>
 </section>
@@ -629,7 +664,7 @@ footer .in{
       <p>Building the product and the company. Agent architecture, secure bank integrations, the
         financial modules, the backend and the deploy pipeline — and presenting the whole thing to
         mentors and investors.</p>
-      <p class="deps">python · fastapi · javascript · aws · docker · kubernetes</p>
+      <p class="deps">typescript · node · anthropic api · postgres · vitest · vercel</p>
     </div>
 
     <div class="commit">
@@ -641,7 +676,7 @@ footer .in{
         front-end that ships it. Alongside that, MCP-based developer tooling: built and integrated
         the APIs that agent workflows ran on, chased down reliability bugs, and tested the
         integrations other people's agents depended on.</p>
-      <p class="deps">web design · next.js · tailwind · typescript · python · mcp · rest apis · git</p>
+      <p class="deps">web design · next.js · tailwind · typescript · mcp · rest apis · git</p>
     </div>
 
     <div class="commit">
@@ -653,7 +688,7 @@ footer .in{
         between them, and the clinical safety layer underneath — deterministic triage, structured
         clinical state, fail-closed escalation. Food-image and nutrition analysis is one of the
         signals it reasons over, not the product.</p>
-      <p class="deps">typescript · next.js · anthropic api · python · fastapi · pytorch · postgresql · react</p>
+      <p class="deps">typescript · next.js · react · anthropic api · tailwind · vitest</p>
     </div>
 
     <div class="commit">
