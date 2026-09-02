@@ -663,7 +663,7 @@ footer .in{
       </div>
       <div class="panel-body">
         <h3>Zylo</h3>
-        <p class="what">A storefront, built for the parts that are actually hard &middot; 2026</p>
+        <p class="what">E-commerce platform, founded with Rahul Bora &middot; 2026</p>
         <p class="text">Catalog, search, product pages and a cart, over 194 products in Postgres.
           The interesting decisions are the boring-sounding ones. Reviews are their own table
           rather than JSON on the product, because a review written by a customer has to point at
@@ -706,17 +706,6 @@ footer .in{
 
     <div class="commit head">
       <div class="top">
-        <h3>Founder &amp; AI Engineer <span class="at">@ Paisa</span></h3>
-        <span class="when">July 2026 — present</span>
-      </div>
-      <p>Building the product and the company. Agent architecture, secure bank integrations, the
-        financial modules, the backend and the deploy pipeline — and presenting the whole thing to
-        mentors and investors.</p>
-      <p class="deps">typescript · node · anthropic api · postgres · vitest · vercel</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
         <h3>AI Engineer <span class="at">@ MCPfy.ai</span></h3>
         <span class="when">Internship · Aug 2026</span>
       </div>
@@ -729,6 +718,17 @@ footer .in{
 
     <div class="commit">
       <div class="top">
+        <h3>Founder &amp; AI Engineer <span class="at">@ Paisa</span></h3>
+        <span class="when">July 2026 — present</span>
+      </div>
+      <p>Building the product and the company. Agent architecture, secure bank integrations, the
+        financial modules, the backend and the deploy pipeline — and presenting the whole thing to
+        mentors and investors.</p>
+      <p class="deps">typescript · node · anthropic api · postgres · vitest · vercel</p>
+    </div>
+
+    <div class="commit">
+      <div class="top">
         <h3>Founder &amp; AI Engineer <span class="at">@ NutriScan AI</span></h3>
         <span class="when">2026</span>
       </div>
@@ -737,6 +737,27 @@ footer .in{
         clinical state, fail-closed escalation. Food-image and nutrition analysis is one of the
         signals it reasons over, not the product.</p>
       <p class="deps">typescript · next.js · react · anthropic api · tailwind · vitest</p>
+    </div>
+
+    <div class="commit">
+      <div class="top">
+        <h3>Founder <span class="at">@ Zylo</span></h3>
+        <span class="when">2026 — present</span>
+      </div>
+      <p>Founded Zylo with <b>Rahul Bora</b> — an e-commerce platform, built as a real storefront
+        rather than a demo of one. The catalogue is 194 products in Postgres behind Drizzle, with
+        search, faceted filters, product pages, and a cart that survives a refresh. I own the
+        engineering: the schema and its migrations, the server/client boundary, the API routes the
+        browser talks to, and the deploy.</p>
+      <p>The decisions worth defending are the unglamorous ones. Reviews are their own table rather
+        than JSON hanging off a product, because a customer-written review has to point back at the
+        customer. The catalogue module is marked server-only, so the build breaks the moment a
+        client component reaches for the database — which is when you want to hear about it, not in
+        production. All 194 product pages still prerender at build time, now from the database. And
+        search filtering stays in the browser on purpose: at this size the price slider should not
+        wait on a network round trip. Next: accounts, a server-side cart, and checkout with real
+        orders behind it.</p>
+      <p class="deps">typescript · next.js · react · postgres · drizzle · framer motion · tailwind · vercel</p>
     </div>
 
     <div class="commit">
