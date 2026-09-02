@@ -293,6 +293,18 @@ h2{
 .deps b{color:var(--muted);font-weight:400;margin-right:8px}
 .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 
+/* Demo capture — filmed off a screen, and portrait, so it is capped rather
+   than full-bleed: at panel width it would read as the page rather than an
+   exhibit. preload="none" keeps the file off every page load; it is fetched
+   when someone actually presses play. */
+.demo{margin:20px 0 0;max-width:288px}
+.demo video{
+  display:block;width:100%;height:auto;
+  border:1px solid var(--border);border-radius:calc(var(--r) - 4px);
+  background:var(--card);
+}
+.demo figcaption{margin-top:9px;font-size:11.5px;line-height:1.75;color:var(--subtle)}
+
 /* ── Experience, as a graph ───────────────────────────────────────────────
    git log --graph, because that is what a work history is.
    ───────────────────────────────────────────────────────────────────── */
@@ -517,7 +529,7 @@ footer .in{
 
 <section class="block shell rise" id="work">
   <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">ls ./work <b>--sort=impact</b></span><span class="cur" aria-hidden="true"></span></p>
-  <h2>Five systems, one rule.</h2>
+  <h2>Six systems, one rule.</h2>
 
   <div class="grid">
 
@@ -560,10 +572,20 @@ footer .in{
           part that matters: deterministic triage that runs <em>before</em> the model reasons,
           fails closed on error, and can end the turn outright. A model may raise suspicion;
           nothing it says can lower a rule-derived verdict.</p>
-        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; anthropic api &middot; tailwind &middot; vitest</p>
+        <figure class="demo">
+          <video controls preload="none" playsinline width="720" height="1280"
+                 poster="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/poster-9pDAB4NcZP1WMA8bJRO1v8JCFWqfY8.jpg">
+            <source src="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/demo-B9RVC6DmZjDWUcugn4HDfK6BsdZXHL.mp4" type="video/mp4" />
+            <a href="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/demo-B9RVC6DmZjDWUcugn4HDfK6BsdZXHL.mp4">Download the demo recording</a>.
+          </video>
+          <figcaption>The app, end to end &mdash; 80 seconds, uncut, filmed off the screen.</figcaption>
+        </figure>
+
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; react native &middot; anthropic api &middot; supabase &middot; tailwind &middot; vitest</p>
         <p class="links">
           <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">&#8599;</span></a>
-          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">agent repository<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan" target="_blank" rel="noopener">app repository<span class="ar">&#8599;</span></a>
         </p>
       </div>
     </article>
@@ -634,12 +656,38 @@ footer .in{
       </div>
     </article>
 
+    <article class="panel proj" data-node="5">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>zylo</span>
+        <span class="status live"><i></i>live</span>
+      </div>
+      <div class="panel-body">
+        <h3>Zylo</h3>
+        <p class="what">A storefront, built for the parts that are actually hard &middot; 2026</p>
+        <p class="text">Catalog, search, product pages and a cart, over 194 products in Postgres.
+          The interesting decisions are the boring-sounding ones. Reviews are their own table
+          rather than JSON on the product, because a review written by a customer has to point at
+          the customer. The catalog module is marked server-only, which is not documentation
+          &mdash; it failed the build the moment a client component reached for the database, which
+          is exactly when you want to find out. Product pages still prerender all 194 at build
+          time, now from the database rather than a bundled file. And search filters deliberately
+          stay in the browser: at this size the price slider should not wait on a round trip, and
+          the query has already narrowed the set. <em>That last one is a bet on scale, and the
+          code is shaped so losing it is a local change.</em></p>
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; postgres &middot; drizzle &middot; framer motion &middot; tailwind &middot; vercel</p>
+        <p class="links">
+          <a class="chip" href="https://zylo-delta.vercel.app" target="_blank" rel="noopener">zylo-delta.vercel.app<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/ZYLO" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
+
   </div>
 
   <div class="stats" id="stats">
     <div class="stat"><b data-to="237">0</b><span>tests behind Paisa</span></div>
     <div class="stat"><b data-to="34">0</b><span>tests behind the extracted libraries</span></div>
-    <div class="stat"><b data-to="5">0</b><span>systems shipped</span></div>
+    <div class="stat"><b data-to="6">0</b><span>systems shipped</span></div>
     <div class="stat"><b data-to="0">0</b><span>numbers invented by a model</span></div>
   </div>
 </section>
