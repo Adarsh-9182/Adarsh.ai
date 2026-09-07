@@ -683,6 +683,35 @@ footer .in{
       </div>
     </article>
 
+    <article class="panel proj" data-node="6">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>talktin</span>
+        <span class="status">2026</span>
+      </div>
+      <div class="panel-body">
+        <h3>Talktin</h3>
+        <p class="what">An AI voice studio, and what a 60-second limit forces you to design &middot; 2026</p>
+        <p class="text">Text to speech, dubbing, transcription and agents that talk, on free-tier
+          models. The constraint did the interesting work. Long-form narration started as one
+          request that generated every block and joined them &mdash; which cannot survive a
+          60-second function limit, because twenty blocks is minutes of model time and the run
+          dies with nothing to show. Each block is its own request now and the audio is joined in
+          the browser, which fixed the timeout and something better besides: a failure on block
+          fifteen keeps the fourteen that worked, and generating again retries only what is
+          missing. The joining code walks the RIFF chunks rather than assuming audio starts at
+          byte 44, because a file carrying a <code>LIST</code> chunk is still a valid WAV and
+          slicing blindly splices metadata into the sound. Elsewhere the same instinct: dubbing
+          streams each stage as it begins, having previously guessed on a timer; and every model
+          call separates a <code>429</code> from a <code>400</code>, because one means wait and
+          the other means this request will fail identically forever. <em>30 tests. The audio path
+          is written and reviewed but has not been run &mdash; it is waiting on an API key.</em></p>
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; gemini &middot; tailwind &middot; vercel</p>
+        <p class="links">
+          <a class="chip" href="https://github.com/Adarsh-9182/talktin" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
+
   </div>
 
   <div class="stats" id="stats">
