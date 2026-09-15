@@ -293,6 +293,25 @@ h2{
 .deps b{color:var(--muted);font-weight:400;margin-right:8px}
 .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 
+/* A project's longer write-up, folded away so the list stays scannable: the
+   card reads the same as the others until someone asks for the detail. */
+.case{margin-top:16px;padding-top:13px;border-top:1px dashed var(--border)}
+.case summary{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none;
+  font-size:12.5px;color:var(--muted);transition:color .15s;
+}
+.case summary::-webkit-details-marker{display:none}
+.case summary::before{content:"+";color:var(--sig);display:inline-block;width:1ch}
+.case[open] summary::before{content:"\2212"}
+.case summary:hover{color:var(--sig)}
+.case h4{
+  margin-top:24px;font-size:11px;font-weight:500;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--sig);
+}
+.case p{margin-top:9px;font-size:13.5px;line-height:1.85;color:var(--muted);max-width:78ch}
+.case p em{color:var(--fg);font-style:normal;font-weight:500}
+.case .kv{margin-top:12px;max-width:78ch}
+
 /* Demo capture — filmed off a screen, and portrait, so it is capped rather
    than full-bleed: at panel width it would read as the page rather than an
    exhibit. preload="none" keeps the file off every page load; it is fetched
@@ -709,6 +728,108 @@ footer .in{
         <p class="links">
           <a class="chip" href="https://github.com/Adarsh-9182/talktin" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
         </p>
+      </div>
+    </article>
+
+    <article class="panel proj" data-node="7">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>tiko</span>
+        <span class="status">2026</span>
+      </div>
+      <div class="panel-body">
+        <h3>Tiko</h3>
+        <p class="what">A buddy next to your cursor that looks, talks and points &mdash; measured, not assumed &middot; 2026</p>
+        <p class="text">Hold a shortcut on a Mac, ask out loud, and it looks at the screen, answers
+          by voice and flies over to point at the button you need. A rebuild of Clicky on a stack
+          that costs nothing to run &mdash; Gemini&rsquo;s free tier, speech recognition on the Mac,
+          the system voices &mdash; which moves the hard part to where a free model is weakest:
+          saying exactly where something is. So pointing is measured rather than assumed. A
+          benchmark draws six Mac screens in code, records the rectangle of every button, and asks
+          twenty-nine Hinglish questions through the app&rsquo;s own path. Its first run found the
+          parser silently dropping <code>[POINT:185,119,filter button]</code> &mdash; a comma where
+          the prompt asked for a colon &mdash; which accounted for every answer it scored as
+          &ldquo;no point&rdquo;, in the benchmark and in the app. The next found the model measuring
+          on the cursor close-up instead of the screen; labelling that image with the part of the
+          screen it shows lifted the first guess from 55% to 81%. A second look at a sharp crop
+          around each guess brings the whole path to 48 of 58. <em>76 checks. Each piece has been
+          checked on its own; nobody has used it end to end yet.</em></p>
+        <p class="deps"><b>built with</b>swift &middot; swiftui &middot; appkit &middot; screencapturekit &middot; speech &middot; avfoundation &middot; gemini</p>
+        <p class="links">
+          <a class="chip" href="https://github.com/Adarsh-9182/tiko" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
+
+        <details class="case">
+          <summary>case study &mdash; how it works, and what the benchmark showed</summary>
+
+          <h4>Why build it again</h4>
+          <p>Clicky, by Farza Majeed, showed the interaction: an assistant that shares your screen
+            and points instead of describing. Its own issue tracker listed what it didn&rsquo;t do
+            &mdash; it couldn&rsquo;t be interrupted once it started talking, ran on credits users
+            couldn&rsquo;t replace with their own key, stumbled outside English, broke on a second
+            monitor, and dropped points whose coordinates came back slightly negative. Tiko started
+            from that list, with one constraint of its own: <em>nothing paid</em>.</p>
+
+          <h4>What happens when you ask</h4>
+          <dl class="kv">
+            <dt>hold</dt>
+            <dd>A listen-only keyboard tap notices the shortcut in any app. A third key cancels, so
+              &#8963;&#8997;&rarr; still switches Spaces instead of starting a recording.</dd>
+            <dt>listen</dt>
+            <dd>The microphone feeds Apple&rsquo;s on-device recogniser in Indian English, picked for
+              Hinglish, and the words appear beside the cursor as they&rsquo;re recognised.</dd>
+            <dt>look</dt>
+            <dd>On release every screen is captured with Tiko&rsquo;s own windows left out, plus a
+              full-detail close-up around the cursor &mdash; in parallel with finishing the transcript.</dd>
+            <dt>ask</dt>
+            <dd>Gemini gets the question, the last ten exchanges and the images. Model names come from
+              the key itself, fastest first, and a rate-limited model falls through to the next.</dd>
+            <dt>point</dt>
+            <dd>The reply ends in a tag on a 0&ndash;1000 grid, mapped through display points into
+              the global coordinate space every screen shares. A 400-point crop around the guess is
+              checked again, then the buddy flies there on a B&eacute;zier arc.</dd>
+            <dt>speak</dt>
+            <dd>The system voice reads the reply. <code>Esc</code> stops the speech, the request and
+              the pointing at once.</dd>
+            <dt>guide</dt>
+            <dd>Tasks that take several clicks come back one step at a time, each worked out from a
+              fresh screenshot &mdash; the next menu item isn&rsquo;t on screen until the last menu opens.</dd>
+          </dl>
+
+          <h4>Measuring the pointing</h4>
+          <p>Six screens drawn at Retina resolution with macOS&rsquo;s own font sizes &mdash; System
+            Settings, a text editor&rsquo;s toolbar, a login page, Finder with a menu open, a save
+            dialog and a spreadsheet &mdash; and twenty-nine questions phrased the way people say
+            them, each asked twice. A hit is a point on the element or within six points of its edge.
+            Each run scores two things: the single guess on the full screenshot, and the guess after
+            the close-up check.</p>
+          <dl class="kv">
+            <dt>run 1</dt>
+            <dd>29 of 58 single guess &middot; 43 of 58 after the check. Every &ldquo;no point&rdquo;
+              was the comma bug.</dd>
+            <dt>run 2</dt>
+            <dd>Parser fixed: 32 &middot; 49. The check turned seventeen misses into hits and broke none.</dd>
+            <dt>run 3</dt>
+            <dd>Close-up labelled: 47 &middot; 48. The first guess caught up; System Settings rose from
+              5 to 7 of 10 while the spreadsheet fell from 10 to 6 of 12, where questions about totals
+              and charts now point at the formula bar or the data.</dd>
+          </dl>
+          <p>The single guess is Clicky&rsquo;s method &mdash; one guess on the whole screenshot &mdash;
+            run with the same Gemini model and Tiko&rsquo;s prompt, not Clicky itself, which uses
+            Claude. The screens are tidier than a real desktop, so <em>the numbers compare methods;
+            they don&rsquo;t promise accuracy on your Mac</em>.</p>
+
+          <h4>Not yet verified</h4>
+          <p>Pointing and the Gemini client have been run against the live API, the flight path and
+            the settings checked offline, and speech rendered into a buffer rather than the speakers
+            &mdash; but nobody has yet held the shortcut and used Tiko end to end, and it hasn&rsquo;t
+            met a second display. It ships as an unsigned zip, so macOS wants one extra click on first
+            launch and asks for permissions again after every update.</p>
+
+          <h4>Built with less</h4>
+          <p>5,437 lines of Swift in five targets &mdash; the app, a core with no interface that runs
+            from the command line, the benchmark, the screens it draws, and the checks &mdash; built
+            with the Command Line Tools alone, no Xcode, over twelve pull requests.</p>
+        </details>
       </div>
     </article>
 
