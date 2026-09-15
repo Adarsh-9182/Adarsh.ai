@@ -751,8 +751,8 @@ footer .in{
           &ldquo;no point&rdquo;, in the benchmark and in the app. The next found the model measuring
           on the cursor close-up instead of the screen; labelling that image with the part of the
           screen it shows lifted the first guess from 55% to 81%. A second look at a sharp crop
-          around each guess brings the whole path to 48 of 58. <em>76 checks. Each piece has been
-          checked on its own; nobody has used it end to end yet.</em></p>
+          around each guess brings the whole path to 48 of 58. <em>79 checks. A typed question has
+          gone through the running app to an answer; nobody has spoken to it yet.</em></p>
         <p class="deps"><b>built with</b>swift &middot; swiftui &middot; appkit &middot; screencapturekit &middot; speech &middot; avfoundation &middot; gemini</p>
         <p class="links">
           <a class="chip" href="https://github.com/Adarsh-9182/tiko" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
@@ -820,15 +820,17 @@ footer .in{
 
           <h4>Not yet verified</h4>
           <p>Pointing and the Gemini client have been run against the live API, the flight path and
-            the settings checked offline, and speech rendered into a buffer rather than the speakers
-            &mdash; but nobody has yet held the shortcut and used Tiko end to end, and it hasn&rsquo;t
-            met a second display. It ships as an unsigned zip, so macOS wants one extra click on first
-            launch and asks for permissions again after every update.</p>
+            the settings checked offline, speech rendered into a buffer rather than the speakers, and a
+            typed question sent through the running app to an answer beside the cursor &mdash; but
+            nobody has yet held the shortcut and spoken to it, and it hasn&rsquo;t met a second display.
+            Every build is signed with the same certificate, so macOS should keep its permissions across
+            updates; that hasn&rsquo;t been confirmed yet. Without a paid Developer ID, the first launch
+            still needs one extra click.</p>
 
           <h4>Built with less</h4>
-          <p>5,437 lines of Swift in five targets &mdash; the app, a core with no interface that runs
+          <p>5,665 lines of Swift in five targets &mdash; the app, a core with no interface that runs
             from the command line, the benchmark, the screens it draws, and the checks &mdash; built
-            with the Command Line Tools alone, no Xcode, over twelve pull requests.</p>
+            with the Command Line Tools alone, no Xcode, over thirteen pull requests.</p>
         </details>
       </div>
     </article>
