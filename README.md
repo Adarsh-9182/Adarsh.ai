@@ -10,7 +10,7 @@ Type is [Archivo](https://fonts.google.com/specimen/Archivo),
 ```
 index.html                        # markup, styles and page behaviour
 assets/scene.js                   # the 3D model, in raw WebGL
-assets/Adarsh-Bhardwaj-Resume.pdf # résumé, linked from the page
+assets/Adarsh-Bhardwaj-Resume-2026-09.pdf # résumé, linked from the page
 vercel.json                       # headers + clean URLs
 ```
 
