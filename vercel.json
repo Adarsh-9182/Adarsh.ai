@@ -17,5 +17,12 @@
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/assets/Adarsh-Bhardwaj-Resume.pdf",
+      "destination": "/assets/Adarsh-Bhardwaj-Resume-2026-09.pdf",
+      "permanent": false
+    }
   ]
 }
