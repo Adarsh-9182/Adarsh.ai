@@ -785,7 +785,8 @@ footer .in{
             <dt>ask</dt>
             <dd>Gemini gets the question, the last ten exchanges and the images. Model names come from
               the key itself, fastest first, and a rate-limited model falls through to the next. A
-              stronger flash or pro model can be chosen in Settings, with the fast ones behind it.</dd>
+              stronger flash or pro model can be chosen in Settings, with the fast ones behind it. The key
+              itself sits in the Mac&rsquo;s keychain, never in a file.</dd>
             <dt>point</dt>
             <dd>The reply ends in a tag on a 0&ndash;1000 grid, mapped through display points into
               the global coordinate space every screen shares. If the element is labelled, Apple&rsquo;s
@@ -834,13 +835,14 @@ footer .in{
             nobody has yet held the shortcut and spoken to it, and it hasn&rsquo;t met a second display.
             Every build is signed with the same certificate, so macOS should keep its permissions across
             updates; that hasn&rsquo;t been confirmed yet. The release is built for Intel too, but has
-            only run on Apple silicon. Without a paid Developer ID, the first launch still needs one
+            only run on Apple silicon, and the switch that opens Tiko at login hasn&rsquo;t been turned on
+            yet. New releases are offered in the panel; installing one is still a download and a drag. Without a paid Developer ID, the first launch still needs one
             extra click.</p>
 
           <h4>Built with less</h4>
-          <p>6,246 lines of Swift in five targets &mdash; the app, a core with no interface that runs
-            from the command line, the benchmark, the screens it draws, and the checks &mdash; built
-            with the Command Line Tools alone, no Xcode, over fourteen pull requests.</p>
+          <p>6,753 lines of Swift in five targets &mdash; the app, a core with no interface that runs
+            from the command line, the benchmark, the screens it draws, and 105 checks &mdash; built
+            with the Command Line Tools alone, no Xcode, over sixteen pull requests.</p>
         </details>
       </div>
     </article>
