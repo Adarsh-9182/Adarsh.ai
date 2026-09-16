@@ -750,9 +750,11 @@ footer .in{
           the prompt asked for a colon &mdash; which accounted for every answer it scored as
           &ldquo;no point&rdquo;, in the benchmark and in the app. The next found the model measuring
           on the cursor close-up instead of the screen; labelling that image with the part of the
-          screen it shows lifted the first guess from 55% to 81%. A second look at a sharp crop
-          around each guess brings the whole path to 48 of 58. <em>79 checks. A typed question has
-          gone through the running app to an answer; nobody has spoken to it yet.</em></p>
+          screen it shows lifted the first guess from 55% to 81%. Now, when the model names a label,
+          the Mac reads the screen itself and snaps to that text &mdash; 27 of 27 on target &mdash;
+          and only icons and switches get a second request: 48 of 58 with 1.53 requests a question
+          instead of 2. <em>93 checks. A typed question has gone through the running app to an
+          answer; nobody has spoken to it yet.</em></p>
         <p class="deps"><b>built with</b>swift &middot; swiftui &middot; appkit &middot; screencapturekit &middot; speech &middot; avfoundation &middot; gemini</p>
         <p class="links">
           <a class="chip" href="https://github.com/Adarsh-9182/tiko" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
@@ -782,11 +784,14 @@ footer .in{
               full-detail close-up around the cursor &mdash; in parallel with finishing the transcript.</dd>
             <dt>ask</dt>
             <dd>Gemini gets the question, the last ten exchanges and the images. Model names come from
-              the key itself, fastest first, and a rate-limited model falls through to the next.</dd>
+              the key itself, fastest first, and a rate-limited model falls through to the next. A
+              stronger flash or pro model can be chosen in Settings, with the fast ones behind it. The key
+              itself sits in the Mac&rsquo;s keychain, never in a file.</dd>
             <dt>point</dt>
             <dd>The reply ends in a tag on a 0&ndash;1000 grid, mapped through display points into
-              the global coordinate space every screen shares. A 400-point crop around the guess is
-              checked again, then the buddy flies there on a B&eacute;zier arc.</dd>
+              the global coordinate space every screen shares. If the element is labelled, Apple&rsquo;s
+              text recognition finds that label on a full-detail capture; otherwise a 400-point crop
+              around the guess is checked again. Then the buddy flies there on a B&eacute;zier arc.</dd>
             <dt>speak</dt>
             <dd>The system voice reads the reply. <code>Esc</code> stops the speech, the request and
               the pointing at once.</dd>
@@ -800,8 +805,8 @@ footer .in{
             Settings, a text editor&rsquo;s toolbar, a login page, Finder with a menu open, a save
             dialog and a spreadsheet &mdash; and twenty-nine questions phrased the way people say
             them, each asked twice. A hit is a point on the element or within six points of its edge.
-            Each run scores two things: the single guess on the full screenshot, and the guess after
-            the close-up check.</p>
+            Each run scores the single guess on the full screenshot and the guess after the close-up
+            check; from run 4, also Tiko&rsquo;s path of reading the label first.</p>
           <dl class="kv">
             <dt>run 1</dt>
             <dd>29 of 58 single guess &middot; 43 of 58 after the check. Every &ldquo;no point&rdquo;
@@ -812,6 +817,11 @@ footer .in{
             <dd>Close-up labelled: 47 &middot; 48. The first guess caught up; System Settings rose from
               5 to 7 of 10 while the spreadsheet fell from 10 to 6 of 12, where questions about totals
               and charts now point at the formula bar or the data.</dd>
+            <dt>run 4</dt>
+            <dd>Label read on screen first: single guess 46 &middot; check on every question 45 &middot;
+              Tiko 48, at 1.53 requests a question. The label was found 27 times and hit all 27;
+              System Settings reached 10 of 10. The spreadsheet stayed at 3 of 12 &mdash; there the
+              model names the wrong element, which no pointing step can repair.</dd>
           </dl>
           <p>The single guess is Clicky&rsquo;s method &mdash; one guess on the whole screenshot &mdash;
             run with the same Gemini model and Tiko&rsquo;s prompt, not Clicky itself, which uses
@@ -824,13 +834,15 @@ footer .in{
             typed question sent through the running app to an answer beside the cursor &mdash; but
             nobody has yet held the shortcut and spoken to it, and it hasn&rsquo;t met a second display.
             Every build is signed with the same certificate, so macOS should keep its permissions across
-            updates; that hasn&rsquo;t been confirmed yet. Without a paid Developer ID, the first launch
-            still needs one extra click.</p>
+            updates; that hasn&rsquo;t been confirmed yet. The release is built for Intel too, but has
+            only run on Apple silicon, and the switch that opens Tiko at login hasn&rsquo;t been turned on
+            yet. New releases are offered in the panel; installing one is still a download and a drag. Without a paid Developer ID, the first launch still needs one
+            extra click.</p>
 
           <h4>Built with less</h4>
-          <p>5,665 lines of Swift in five targets &mdash; the app, a core with no interface that runs
-            from the command line, the benchmark, the screens it draws, and the checks &mdash; built
-            with the Command Line Tools alone, no Xcode, over thirteen pull requests.</p>
+          <p>6,753 lines of Swift in five targets &mdash; the app, a core with no interface that runs
+            from the command line, the benchmark, the screens it draws, and 105 checks &mdash; built
+            with the Command Line Tools alone, no Xcode, over sixteen pull requests.</p>
         </details>
       </div>
     </article>
