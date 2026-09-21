@@ -323,6 +323,17 @@ h2{
   background:var(--card);
 }
 .demo figcaption{margin-top:9px;font-size:11.5px;line-height:1.75;color:var(--subtle)}
+/* Website and app side by side: the landscape site takes the room, the
+   portrait app keeps its phone width next to it. */
+.demos{display:flex;gap:16px;align-items:flex-start;margin-top:20px}
+.demos .demo{margin:0}
+.demos .demo-web{flex:1 1 auto;max-width:none;min-width:0}
+.demos .demo-app{flex:0 0 190px}
+.demo figcaption b{color:var(--fg);font-weight:500}
+@media (max-width:620px){
+  .demos{flex-direction:column}
+  .demos .demo-app{flex-basis:auto;max-width:220px}
+}
 
 /* ── Experience, as a graph ───────────────────────────────────────────────
    git log --graph, because that is what a work history is.
@@ -553,6 +564,51 @@ footer .in{
 
   <div class="grid">
 
+    <article class="panel proj" data-node="1">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>nutritiscan-ai</span>
+        <span class="status live"><i></i>live</span>
+      </div>
+      <div class="panel-body">
+        <h3>NutriScan AI</h3>
+        <p class="what">AI health agent with a clinical safety layer &middot; 2026</p>
+        <p class="text">An AI health agent that reasons over symptoms, history and diet. Specialist
+          agents sit behind a supervisor that routes each question to whichever one owns it, and
+          each specialist sees only the slice of the record it needs. Underneath the chat is the
+          part that matters: deterministic triage that runs <em>before</em> the model reasons,
+          fails closed on error, and can end the turn outright. A model may raise suspicion;
+          nothing it says can lower a rule-derived verdict. The website opens straight into that team: a
+          supervisor, and Doctor, Nutrition, Fitness, Lab and Coach agents, with every turn showing which
+          of them is working.</p>
+        <div class="demos">
+          <figure class="demo demo-web">
+            <video controls preload="none" playsinline muted width="1280" height="800"
+                   poster="assets/nutriscan-web-poster.jpg">
+              <source src="assets/nutriscan-web.mp4" type="video/mp4" />
+              <a href="assets/nutriscan-web.mp4">Download the website recording</a>.
+            </video>
+            <figcaption><b>The website</b> &mdash; nutritiscan.com, from the landing into the agent chat: the
+              supervisor routes the question, the specialist answers live.</figcaption>
+          </figure>
+          <figure class="demo demo-app">
+            <video controls preload="none" playsinline width="720" height="1280"
+                   poster="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/poster-9pDAB4NcZP1WMA8bJRO1v8JCFWqfY8.jpg">
+              <source src="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/demo-B9RVC6DmZjDWUcugn4HDfK6BsdZXHL.mp4" type="video/mp4" />
+              <a href="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/demo-B9RVC6DmZjDWUcugn4HDfK6BsdZXHL.mp4">Download the demo recording</a>.
+            </video>
+            <figcaption><b>The app</b> &mdash; end to end, 80 seconds, uncut, filmed off the screen.</figcaption>
+          </figure>
+        </div>
+
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; react native &middot; anthropic api &middot; gemini api &middot; supabase &middot; tailwind &middot; vitest</p>
+        <p class="links">
+          <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">agent repository<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan" target="_blank" rel="noopener">app repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
+
     <article class="panel proj" data-node="0">
       <div class="panel-bar">
         <span class="path"><span class="prompt">~/</span>paisa-core</span>
@@ -574,38 +630,6 @@ footer .in{
         <p class="links">
           <a class="chip" href="https://www.askpaisaai.com" target="_blank" rel="noopener">askpaisaai.com<span class="ar">&#8599;</span></a>
           <a class="chip" href="https://github.com/Adarsh-9182/paisa-core" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
-        </p>
-      </div>
-    </article>
-
-    <article class="panel proj" data-node="1">
-      <div class="panel-bar">
-        <span class="path"><span class="prompt">~/</span>nutritiscan-ai</span>
-        <span class="status live"><i></i>still building</span>
-      </div>
-      <div class="panel-body">
-        <h3>NutriScan AI</h3>
-        <p class="what">AI health agent with a clinical safety layer &middot; 2026</p>
-        <p class="text">An AI health agent that reasons over symptoms, history and diet. Specialist
-          agents sit behind a supervisor that routes each question to whichever one owns it, and
-          each specialist sees only the slice of the record it needs. Underneath the chat is the
-          part that matters: deterministic triage that runs <em>before</em> the model reasons,
-          fails closed on error, and can end the turn outright. A model may raise suspicion;
-          nothing it says can lower a rule-derived verdict.</p>
-        <figure class="demo">
-          <video controls preload="none" playsinline width="720" height="1280"
-                 poster="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/poster-9pDAB4NcZP1WMA8bJRO1v8JCFWqfY8.jpg">
-            <source src="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/demo-B9RVC6DmZjDWUcugn4HDfK6BsdZXHL.mp4" type="video/mp4" />
-            <a href="https://ymgw8gucdqufzajx.public.blob.vercel-storage.com/nutriscan/demo-B9RVC6DmZjDWUcugn4HDfK6BsdZXHL.mp4">Download the demo recording</a>.
-          </video>
-          <figcaption>The app, end to end &mdash; 80 seconds, uncut, filmed off the screen.</figcaption>
-        </figure>
-
-        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; react native &middot; anthropic api &middot; supabase &middot; tailwind &middot; vitest</p>
-        <p class="links">
-          <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">&#8599;</span></a>
-          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">agent repository<span class="ar">&#8599;</span></a>
-          <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan" target="_blank" rel="noopener">app repository<span class="ar">&#8599;</span></a>
         </p>
       </div>
     </article>
