@@ -52,8 +52,8 @@ entirely while the tab is hidden.
 | `:root`                     | colour, type and layout tokens (light + dark)     |
 | `.wash`                     | scroll-driven scrim that lifts prose off the model |
 | `<header class="mast">`     | masthead — headline, lede, links, model caption   |
-| `#work`                     | selected projects                                  |
 | `#experience`               | roles                                              |
+| `#work`                     | selected projects                                  |
 | `#stack`                    | skills, as a definition list                       |
 | `#background`               | education, exams, coursework                       |
 | `#contact` + `<footer>`     | email, elsewhere links, colophon                   |
