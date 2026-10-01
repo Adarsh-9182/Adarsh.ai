@@ -504,8 +504,9 @@ footer .in{
     <a class="who" href="#top"><span class="led" aria-hidden="true"></span>adarsh@bhardwaj<span class="dim">:~$</span></a>
     <span class="prog" id="prog" aria-hidden="true"><b>[··········]</b> 0%</span>
     <nav id="nav">
-      <a href="#work">work</a>
       <a href="#experience">experience</a>
+      <a href="#founding">founding</a>
+      <a href="#work">work</a>
       <a href="#stack">stack</a>
       <a href="#contact" class="keep">contact</a>
       <button class="tt" id="tt" type="button" aria-label="Switch theme" title="Switch theme — or press T">theme</button>
@@ -530,9 +531,9 @@ footer .in{
         answer costs you money and health.</p>
 
       <p class="line" style="margin-top:30px"><span class="prompt">$</span> cat ./about.txt</p>
-      <p class="out">I'm founding <b>Paisa</b>, an AI CFO and financial operating system, and I'm
+      <p class="out">I'm building <b>Paisa</b>, an AI CFO and financial operating system, and I'm
         building <b>NutriScan AI</b>, an AI health agent with a clinical safety layer under it.
-        Before that, at <b>MCPfy.ai</b> — I designed their website, and built the MCP developer tooling behind it. I'm also founding <b>Zylo</b>, an
+        Before that, at <b>MCPfy.ai</b> — I designed their website, and built the MCP developer tooling behind it. I'm also building <b>Zylo</b>, an
         e-commerce platform. The pattern in the agent work is the same throughout: the model
         explains, tested code decides the number.</p>
 
@@ -558,11 +559,156 @@ footer .in{
 
 <main>
 
+<section class="block shell rise" id="experience">
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">git log --graph <b>--author=adarsh</b></span><span class="cur" aria-hidden="true"></span></p>
+  <h2>Experience</h2>
+
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>adarsh@bhardwaj — git log --graph</span>
+    </div>
+    <div class="panel-body">
+  <div class="log">
+
+    <div class="commit head">
+      <div class="top">
+        <h3>AI Engineer <span class="at">@ Bodhx.ai</span></h3>
+        <span class="when">September 2026 — present</span>
+      </div>
+      <p>Building Bodhx.ai's AI platform, working across agent workflows, product features and
+        the integrations that connect them.</p>
+      <p class="deps">ai agents · typescript · node.js · integrations</p>
+    </div>
+
+    <div class="commit head">
+      <div class="top">
+        <h3>AI Engineer <span class="at">@ MCPfy.ai</span></h3>
+        <span class="when">Internship · Aug 2026</span>
+      </div>
+      <p>Designed the company's website — the visual design of the marketing site and the
+        front-end that ships it. Alongside that, MCP-based developer tooling: built and integrated
+        the APIs that agent workflows ran on, chased down reliability bugs, and tested the
+        integrations other people's agents depended on.</p>
+      <p class="deps">web design · next.js · tailwind · typescript · mcp · rest apis · git</p>
+    </div>
+
+    <div class="commit">
+      <div class="top">
+        <h3>Open source contributor</h3>
+        <span class="when">ongoing</span>
+      </div>
+      <p>Features, bug fixes, documentation and performance work across AI/ML and developer
+        tooling — mostly Python, JavaScript and agent frameworks.</p>
+      <p class="deps">github · hugging face · langchain</p>
+    </div>
+
+  </div>
+    </div>
+  </div>
+</section>
+
+<section class="block shell rise" id="founding">
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">git log --graph <b>--author=adarsh --founding</b></span><span class="cur" aria-hidden="true"></span></p>
+  <h2>Founding</h2>
+
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>adarsh@bhardwaj — building from zero</span>
+    </div>
+    <div class="panel-body">
+      <div class="log">
+        <div class="commit head">
+          <div class="top">
+            <h3>Founder &amp; AI Engineer <span class="at">@ Paisa</span></h3>
+            <span class="when">July 2026 — present</span>
+          </div>
+          <p>Building the product and the company. Agent architecture, secure bank integrations, the
+            financial modules, the backend and the deploy pipeline — and presenting the whole thing to
+            mentors and investors.</p>
+          <p class="deps">typescript · node · anthropic api · postgres · vitest · vercel</p>
+        </div>
+
+        <div class="commit">
+          <div class="top">
+            <h3>Founder &amp; AI Engineer <span class="at">@ Yetsyai</span></h3>
+            <span class="when">2026 &mdash; present</span>
+          </div>
+          <p>Building <b>Yetsyai</b>, an AI video creation studio for turning prompts and reference
+            images into cinematic clips. Owning the product interface, video-provider integration,
+            render queue, persistent history and deployment. The studio is live, with public video
+            generation being configured for the next release.</p>
+          <p class="deps">typescript &middot; next.js &middot; react &middot; fal.ai &middot; kling &middot; prisma &middot; postgres &middot; vercel</p>
+          <p class="links">
+            <a class="chip" href="https://yetsyai.vercel.app" target="_blank" rel="noopener">yetsyai.vercel.app<span class="ar">&#8599;</span></a>
+          </p>
+        </div>
+
+        <div class="commit">
+          <div class="top">
+            <h3>Founder &amp; AI Engineer <span class="at">@ NutriScan AI</span></h3>
+            <span class="when">2026</span>
+          </div>
+          <p>Built the AI health agent end to end: the specialist roster and the supervisor that routes
+            between them, and the clinical safety layer underneath — deterministic triage, structured
+            clinical state, fail-closed escalation. Food-image and nutrition analysis is one of the
+            signals it reasons over, not the product.</p>
+          <p class="deps">typescript · next.js · react · anthropic api · tailwind · vitest</p>
+        </div>
+
+        <div class="commit">
+          <div class="top">
+            <h3>Founder <span class="at">@ Zylo</span></h3>
+            <span class="when">2026 — present</span>
+          </div>
+          <p>Founded <b>Zylo</b> — an e-commerce platform, built as a real storefront
+            rather than a demo of one. The catalogue is 194 products in Postgres behind Drizzle, with
+            search, faceted filters, product pages, and a cart that survives a refresh. Built end to
+            end: the schema and its migrations, the server/client boundary, the API routes the
+            browser talks to, and the deploy.</p>
+          <p>The decisions worth defending are the unglamorous ones. Reviews are their own table rather
+            than JSON hanging off a product, because a customer-written review has to point back at the
+            customer. The catalogue module is marked server-only, so the build breaks the moment a
+            client component reaches for the database — which is when you want to hear about it, not in
+            production. All 194 product pages still prerender at build time, now from the database. And
+            search filtering stays in the browser on purpose: at this size the price slider should not
+            wait on a network round trip. Next: accounts, a server-side cart, and checkout with real
+            orders behind it.</p>
+          <p class="deps">typescript · next.js · react · postgres · drizzle · framer motion · tailwind · vercel</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block shell rise" id="work">
   <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">ls ./work <b>--sort=impact</b></span><span class="cur" aria-hidden="true"></span></p>
-  <h2>Six systems, one rule.</h2>
+  <h2>Nine systems, one rule.</h2>
 
   <div class="grid">
+
+    <article class="panel proj" id="yetsyai">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>yetsyai</span>
+        <span class="status live"><i></i>live studio</span>
+      </div>
+      <div class="panel-body">
+        <h3>Yetsyai</h3>
+        <p class="what">AI video creation studio &middot; 2026 &mdash; present</p>
+        <p class="text">A creative workspace for turning scene ideas and reference images into
+          cinematic video. The first version includes prompt suggestions, aspect-ratio and duration
+          controls, reference-image input, and a server-side generation flow backed by fal.ai's
+          Kling API. Render jobs have saved history, queue-status tracking and MP4 downloads,
+          with duplicate-request protection so a retry does not submit the same scene twice.
+          <em>The studio is deployed; public video generation is being configured.</em></p>
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; fal.ai &middot; kling &middot; prisma &middot; postgres &middot; tailwind &middot; vercel</p>
+        <p class="links">
+          <a class="chip" href="https://yetsyai.vercel.app" target="_blank" rel="noopener">yetsyai.vercel.app<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/yetsyai" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
 
     <article class="panel proj" data-node="1">
       <div class="panel-bar">
@@ -878,101 +1024,6 @@ footer .in{
     <div class="stat"><b data-to="34">0</b><span>tests behind the extracted libraries</span></div>
     <div class="stat"><b data-to="6">0</b><span>systems shipped</span></div>
     <div class="stat"><b data-to="0">0</b><span>numbers invented by a model</span></div>
-  </div>
-</section>
-
-<section class="block shell rise" id="experience">
-  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">git log --graph <b>--author=adarsh</b></span><span class="cur" aria-hidden="true"></span></p>
-  <h2>Experience</h2>
-
-  <div class="panel">
-    <div class="panel-bar">
-      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span>adarsh@bhardwaj — git log --graph</span>
-    </div>
-    <div class="panel-body">
-  <div class="log">
-
-    <div class="commit head">
-      <div class="top">
-        <h3>AI Engineer <span class="at">@ MCPfy.ai</span></h3>
-        <span class="when">Internship · Aug 2026</span>
-      </div>
-      <p>Designed the company's website — the visual design of the marketing site and the
-        front-end that ships it. Alongside that, MCP-based developer tooling: built and integrated
-        the APIs that agent workflows ran on, chased down reliability bugs, and tested the
-        integrations other people's agents depended on.</p>
-      <p class="deps">web design · next.js · tailwind · typescript · mcp · rest apis · git</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
-        <h3>Founder &amp; AI Engineer <span class="at">@ Paisa</span></h3>
-        <span class="when">July 2026 — present</span>
-      </div>
-      <p>Building the product and the company. Agent architecture, secure bank integrations, the
-        financial modules, the backend and the deploy pipeline — and presenting the whole thing to
-        mentors and investors.</p>
-      <p class="deps">typescript · node · anthropic api · postgres · vitest · vercel</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
-        <h3>Founder &amp; AI Engineer <span class="at">@ NutriScan AI</span></h3>
-        <span class="when">2026</span>
-      </div>
-      <p>Built the AI health agent end to end: the specialist roster and the supervisor that routes
-        between them, and the clinical safety layer underneath — deterministic triage, structured
-        clinical state, fail-closed escalation. Food-image and nutrition analysis is one of the
-        signals it reasons over, not the product.</p>
-      <p class="deps">typescript · next.js · react · anthropic api · tailwind · vitest</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
-        <h3>Collaborator <span class="at">@ RateMyFace</span></h3>
-        <span class="when">2026</span>
-      </div>
-      <p>Helping Lakshay Arora build <b>ratemyface.in</b> — a face-scoring app that reads a photo
-        against golden-ratio proportions and returns a score with the measurements behind it.
-        Working on the TypeScript side of it: the scoring flow, the product surface and the
-        plumbing that ships it.</p>
-      <p class="deps">typescript · next.js · vision models</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
-        <h3>Open source contributor</h3>
-        <span class="when">ongoing</span>
-      </div>
-      <p>Features, bug fixes, documentation and performance work across AI/ML and developer
-        tooling — mostly Python, JavaScript and agent frameworks.</p>
-      <p class="deps">github · hugging face · langchain</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
-        <h3>Founder <span class="at">@ Zylo</span></h3>
-        <span class="when">2026 — present</span>
-      </div>
-      <p>Founded <b>Zylo</b> — an e-commerce platform, built as a real storefront
-        rather than a demo of one. The catalogue is 194 products in Postgres behind Drizzle, with
-        search, faceted filters, product pages, and a cart that survives a refresh. Built end to
-        end: the schema and its migrations, the server/client boundary, the API routes the
-        browser talks to, and the deploy.</p>
-      <p>The decisions worth defending are the unglamorous ones. Reviews are their own table rather
-        than JSON hanging off a product, because a customer-written review has to point back at the
-        customer. The catalogue module is marked server-only, so the build breaks the moment a
-        client component reaches for the database — which is when you want to hear about it, not in
-        production. All 194 product pages still prerender at build time, now from the database. And
-        search filtering stays in the browser on purpose: at this size the price slider should not
-        wait on a network round trip. Next: accounts, a server-side cart, and checkout with real
-        orders behind it.</p>
-      <p class="deps">typescript · next.js · react · postgres · drizzle · framer motion · tailwind · vercel</p>
-    </div>
-
-  </div>
-    </div>
   </div>
 </section>
 
