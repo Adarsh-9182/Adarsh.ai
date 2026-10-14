@@ -355,6 +355,9 @@ h2{
 .commit .when{font-size:11.5px;color:var(--subtle);flex:none}
 .commit p{margin-top:8px;font-size:13.5px;line-height:1.85;color:var(--muted);max-width:76ch}
 .commit .deps{margin-top:11px;padding-top:0;border-top:0}
+.bodhx-film{margin-top:18px;max-width:640px}
+.bodhx-film video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--border);border-radius:10px;background:var(--card)}
+.bodhx-film figcaption{margin-top:8px;font-size:11.5px;line-height:1.7;color:var(--subtle)}
 
 /* ── Key/value output ─────────────────────────────────────────────────── */
 .kv{display:grid;grid-template-columns:132px minmax(0,1fr);column-gap:20px}
@@ -505,6 +508,7 @@ footer .in{
     <span class="prog" id="prog" aria-hidden="true"><b>[··········]</b> 0%</span>
     <nav id="nav">
       <a href="#experience">experience</a>
+      <a href="#founding">founding</a>
       <a href="#work">work</a>
       <a href="#stack">stack</a>
       <a href="#contact" class="keep">contact</a>
@@ -530,9 +534,9 @@ footer .in{
         answer costs you money and health.</p>
 
       <p class="line" style="margin-top:30px"><span class="prompt">$</span> cat ./about.txt</p>
-      <p class="out">I'm founding <b>Paisa</b>, an AI CFO and financial operating system, and I'm
+      <p class="out">I'm building <b>Paisa</b>, an AI CFO and financial operating system, and I'm
         building <b>NutriScan AI</b>, an AI health agent with a clinical safety layer under it.
-        I'm also founding <b>Zylo</b>, an
+        I'm also building <b>Zylo</b>, an
         e-commerce platform. The pattern in the agent work is the same throughout: the model
         explains, tested code decides the number.</p>
 
@@ -542,7 +546,7 @@ footer .in{
         <a class="chip" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">github<span class="ar">↗</span></a>
         <a class="chip" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">linkedin<span class="ar">↗</span></a>
         <a class="chip" href="https://x.com/adarshdevs" target="_blank" rel="noopener">x<span class="ar">↗</span></a>
-        <a class="chip" href="assets/Adarsh-Bhardwaj-Resume-2026-09.pdf" target="_blank" rel="noopener">resume.pdf<span class="ar">↗</span></a>
+        <a class="chip" href="assets/Adarsh-Bhardwaj-Resume-2026-10-Agents.pdf" target="_blank" rel="noopener">resume.pdf<span class="ar">↗</span></a>
       </p>
 
       <p class="note comment"><span class="prompt">#</span> the thing moving behind this window
@@ -572,6 +576,22 @@ footer .in{
 
     <div class="commit head">
       <div class="top">
+        <h3>AI Engineer <span class="at">@ Bodhx.ai</span></h3>
+        <span class="when">September 2026 — October 2026</span>
+      </div>
+      <p>Building Bodhx.ai's AI platform, working across agent workflows, product features and
+        the integrations that connect them.</p>
+      <p class="deps">ai agents · typescript · node.js · integrations</p>
+      <figure class="bodhx-film">
+        <video controls preload="none" playsinline aria-label="BodhX motion design launch film">
+          <source src="/assets/bodhx-motion-film.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>BodhX — motion design</b> · Launch film and product visuals</figcaption>
+      </figure>
+    </div>
+
+    <div class="commit head">
+      <div class="top">
         <h3>AI Engineer <span class="at">@ MCPfy.ai</span></h3>
         <span class="when">Internship · Aug 2026</span>
       </div>
@@ -584,41 +604,6 @@ footer .in{
 
     <div class="commit">
       <div class="top">
-        <h3>Founder &amp; AI Engineer <span class="at">@ Paisa</span></h3>
-        <span class="when">July 2026 — present</span>
-      </div>
-      <p>Building the product and the company. Agent architecture, secure bank integrations, the
-        financial modules, the backend and the deploy pipeline — and presenting the whole thing to
-        mentors and investors.</p>
-      <p class="deps">typescript · node · anthropic api · postgres · vitest · vercel</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
-        <h3>Founder &amp; AI Engineer <span class="at">@ NutriScan AI</span></h3>
-        <span class="when">2026</span>
-      </div>
-      <p>Built the AI health agent end to end: the specialist roster and the supervisor that routes
-        between them, and the clinical safety layer underneath — deterministic triage, structured
-        clinical state, fail-closed escalation. Food-image and nutrition analysis is one of the
-        signals it reasons over, not the product.</p>
-      <p class="deps">typescript · next.js · react · anthropic api · tailwind · vitest</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
-        <h3>Collaborator <span class="at">@ RateMyFace</span></h3>
-        <span class="when">2026</span>
-      </div>
-      <p>Helping Lakshay Arora build <b>ratemyface.in</b> — a face-scoring app that reads a photo
-        against golden-ratio proportions and returns a score with the measurements behind it.
-        Working on the TypeScript side of it: the scoring flow, the product surface and the
-        plumbing that ships it.</p>
-      <p class="deps">typescript · next.js · vision models</p>
-    </div>
-
-    <div class="commit">
-      <div class="top">
         <h3>Open source contributor</h3>
         <span class="when">ongoing</span>
       </div>
@@ -627,37 +612,122 @@ footer .in{
       <p class="deps">github · hugging face · langchain</p>
     </div>
 
-    <div class="commit">
-      <div class="top">
-        <h3>Founder <span class="at">@ Zylo</span></h3>
-        <span class="when">2026 — present</span>
-      </div>
-      <p>Founded <b>Zylo</b> — an e-commerce platform, built as a real storefront
-        rather than a demo of one. The catalogue is 194 products in Postgres behind Drizzle, with
-        search, faceted filters, product pages, and a cart that survives a refresh. Built end to
-        end: the schema and its migrations, the server/client boundary, the API routes the
-        browser talks to, and the deploy.</p>
-      <p>The decisions worth defending are the unglamorous ones. Reviews are their own table rather
-        than JSON hanging off a product, because a customer-written review has to point back at the
-        customer. The catalogue module is marked server-only, so the build breaks the moment a
-        client component reaches for the database — which is when you want to hear about it, not in
-        production. All 194 product pages still prerender at build time, now from the database. And
-        search filtering stays in the browser on purpose: at this size the price slider should not
-        wait on a network round trip. Next: accounts, a server-side cart, and checkout with real
-        orders behind it.</p>
-      <p class="deps">typescript · next.js · react · postgres · drizzle · framer motion · tailwind · vercel</p>
-    </div>
-
   </div>
+    </div>
+  </div>
+</section>
+
+<section class="block shell rise" id="founding">
+  <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">git log --graph <b>--author=adarsh --founding</b></span><span class="cur" aria-hidden="true"></span></p>
+  <h2>Founding</h2>
+
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>adarsh@bhardwaj — building from zero</span>
+    </div>
+    <div class="panel-body">
+      <div class="log">
+        <div class="commit head">
+          <div class="top">
+            <h3>Founder &amp; AI Engineer <span class="at">@ Paisa</span></h3>
+            <span class="when">July 2026 — present</span>
+          </div>
+          <p>Building the product and the company. Agent architecture, secure bank integrations, the
+            financial modules, the backend and the deploy pipeline — and presenting the whole thing to
+            mentors and investors.</p>
+          <p class="deps">typescript · node · anthropic api · postgres · vitest · vercel</p>
+          <p class="links">
+            <a class="chip" href="https://www.askpaisaai.com" target="_blank" rel="noopener">askpaisaai.com<span class="ar">&#8599;</span></a>
+            <a class="chip" href="https://github.com/Adarsh-9182/paisa-core" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+          </p>
+        </div>
+
+
+
+        <div class="commit">
+          <div class="top">
+            <h3>Founder &amp; AI Engineer <span class="at">@ NutriScan AI</span></h3>
+            <span class="when">2026</span>
+          </div>
+          <p>Built the AI health agent end to end: the specialist roster and the supervisor that routes
+            between them, and the clinical safety layer underneath — deterministic triage, structured
+            clinical state, fail-closed escalation. Food-image and nutrition analysis is one of the
+            signals it reasons over, not the product.</p>
+          <p class="deps">typescript · next.js · react · anthropic api · tailwind · vitest</p>
+          <p class="links">
+            <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">&#8599;</span></a>
+            <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">agent repository<span class="ar">&#8599;</span></a>
+            <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan" target="_blank" rel="noopener">app repository<span class="ar">&#8599;</span></a>
+          </p>
+        </div>
+
+        <div class="commit">
+          <div class="top">
+            <h3>Founder <span class="at">@ Zylo</span></h3>
+            <span class="when">2026 — present</span>
+          </div>
+          <p>Founded <b>Zylo</b> — an e-commerce platform, built as a real storefront
+            rather than a demo of one. The catalogue is 194 products in Postgres behind Drizzle, with
+            search, faceted filters, product pages, and a cart that survives a refresh. Built end to
+            end: the schema and its migrations, the server/client boundary, the API routes the
+            browser talks to, and the deploy.</p>
+          <p>The decisions worth defending are the unglamorous ones. Reviews are their own table rather
+            than JSON hanging off a product, because a customer-written review has to point back at the
+            customer. The catalogue module is marked server-only, so the build breaks the moment a
+            client component reaches for the database — which is when you want to hear about it, not in
+            production. All 194 product pages still prerender at build time, now from the database. And
+            search filtering stays in the browser on purpose: at this size the price slider should not
+            wait on a network round trip. Next: accounts, a server-side cart, and checkout with real
+            orders behind it.</p>
+          <p class="deps">typescript · next.js · react · postgres · drizzle · framer motion · tailwind · vercel</p>
+          <p class="links">
+            <a class="chip" href="https://zylo-delta.vercel.app" target="_blank" rel="noopener">zylo-delta.vercel.app<span class="ar">&#8599;</span></a>
+            <a class="chip" href="https://github.com/Adarsh-9182/ZYLO" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+          </p>
+        </div>
+        <div class="commit">
+          <div class="top">
+            <h3>Founder &amp; AI Engineer <span class="at">@ Yetsyai</span></h3>
+            <span class="when">2026 &mdash; present</span>
+          </div>
+          <p>Building <b>Yetsyai</b>, an AI video creation studio for turning prompts and reference
+            images into cinematic clips. Owning the product interface, video-provider integration,
+            render queue, persistent history and deployment. The studio is live, with public video
+            generation being configured for the next release.</p>
+          <p class="deps">typescript &middot; next.js &middot; react &middot; fal.ai &middot; kling &middot; prisma &middot; postgres &middot; vercel</p>
+          <p class="links">
+            <a class="chip" href="https://yetsyai.vercel.app" target="_blank" rel="noopener">yetsyai.vercel.app<span class="ar">&#8599;</span></a>
+            <a class="chip" href="https://github.com/Adarsh-9182/yetsyai" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+          </p>
+        </div>
+        <div class="commit">
+          <div class="top">
+            <h3>Founder &amp; Engineer <span class="at">@ NewsAI</span></h3>
+            <span class="when">2026 &mdash; present</span>
+          </div>
+          <p>Building <b>NewsAI</b>, an agent-first daily briefing for Indian builders. It gathers
+            research and engineering stories from arXiv, Hacker News, GitHub and lab blogs, then
+            publishes concise summaries and deeper analysis with clear limits on what the sources
+            support.</p>
+          <p class="deps">typescript &middot; node.js &middot; gemini &middot; postgres &middot; github actions &middot; vercel</p>
+          <p class="links">
+            <a class="chip" href="https://newsai-dmub2o2ug-askpaisaaicom.vercel.app" target="_blank" rel="noopener">NewsAI website<span class="ar">&#8599;</span></a>
+            <a class="chip" href="https://github.com/Adarsh-9182/Newsai" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="block shell rise" id="work">
   <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">ls ./work <b>--sort=impact</b></span><span class="cur" aria-hidden="true"></span></p>
-  <h2>Six systems, one rule.</h2>
+  <h2>Selected systems, one rule.</h2>
 
   <div class="grid">
+
+
 
     <article class="panel proj" data-node="1">
       <div class="panel-bar">
@@ -700,6 +770,26 @@ footer .in{
           <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">&#8599;</span></a>
           <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">agent repository<span class="ar">&#8599;</span></a>
           <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan" target="_blank" rel="noopener">app repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
+
+    <article class="panel proj" data-node="8">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>doctor-agent</span>
+        <span class="status">prototype</span>
+      </div>
+      <div class="panel-body">
+        <h3>Doctor Agent</h3>
+        <p class="what">Local-first, source-linked health companion &middot; 2026</p>
+        <p class="text">A small health education companion that retrieves from a curated library
+          and links answers back to public sources. It can run without a model or paid API, and an
+          optional local model can help phrase grounded explanations. It does not diagnose or
+          prescribe; the prototype keeps chats in browser memory and makes its limits clear.</p>
+        <p class="deps"><b>built with</b>python &middot; html &middot; css &middot; javascript &middot; optional local models</p>
+        <p class="links">
+          <a class="chip" href="https://github.com/Adarsh-9182/doctor-agent" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://adarsh-9182.github.io/doctor-agent/" target="_blank" rel="noopener">phone web app<span class="ar">&#8599;</span></a>
         </p>
       </div>
     </article>
@@ -966,6 +1056,49 @@ footer .in{
       </div>
     </article>
 
+
+    <article class="panel proj" id="yetsyai">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>yetsyai</span>
+        <span class="status live"><i></i>live studio</span>
+      </div>
+      <div class="panel-body">
+        <h3>Yetsyai</h3>
+        <p class="what">AI video creation studio &middot; 2026 &mdash; present</p>
+        <p class="text">A creative workspace for turning scene ideas and reference images into
+          cinematic video. The first version includes prompt suggestions, aspect-ratio and duration
+          controls, reference-image input, and a server-side generation flow backed by fal.ai's
+          Kling API. Render jobs have saved history, queue-status tracking and MP4 downloads,
+          with duplicate-request protection so a retry does not submit the same scene twice.
+          <em>The studio is deployed; public video generation is being configured.</em></p>
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; fal.ai &middot; kling &middot; prisma &middot; postgres &middot; tailwind &middot; vercel</p>
+        <p class="links">
+          <a class="chip" href="https://yetsyai.vercel.app" target="_blank" rel="noopener">yetsyai.vercel.app<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/yetsyai" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
+
+    <article class="panel proj" id="newsai">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>newsai</span>
+        <span class="status live"><i></i>daily digest</span>
+      </div>
+      <div class="panel-body">
+        <h3>NewsAI</h3>
+        <p class="what">Agent-first AI news for Indian builders &middot; 2026 &mdash; present</p>
+        <p class="text">A daily digest assembled from arXiv, Hacker News, GitHub and research lab
+          blogs. Stories are ranked using source signals such as points and stars, then Gemini
+          summarizes them and writes deeper reads for selected stories. Each analysis includes a
+          clear account of what the available sources do not establish. The archive is generated as
+          static pages and deployed through GitHub Actions and Vercel.</p>
+        <p class="deps"><b>built with</b>typescript &middot; node.js &middot; gemini &middot; postgres &middot; github actions &middot; vercel</p>
+        <p class="links">
+          <a class="chip" href="https://newsai-dmub2o2ug-askpaisaaicom.vercel.app" target="_blank" rel="noopener">NewsAI website<span class="ar">&#8599;</span></a>
+          <a class="chip" href="https://github.com/Adarsh-9182/Newsai" target="_blank" rel="noopener">repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
   </div>
 
   <div class="stats" id="stats">
@@ -973,6 +1106,8 @@ footer .in{
     <div class="stat"><b data-to="34">0</b><span>tests behind the extracted libraries</span></div>
     <div class="stat"><b data-to="6">0</b><span>systems shipped</span></div>
     <div class="stat"><b data-to="0">0</b><span>numbers invented by a model</span></div>
+
+
   </div>
 </section>
 
@@ -1075,7 +1210,7 @@ footer .in{
         <a class="chip" href="https://github.com/Adarsh-9182" target="_blank" rel="noopener">github<span class="ar">↗</span></a>
         <a class="chip" href="https://www.linkedin.com/in/adarsh-bhardwaj-925b31263" target="_blank" rel="noopener">linkedin<span class="ar">↗</span></a>
         <a class="chip" href="https://x.com/adarshdevs" target="_blank" rel="noopener">x<span class="ar">↗</span></a>
-        <a class="chip" href="assets/Adarsh-Bhardwaj-Resume-2026-09.pdf" target="_blank" rel="noopener">resume.pdf<span class="ar">↗</span></a>
+        <a class="chip" href="assets/Adarsh-Bhardwaj-Resume-2026-10-Agents.pdf" target="_blank" rel="noopener">resume.pdf<span class="ar">↗</span></a>
       </p>
     </div>
   </div>
