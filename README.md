@@ -13,7 +13,6 @@ assets/scene.js                   # the 3D model, in raw WebGL
 assets/yetsy-edit-demo.mp4         # 18-second Yetsy Edit screen recording
 assets/yetsy-edit-demo.webp        # poster from the same editing session
 assets/yetsy-edit-demo.vtt         # English descriptive captions
-assets/Adarsh-Bhardwaj-Resume-2026-09.pdf # résumé, linked from the page
 vercel.json                       # headers + clean URLs
 ```
 
