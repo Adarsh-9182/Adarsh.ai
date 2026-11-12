@@ -317,6 +317,7 @@ h2{
    exhibit. preload="none" keeps the file off every page load; it is fetched
    when someone actually presses play. */
 .demo{margin:20px 0 0;max-width:288px}
+.demo-wide{max-width:none}
 .demo video{
   display:block;width:100%;height:auto;
   border:1px solid var(--border);border-radius:calc(var(--r) - 4px);
@@ -716,6 +717,17 @@ footer .in{
           Kling API. Render jobs have saved history, queue-status tracking and MP4 downloads,
           with duplicate-request protection so a retry does not submit the same scene twice.
           <em>The studio is deployed; public video generation is being configured.</em></p>
+        <figure class="demo demo-wide">
+          <video controls preload="none" playsinline muted width="1920" height="1134"
+                 poster="assets/yetsy-edit-demo.webp" aria-label="Yetsy Edit for Mac demo"
+                 aria-describedby="yetsy-demo-caption">
+            <source src="assets/yetsy-edit-demo.mp4" type="video/mp4" />
+            <track kind="captions" src="assets/yetsy-edit-demo.vtt" srclang="en" label="English" />
+            <a href="assets/yetsy-edit-demo.mp4">Download the Yetsy Edit demo</a>.
+          </video>
+          <figcaption id="yetsy-demo-caption"><b>Yetsy Edit for Mac</b> &mdash; an 18-second look at
+            adding footage to the timeline and previewing an edit.</figcaption>
+        </figure>
         <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; fal.ai &middot; kling &middot; prisma &middot; postgres &middot; tailwind &middot; vercel</p>
         <p class="links">
           <a class="chip" href="https://yetsyai.vercel.app" target="_blank" rel="noopener">yetsyai.vercel.app<span class="ar">&#8599;</span></a>

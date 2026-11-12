@@ -10,6 +10,9 @@ Type is [Archivo](https://fonts.google.com/specimen/Archivo),
 ```
 index.html                        # markup, styles and page behaviour
 assets/scene.js                   # the 3D model, in raw WebGL
+assets/yetsy-edit-demo.mp4         # 18-second Yetsy Edit screen recording
+assets/yetsy-edit-demo.webp        # poster from the same editing session
+assets/yetsy-edit-demo.vtt         # English descriptive captions
 assets/Adarsh-Bhardwaj-Resume-2026-09.pdf # résumé, linked from the page
 vercel.json                       # headers + clean URLs
 ```
@@ -60,6 +63,11 @@ entirely while the tab is hidden.
 
 Theme follows the system by default; an explicit choice is stored in `localStorage`
 and can be toggled with the button or the <kbd>T</kbd> key.
+
+The Yetsyai project includes a click-to-play Yetsy Edit demo from an existing product
+screen recording. It is an H.264 MP4 with fast-start metadata, a matching poster and
+English descriptive captions. `preload="none"` keeps the video off the initial page
+load, and the player scales to the project card on desktop and mobile.
 
 ## Deploy
 
