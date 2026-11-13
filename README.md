@@ -13,6 +13,9 @@ assets/scene.js                   # the 3D model, in raw WebGL
 assets/yetsy-edit-demo.mp4         # 18-second Yetsy Edit screen recording
 assets/yetsy-edit-demo.webp        # poster from the same editing session
 assets/yetsy-edit-demo.vtt         # English descriptive captions
+assets/nutriscan-health-research-v2.mp4 # 45-second health chat and Research walkthrough
+assets/nutriscan-research-poster-v2.png # Research workspace poster
+assets/playdeck-preview.svg        # original Playdeck arcade preview
 vercel.json                       # headers + clean URLs
 ```
 
@@ -67,6 +70,12 @@ The Yetsyai project includes a click-to-play Yetsy Edit demo from an existing pr
 screen recording. It is an H.264 MP4 with fast-start metadata, a matching poster and
 English descriptive captions. `preload="none"` keeps the video off the initial page
 load, and the player scales to the project card on desktop and mobile.
+
+NutriScan's website demo uses existing real public-product footage. The 45-second
+silent cut shows health chat, the Research workspace, source inspection, and
+research export. Chapter labels stay above the interface, and the original UI
+colours are preserved. The separate mobile app recording is retained. Playdeck
+appears below NutriScan, with a preview and a link to the deployed arcade.
 
 ## Deploy
 

@@ -268,6 +268,7 @@ h2{
 
 /* ── Work ─────────────────────────────────────────────────────────────── */
 .grid{display:grid;gap:14px}
+.proj{scroll-margin-top:100px}
 .proj .panel-bar{justify-content:space-between}
 .proj .path{display:inline-flex;align-items:center;gap:8px}
 .status{
@@ -318,7 +319,7 @@ h2{
    when someone actually presses play. */
 .demo{margin:20px 0 0;max-width:288px}
 .demo-wide{max-width:none}
-.demo video{
+.demo video,.demo img{
   display:block;width:100%;height:auto;
   border:1px solid var(--border);border-radius:calc(var(--r) - 4px);
   background:var(--card);
@@ -677,7 +678,7 @@ footer .in{
 
 <section class="block shell rise" id="work">
   <p class="cmd"><span class="prompt">$</span>&nbsp;<span class="typed">ls ./work <b>--sort=impact</b></span><span class="cur" aria-hidden="true"></span></p>
-  <h2>Nine systems, one rule.</h2>
+  <h2>Ten systems, one rule.</h2>
 
   <div class="grid">
 
@@ -729,16 +730,19 @@ footer .in{
           fails closed on error, and can end the turn outright. A model may raise suspicion;
           nothing it says can lower a rule-derived verdict. The website opens straight into that team: a
           supervisor, and Doctor, Nutrition, Fitness, Lab and Coach agents, with every turn showing which
-          of them is working.</p>
+          of them is working. A separate research workspace brings PubMed and ClinicalTrials.gov
+          records into one investigation, with source inspection and exports for expert review.</p>
         <div class="demos">
           <figure class="demo demo-web">
-            <video controls preload="none" playsinline muted width="1280" height="800"
-                   poster="assets/nutriscan-web-poster.jpg">
-              <source src="assets/nutriscan-web.mp4" type="video/mp4" />
-              <a href="assets/nutriscan-web.mp4">Download the website recording</a>.
+            <video controls preload="none" playsinline muted width="1920" height="1080"
+                   poster="assets/nutriscan-research-poster-v2.png"
+                   aria-label="NutriScan health chat and Research workspace walkthrough"
+                   aria-describedby="nutriscan-web-caption">
+              <source src="assets/nutriscan-health-research-v2.mp4" type="video/mp4" />
+              <a href="assets/nutriscan-health-research-v2.mp4">Download the website walkthrough</a>.
             </video>
-            <figcaption><b>The website</b> &mdash; nutritiscan.com, from the landing into the agent chat: the
-              supervisor routes the question, the specialist answers live.</figcaption>
+            <figcaption id="nutriscan-web-caption"><b>The website</b> &mdash; a 45-second walkthrough of health chat,
+              the Research workspace, original-source inspection and research export.</figcaption>
           </figure>
           <figure class="demo demo-app">
             <video controls preload="none" playsinline width="720" height="1280"
@@ -755,6 +759,35 @@ footer .in{
           <a class="chip" href="https://www.nutritiscan.com" target="_blank" rel="noopener">nutritiscan.com<span class="ar">&#8599;</span></a>
           <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan-ai" target="_blank" rel="noopener">agent repository<span class="ar">&#8599;</span></a>
           <a class="chip" href="https://github.com/Adarsh-9182/nutritiscan" target="_blank" rel="noopener">app repository<span class="ar">&#8599;</span></a>
+        </p>
+      </div>
+    </article>
+
+    <article class="panel proj" id="playdeck">
+      <div class="panel-bar">
+        <span class="path"><span class="prompt">~/</span>playdeck</span>
+        <span class="status live"><i></i>live arcade</span>
+      </div>
+      <div class="panel-body">
+        <h3>Playdeck</h3>
+        <p class="what">A browser arcade with 20 original games &middot; 2026</p>
+        <p class="text">An instant-play arcade built around short breaks: racing, puzzles,
+          rhythm, sports and two-player games, with a dark interface that puts the games first.
+          Email accounts keep favorites, personal bests and play history across devices.
+          The ten-session free trial is enforced in PostgreSQL, including concurrent launches.
+          A one-time membership uses Razorpay orders, server-side payment verification and
+          signed webhooks. <em>The arcade and email sign-in are live; social login and
+          payments are awaiting provider activation.</em></p>
+        <figure class="demo demo-wide">
+          <a href="https://playdeck-arcade.vercel.app" target="_blank" rel="noopener" aria-label="Open the Playdeck browser arcade">
+            <img src="assets/playdeck-preview.svg" width="1280" height="720" loading="lazy" decoding="async"
+                 alt="Playdeck's dark arcade with Drift Circuit, Neon Rush, Pocket Hoops and Chroma Match" />
+          </a>
+          <figcaption><b>Find your next break</b> &mdash; 20 original games, saved favorites and personal bests.</figcaption>
+        </figure>
+        <p class="deps"><b>built with</b>typescript &middot; next.js &middot; react &middot; canvas &middot; better auth &middot; postgres &middot; razorpay &middot; vercel</p>
+        <p class="links">
+          <a class="chip" href="https://playdeck-arcade.vercel.app" target="_blank" rel="noopener">play the arcade<span class="ar">&#8599;</span></a>
         </p>
       </div>
     </article>
