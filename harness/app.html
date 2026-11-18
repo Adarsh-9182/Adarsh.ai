@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111114">
+  <meta name="description" content="Build a reusable context in your browser, preview its prompt, and use it with ChatGPT or Claude.">
+  <title>Harness · Context workspace</title>
+  <link rel="stylesheet" href="/assets/harness-studio-e0cc560e78c3.css">
+  <script type="module" src="/assets/harness-studio-de4abd10d3dd.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#brief-title">Skip to context editor</a>
+  <header class="topbar">
+    <nav class="shell topbar-inner" aria-label="Harness">
+      <a class="wordmark" href="/harness"><span class="brand-mark" aria-hidden="true">#</span> Harness</a>
+      <a class="topbar-link" href="/harness#setup">Local app setup <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="shell">
+    <header class="workspace-header">
+      <h1>Context workspace</h1>
+      <p>Set the goal, sources, and output once. Reuse the brief in ChatGPT or Claude.</p>
+    </header>
+
+    <noscript><p class="notice">Enable JavaScript to edit, save, and copy briefs in this workspace.</p></noscript>
+    <p id="studio-status" class="notice status-line" role="status"></p>
+    <p id="studio-error" class="notice error-line" role="alert" hidden></p>
+    <section id="confirm-area" class="notice confirmation" role="group" aria-labelledby="confirm-message" hidden>
+      <p id="confirm-message"></p>
+      <div class="actions">
+        <button id="confirm-cancel" class="button compact" type="button">Cancel</button>
+        <button id="confirm-accept" class="button compact primary" type="button">Continue</button>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel library" aria-labelledby="saved-title">
+        <div class="panel-heading">
+          <h2 id="saved-title">Saved contexts</h2>
+          <span class="count" id="saved-count" aria-label="Number of saved contexts">0</span>
+        </div>
+        <button id="new-context" class="button library-new" type="button"><span aria-hidden="true">+</span> New context</button>
+        <p id="saved-empty" class="library-empty">Saved briefs will appear here.</p>
+        <div id="saved-contexts" class="saved-list" aria-label="Saved contexts list"></div>
+        <div class="library-footer">
+          <button id="import-context" class="button subtle" type="button">Import a brief</button>
+          <input id="context-file" type="file" accept=".json,application/json" aria-label="Choose a saved Harness brief" hidden>
+          <p>Briefs are saved in this browser.</p>
+        </div>
+      </section>
+
+      <section class="panel editor" aria-labelledby="brief-title">
+        <div class="panel-heading">
+          <h2 id="brief-title" tabindex="-1">Your brief</h2>
+          <span id="draft-status" class="draft-status">New context</span>
+        </div>
+
+        <form id="context-form" class="brief-form" method="post">
+          <div class="field">
+            <label for="context-name">Name</label>
+            <input id="context-name" name="name" type="text" required minlength="2" maxlength="100" placeholder="e.g. Research synthesis">
+          </div>
+          <div class="field">
+            <label for="context-goal">Goal</label>
+            <textarea id="context-goal" name="goal" required minlength="4" maxlength="2000" rows="3" placeholder="What should the model help you accomplish?"></textarea>
+          </div>
+          <div class="field">
+            <label for="context-instructions">Instructions <span class="optional" aria-hidden="true">Optional</span></label>
+            <textarea id="context-instructions" name="instructions" maxlength="3000" rows="3" placeholder="How should it approach the work?"></textarea>
+            <div class="role-tools">
+              <label class="visually-hidden" for="role-search">Find a role for your brief</label>
+              <input id="role-search" type="text" list="profession-options" maxlength="100" autocomplete="off" placeholder="Find a role">
+              <datalist id="profession-options"></datalist>
+              <button id="apply-role" class="button compact" type="button">Add role</button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-heading">
+              <label for="context-references">Reference material <span class="optional" aria-hidden="true">Optional</span></label>
+              <button id="import-references" class="button compact" type="button" aria-describedby="reference-help">Add text files</button>
+              <input id="reference-files" type="file" accept=".txt,.md,.csv,.json" aria-label="Choose reference files" multiple hidden>
+            </div>
+            <textarea id="context-references" name="references" maxlength="12000" rows="4" aria-describedby="reference-help" placeholder="Paste notes, excerpts, or example inputs."></textarea>
+            <p id="reference-help" class="field-help">TXT, Markdown, CSV, or JSON. Up to 12,000 characters in total.</p>
+          </div>
+          <div class="field">
+            <label for="context-output">Output format <span class="optional" aria-hidden="true">Optional</span></label>
+            <textarea id="context-output" name="outputFormat" maxlength="2000" rows="3" placeholder="e.g. A summary, evidence table, and open questions"></textarea>
+          </div>
+          <div class="editor-footer">
+            <button id="delete-context" class="button danger subtle" type="button" disabled>Delete</button>
+            <div class="actions">
+              <button id="export-context" class="button" type="button">Export brief</button>
+              <button id="save-context" class="button primary" type="submit" disabled>Save context</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel preview" aria-labelledby="preview-title">
+        <div class="panel-heading">
+          <h2 id="preview-title">Prompt preview</h2>
+        </div>
+        <p class="preview-help" id="preview-help">Copy the prompt, open a provider, and paste it there to start a conversation.</p>
+        <label class="visually-hidden" for="prompt-preview">Generated prompt</label>
+        <textarea id="prompt-preview" class="prompt" spellcheck="false" readonly rows="14" aria-describedby="preview-help" placeholder="Add a goal to preview the prompt."></textarea>
+        <p id="preview-status" class="field-help preview-status" role="status"></p>
+        <button id="copy-prompt" class="button primary copy-button" type="button">Copy prompt</button>
+        <div class="provider-links" role="group" aria-label="Open a model provider">
+          <a id="provider-chatgpt" class="button" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT <span aria-hidden="true">↗</span></a>
+          <a id="provider-claude" class="button" href="https://claude.ai/new" target="_blank" rel="noopener noreferrer">Open Claude <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
